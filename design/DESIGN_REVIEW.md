@@ -13,7 +13,7 @@ It must not be presented as a working production system. Forms, uploads, saves, 
 - Fair Match shown as the agreed manual flow: the page lists participating clinics, and the request form lets a visitor choose a clinic and propose a preferred date and time for the organizing team to confirm, reschedule or decline by hand.
 - A five-language selector covering Dutch, Turkish, English, Russian, and Arabic.
 - Arabic right-to-left layout behavior.
-- Administration concepts for event details, client-supplied media, event speakers, exhibitors, floor plan, predefined page content, website-form requests, users/roles, and settings.
+- Administration concepts for event details, exhibitors, client-supplied photos/videos, website-form requests, and the external ticketing link.
 - Distinct navigation previews for Administrator, Employee/Staff, and Organizer.
 - Static floor-plan preview, open, download, and replacement concepts.
 - External ticket-link behavior without on-site payment.
@@ -36,12 +36,10 @@ It must not be presented as a working production system. Forms, uploads, saves, 
 1. Do you approve the navy, turquoise, sky-blue, coral, and warm-neutral visual direction?
 2. Can you provide the original logo as SVG, EPS, AI, or a transparent high-resolution PNG?
 3. Do you approve the proposed public pages and navigation?
-4. What information should every event-speaker record contain?
-5. Please confirm the responsibilities of Administrator, Employee/Staff, and Organizer.
-6. Should the participant manual, exhibitor agreement, and stand-price list be publicly downloadable?
-7. Please supply approved new photos and videos. No old WordPress photos are intended for automatic migration.
-8. Please provide the official address, public contact details, ticket platform URL, final exhibitor/clinic records, form recipients, and legal copy.
-9. Who will approve the five translated versions before launch?
+4. Please confirm the responsibilities of Administrator, Employee/Staff, and Organizer.
+5. Please supply approved new photos and videos. No old WordPress photos are intended for automatic migration.
+6. Please provide the official address, public contact details, ticket platform URL, final exhibitor records, form recipients, and legal copy.
+7. Who will approve the five translated versions before launch?
 
 ## Content that is intentionally illustrative
 

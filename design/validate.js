@@ -33,14 +33,10 @@ const publicRoutes = [
 const adminRoutes = [
   "dashboard",
   "event",
-  "speakers",
   "exhibitors",
   "media",
-  "floor-plan",
-  "content",
   "requests",
-  "users",
-  "settings"
+  "ticketing"
 ];
 
 await Promise.all(requiredFiles.map(file => access(file)));
@@ -69,9 +65,9 @@ for (const locale of ["nl", "tr", "en", "ru", "ar"]) {
 }
 
 if (!adminSource.includes("rolePermissions")) throw new Error("Role permission preview is missing");
-if (!adminSource.includes("speakersPage")) throw new Error("Speaker management preview is missing");
-if (adminSource.includes("fairMatchPage")) throw new Error("Automated Fair Match workflow must not be present");
-for (const excludedRoute of ["fair-match", "languages", "seo", "launch"]) {
+if (adminSource.includes("speakersPage") || adminSource.includes("floorPlanPage") || adminSource.includes("usersPage") || adminSource.includes("scopePage")) throw new Error("Removed admin areas remain in the prototype");
+if (adminSource.includes("Confirm meeting") || adminSource.includes("Propose another time")) throw new Error("Appointment-management actions must not be present");
+for (const excludedRoute of ["fair-match", "languages", "seo", "launch", "speakers", "floor-plan", "content", "users", "settings", "scope"]) {
   if (adminSource.includes(`data-page=\"${excludedRoute}\"`)) {
     throw new Error(`Out-of-scope admin route is visible: ${excludedRoute}`);
   }

@@ -34,7 +34,7 @@ The production-ready static output is written to `dist/`. Do not edit `dist/` di
 - Contact and venue details are populated from the supplied client documents (De Broodfabriek, Volmerlaan 12, 2288 GD Rijswijk; info@expofuar.nl; +31 (0)570 238 100) and flagged to confirm before launch.
 - Original participant manual, exhibitor agreement, stand pricing, and floor-plan PDFs in `downloads/`.
 - Static forms and dashboard actions for interaction design only; they do not send or save data.
-- Event-speaker management using clearly marked illustrative content.
+- A focused administration preview for event information, exhibitors, photos/videos, website-form requests, and an external ticketing link.
 - Role previews for Administrator, Employee/Staff, and Organizer.
 - Five-language direction preview. The homepage and shared navigation include draft translated direction; remaining detailed copy still requires translation and client review.
 
