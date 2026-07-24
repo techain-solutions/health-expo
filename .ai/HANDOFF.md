@@ -13,6 +13,7 @@
 - Prepared a self-contained Codex prompt for F-000.
 - Recorded unresolved architecture/content/privacy questions.
 - Recorded the disclosed legacy credential as compromised without copying it.
+- Refined the static client-approval prototype with a premium public landing-page direction; this remains separate from the gated Next.js implementation.
 
 ## Files Created
 - `AGENTS.md`
@@ -45,7 +46,7 @@ All F-000 acceptance criteria and commands listed in `FEATURE_PLAN.md`, `TEST_PL
 - Final commercial timeline does not override feature testing gates.
 
 ## Decisions
-See `DECISIONS.md`. Key approved decisions are custom Next.js, five languages, external ticketing, static floor plan, manual Fair Match, deferred exhibitor portal, and static Paris 2027.
+See `DECISIONS.md`. Key approved decisions are custom Next.js, five languages, external ticketing, static floor plan, Fair Match request forwarding only (DEC-014), deferred exhibitor portal, and static Paris 2027.
 
 ## Exact Next Human Action
 1. Place this scaffold at the repository root without overwriting existing valid code.

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Health & Beauty Expo Rijswijk 2026 — client validation website." />
+    <meta property="og:title" content="Health & Beauty Expo — Rijswijk 2026" />
+    <meta property="og:description" content="International medical tourism, beauty and wellness exhibition." />
+    <meta property="og:image" content="/og.png" />
+    <title>Health & Beauty Expo — Rijswijk 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=20260724" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="concept-ribbon">
+      <div class="shell">
+        <p><span></span>Client validation prototype</p>
+        <a href="admin.html">Preview admin dashboard <b>↗</b></a>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="shell nav-shell">
+        <a class="logo-link" href="?page=home" aria-label="Health and Beauty Expo home">
+          <img src="assets/health-beauty-expo-logo.png" alt="Health and Beauty Expo" />
+        </a>
+
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a href="?page=about" data-nav="about">About</a>
+          <a href="?page=exhibitors" data-nav="exhibitors">Exhibitors</a>
+          <a href="?page=program" data-nav="program">Programme</a>
+          <div class="nav-drop">
+            <button type="button">Visit <span>⌄</span></button>
+            <div class="nav-drop__panel">
+              <a href="?page=tickets"><b>Tickets</b><small>Access and event details</small></a>
+              <a href="?page=visit"><b>Plan your visit</b><small>Venue, dates and practical info</small></a>
+              <a href="?page=floor-plan"><b>Floor plan</b><small>Explore the expo layout</small></a>
+              <a href="?page=fair-match"><b>Fair Match</b><small>Request a personal introduction</small></a>
+            </div>
+          </div>
+          <a href="?page=participate" data-nav="participate">Exhibit</a>
+          <a href="?page=media" data-nav="media">Media</a>
+          <a href="?page=contact" data-nav="contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <label class="language-picker">
+            <span class="sr-only">Select language</span>
+            <select id="languageSelect" aria-label="Select language">
+              <option value="en">EN</option>
+              <option value="nl">NL</option>
+              <option value="tr">TR</option>
+              <option value="ru">RU</option>
+              <option value="ar">AR</option>
+            </select>
+          </label>
+          <a class="button button--small button--primary" href="?page=tickets">Tickets <span>↗</span></a>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobileMenu">
+            <span></span><span></span><span></span><i class="sr-only">Open menu</i>
+          </button>
+        </div>
+      </div>
+
+      <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a href="?page=about">About</a>
+        <a href="?page=exhibitors">Exhibitors</a>
+        <a href="?page=program">Programme & speakers</a>
+        <a href="?page=tickets">Tickets</a>
+        <a href="?page=visit">Plan your visit</a>
+        <a href="?page=floor-plan">Floor plan</a>
+        <a href="?page=fair-match">Fair Match</a>
+        <a href="?page=participate">Exhibit & sponsor</a>
+        <a href="?page=media">Media & influencers</a>
+        <a href="?page=contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="main" tabindex="-1"></main>
+
+    <footer>
+      <div class="shell footer-main">
+        <div class="footer-brand">
+          <img src="assets/health-beauty-expo-logo.png" alt="Health and Beauty Expo" />
+          <p>The international meeting point for health, beauty, wellness and medical tourism.</p>
+          <div class="social-row"><a href="#" aria-label="Instagram">ig</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="LinkedIn">in</a></div>
+        </div>
+        <div class="footer-links"><b>Explore</b><a href="?page=about">About the expo</a><a href="?page=exhibitors">Exhibitors</a><a href="?page=program">Programme & speakers</a><a href="?page=fair-match">Fair Match</a><a href="?page=media">Media</a></div>
+        <div class="footer-links"><b>Participate</b><a href="?page=participate">Stand packages</a><a href="?page=participate#sponsorship">Sponsorship</a><a href="?page=participant-info">Participant guide</a><a href="downloads/exhibitor-agreement-nl.pdf" target="_blank">Agreement</a></div>
+        <div class="footer-links"><b>Visit</b><a href="?page=tickets">Tickets</a><a href="?page=visit">Plan your visit</a><a href="?page=floor-plan">Floor plan</a><a href="?page=paris">Paris 2027</a></div>
+        <div class="footer-event">
+          <p>24–25 OCT 2026</p><b>De Broodfabriek</b><span>Rijswijk, The Netherlands</span><small>Open 10:00–18:00</small>
+        </div>
+      </div>
+      <div class="shell footer-bottom">
+        <p>© 2026 Health & Beauty Expo</p>
+        <div><a href="?page=legal&tab=privacy">Privacy</a><a href="?page=legal&tab=cookies">Cookies</a><a href="?page=legal&tab=terms">Terms</a></div>
+        <p>Client validation concept</p>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      <span>✓</span><p><b>Prototype interaction complete</b><small>This static form demonstrates the final experience. No data was sent.</small></p>
+      <button type="button" aria-label="Close notification">×</button>
+    </div>
+
+    <dialog class="asset-modal" id="assetModal">
+      <button class="modal-close" type="button" aria-label="Close">×</button>
+      <div id="modalContent"></div>
+    </dialog>
+
+    <script src="script.js?v=20260724"></script>
+  </body>
+</html>

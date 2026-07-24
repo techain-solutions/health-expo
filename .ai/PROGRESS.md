@@ -49,6 +49,7 @@
 ## Change Requests
 - None registered after the approved functional specification.
 - The requested exhibitor portal is recorded as DEFERRED, not active scope.
+- 2026-07-24 - Scope clarification: Fair Match remains an information/request form forwarded to the organizing team for manual follow-up. Appointment booking, availability, clinic dashboards, and request-status management are not included.
 
 ## Next Eligible Feature
 - `F-001 - Multilingual Public Shell and RTL` becomes eligible only after the user/team explicitly confirms `F-000` passed testing.
@@ -57,3 +58,9 @@
 - 2026-07-24 - NEW_PROJECT intake completed from supplied conversation, specifications, proposals, resources, and standards.
 - 2026-07-24 - Security note recorded: disclosed legacy WordPress credential must not be used and requires rotation.
 - 2026-07-24 - Project gate set to `READY_FOR_CODEX`; F-000 set to `READY`.
+- 2026-07-24 - Static client-approval prototype aligned with the proposal’s internal-admin scope; no product feature status changed.
+- 2026-07-24 - Public client-approval prototype visually elevated with bespoke editorial expo photography and refined premium landing-page art direction; no product feature status changed.
+- 2026-07-24 - Replaced the portrait-style public hero with a cinematic landscape campaign treatment after design feedback; no product feature status changed.
+- 2026-07-24 - Refined the public sector widgets into spaced, bordered rectangular cards after visual design feedback; no product feature status changed.
+- 2026-07-24 - Corrected hero secondary-call-to-action contrast for the dark cinematic background after visual design feedback; no product feature status changed.
+- 2026-07-24 - Replaced public-sector cards with an integrated numbered editorial ribbon after visual design feedback; no product feature status changed.

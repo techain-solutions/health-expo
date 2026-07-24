@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Static administration design for Health & Beauty Expo." />
+    <title>Admin preview — Health & Beauty Expo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="admin.css?v=20260724" />
+  </head>
+  <body>
+    <div class="admin-app">
+      <aside class="sidebar" id="sidebar">
+        <div class="admin-logo"><img src="assets/health-beauty-expo-logo.png" alt="Health and Beauty Expo" /><span>ADMIN PREVIEW</span></div>
+        <nav class="side-nav" aria-label="Administration">
+          <p>Overview</p>
+          <a href="admin.html?page=dashboard" data-page="dashboard"><span>⌂</span>Dashboard</a>
+          <p>Manage</p>
+          <a href="admin.html?page=event" data-page="event" data-capability="event"><span>◫</span>Event</a>
+          <a href="admin.html?page=exhibitors" data-page="exhibitors"><span>◎</span>Exhibitors</a>
+          <a href="admin.html?page=media" data-page="media"><span>▧</span>Media library</a>
+          <a href="admin.html?page=floor-plan" data-page="floor-plan"><span>⌗</span>Floor plan</a>
+          <a href="admin.html?page=content" data-page="content"><span>✎</span>Page content</a>
+          <p>Requests</p>
+          <a href="admin.html?page=requests" data-page="requests"><span>✉</span>Form requests <i>12</i></a>
+          <p>System</p>
+          <a href="admin.html?page=users" data-page="users"><span>♙</span>Users & roles</a>
+          <a href="admin.html?page=settings" data-page="settings"><span>⚙</span>Settings</a>
+        </nav>
+        <div class="sidebar-foot"><div class="avatar">AD</div><p><b>Admin Demo</b><span>Administrator</span></p><button type="button" aria-label="Sign out">↗</button></div>
+      </aside>
+
+      <div class="admin-main">
+        <header class="admin-topbar">
+          <button class="sidebar-toggle" type="button" aria-expanded="false" aria-controls="sidebar">☰</button>
+          <div class="topbar-context"><span>Health & Beauty Expo</span><b>Rijswijk 2026</b></div>
+          <div class="topbar-actions">
+            <label class="role-preview"><span>Preview as</span><select id="rolePreview"><option value="administrator">Administrator</option><option value="staff">Employee / Staff</option><option value="organizer">Organizer</option></select></label>
+            <span class="prototype-chip">Static prototype</span><a href="index.html?page=home" target="_blank">View website ↗</a><button class="notification" type="button" aria-label="Notifications">●<i>3</i></button>
+          </div>
+        </header>
+        <main id="adminMain"></main>
+      </div>
+    </div>
+
+    <div class="admin-toast" role="status" aria-live="polite"><span>✓</span><p><b>Preview saved</b><small>This is a static demonstration. No data changed.</small></p></div>
+    <script src="admin.js?v=20260724"></script>
+  </body>
+</html>
