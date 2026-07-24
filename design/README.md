@@ -30,7 +30,7 @@ The production-ready static output is written to `dist/`. Do not edit `dist/` di
 - Supplied floor plan, English and Turkish posters, and stand visual references.
 - Original participant manual, exhibitor agreement, stand pricing, and floor-plan PDFs in `downloads/`.
 - Static forms and dashboard actions for interaction design only; they do not send or save data.
-- A programme and speaker presentation using clearly marked illustrative content.
+- Event-speaker management using clearly marked illustrative content.
 - Role previews for Administrator, Employee/Staff, and Organizer.
 - Five-language direction preview. The homepage and shared navigation include draft translated direction; remaining detailed copy still requires translation and client review.
 
@@ -41,7 +41,7 @@ The production-ready static output is written to `dist/`. Do not edit `dist/` di
 - Final exhibitor and clinic records.
 - Legal-page content and form recipients.
 - Reviewed translations for Dutch, Turkish, English, Russian, and Arabic.
-- Final speaker names, portraits, roles, biographies, topics, and schedule.
+- Final speaker names, portraits, roles, and biographies.
 - Approval or removal of the public participant manual, agreement, and stand-price downloads.
 - A vector or transparent high-resolution master logo.
 

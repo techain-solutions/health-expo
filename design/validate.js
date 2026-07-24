@@ -38,13 +38,8 @@ const adminRoutes = [
   "floor-plan",
   "content",
   "requests",
-  "fair-match",
   "users",
-  "languages",
-  "seo",
-  "settings",
-  "launch",
-  "login"
+  "settings"
 ];
 
 await Promise.all(requiredFiles.map(file => access(file)));
@@ -74,5 +69,11 @@ for (const locale of ["nl", "tr", "en", "ru", "ar"]) {
 
 if (!adminSource.includes("rolePermissions")) throw new Error("Role permission preview is missing");
 if (!adminSource.includes("speakersPage")) throw new Error("Speaker management preview is missing");
+if (adminSource.includes("fairMatchPage")) throw new Error("Automated Fair Match workflow must not be present");
+for (const excludedRoute of ["fair-match", "languages", "seo", "launch"]) {
+  if (adminSource.includes(`data-page=\"${excludedRoute}\"`)) {
+    throw new Error(`Out-of-scope admin route is visible: ${excludedRoute}`);
+  }
+}
 
 console.log(`Validated ${publicRoutes.length} public routes, ${adminRoutes.length} admin routes, 5 locales, 3 role previews, and required local assets.`);

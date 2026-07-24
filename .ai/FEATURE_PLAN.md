@@ -18,7 +18,7 @@
 | F-006 | Media upload and management | PLANNED | F-002, F-003 PASSED | FR-017, FR-022, SEC-006 |
 | F-007 | Static floor-plan management and display | PLANNED | F-002, F-005, F-006 PASSED | FR-019 |
 | F-008 | Contact, participation, and accreditation requests | PLANNED | F-001, F-002, F-005 PASSED | FR-009, SEC-005, SEC-007, PRIV-001 |
-| F-009 | Fair Match manual request workflow | PLANNED | F-002, F-004, F-008 PASSED | FR-007, FR-008 |
+| F-009 | Fair Match information and request form | PLANNED | F-002, F-008 PASSED | FR-007, FR-008 |
 | F-010 | Media/Press content and legal/informational pages | PLANNED | F-001, F-002, F-008 PASSED | FR-002, FR-024, PRIV-003 |
 | F-011 | Content migration and five-language integration | PLANNED | F-005..F-010 PASSED | FR-020..026, INT-009 |
 | F-012 | SEO, accessibility, performance, and security hardening | PLANNED | F-011 PASSED | NFR-002..006, A11Y-001..005, PERF-001..003, SEC-005..009 |
@@ -284,31 +284,30 @@
 2. Invalid, duplicate, network-error, and success states.
 3. Staff review and status handling.
 
-## F-009 - Fair Match Manual Request Workflow
+## F-009 - Fair Match Information and Request Form
 - Status: PLANNED
-- Business objective: Enable manual clinic appointment coordination without building an automated booking platform.
-- User/technical story: A requester selects a listed clinic and preferred time; staff manually resolves the request.
-- Requirement sources: FR-007, FR-008; final client confirmation.
-- Dependencies: F-002, F-004, F-008 PASSED.
-- In scope: Clinic flag/list, Fair Match page/form, preferred date/time, staff status actions, notes, email notifications.
-- Out of scope: Availability engine, live slots, chat, favorites, algorithmic matching, clinic dashboard, calendar sync.
-- Security/data considerations: Personal-data minimization, authorization, status-transition validation, rate limiting.
-- Likely modules: Clinic/Fair Match domain, public form, admin queue, email templates.
-- Risks: Allowed appointment date/time rules unknown; notification wording/recipient.
+- Business objective: Explain Fair Match and route a simple request to the organizing team for manual offline follow-up.
+- User/technical story: A visitor reads how the service works and submits approved contact/request details; the organizing team follows up outside the website.
+- Requirement sources: FR-007, FR-008; proposal and latest client scope clarification.
+- Dependencies: F-002, F-008 PASSED.
+- In scope: Fair Match information page, contact or matchmaking request form, validation, email forwarding, and inclusion with authorized staff form requests.
+- Out of scope: Clinic selection/list management for matching, preferred appointment dates/times, availability engine, appointment booking, status actions, clinic dashboards, chat, favorites, algorithmic matching, and calendar synchronization.
+- Security/data considerations: Personal-data minimization, authorization for staff request viewing, rate limiting, and safe email forwarding.
+- Likely modules: Fair Match content, form validation, shared request record, email adapter.
+- Risks: Final request fields, recipient, privacy notice, and notification wording remain client decisions.
 ### Acceptance Criteria
-1. Public page lists only eligible active clinics.
-2. Requester can submit clinic, preferred date/time, and approved contact fields.
-3. Staff can confirm, propose another time, or decline.
-4. Status transitions are authorized, recorded, and reflected consistently.
-5. No live availability or automated matching is presented.
+1. Public page accurately explains the manual Fair Match process without booking or availability claims.
+2. Requester can submit the approved contact/request fields.
+3. The request is validated, recorded with other website requests, and forwarded to the nominated organizing-team recipient.
+4. The admin has no Fair Match appointment, status, confirmation, rescheduling, or decline workflow.
 ### Automated Tests
-1. Request validation and clinic eligibility.
-2. Status transition/permission tests.
-3. Notification adapter tests.
+1. Request validation and forwarding tests.
+2. Authorization tests for staff viewing website requests.
+3. Rate-limit and notification adapter tests.
 ### Manual Tests
-1. Submit and resolve each outcome.
-2. Invalid/inactive clinic and past date.
-3. Verify no misleading automated-booking claims.
+1. Submit a Fair Match request and verify it reaches the nominated recipient.
+2. Verify the staff request list has no appointment-management actions.
+3. Verify no misleading automated-booking claims are visible.
 
 ## F-010 - Media/Press Content and Legal/Informational Pages
 - Status: PLANNED

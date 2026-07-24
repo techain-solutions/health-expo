@@ -118,3 +118,12 @@ This log is append-only. Do not rewrite earlier records; add a superseding decis
 - Consequences: Provider, region, cost, and ownership require approval before F-002/F-006.
 - Supersedes:
 - Superseded by:
+
+## DEC-014 - Fair Match request forwarding only
+- Status: APPROVED
+- Context: The original proposal and later client clarification define Fair Match as an information page and contact/matchmaking request forwarded to the organizing team.
+- Decision: Fair Match has no clinic appointment selection, availability, confirmation, rescheduling, decline, clinic dashboard, or request-status workflow. It is handled as a website form request for manual offline follow-up.
+- Source: Proposal Health Beauty Expo - EN, pages 3 and 13; latest client scope clarification.
+- Consequences: Remove the dedicated Fair Match admin queue and appointment controls. Show Fair Match submissions only in the general form-request area.
+- Supersedes: DEC-005 - Manual Fair Match.
+- Superseded by:

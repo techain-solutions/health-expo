@@ -12,8 +12,8 @@
 | FR-004 | CONFIRMED | Public exhibitor entries support logo, name, category/sector, short description, key information, optional media, and relevant contact/action link. | Approved functional spec; proposal |
 | FR-005 | CONFIRMED | Authorized staff can add, edit, reorder, feature, activate/deactivate, and remove exhibitors. | Approved functional spec; proposal |
 | FR-006 | CONFIRMED | Tickets page explains access/practical details and redirects through a configurable external ticketing URL. The site does not process ticket payment. | Approved functional spec |
-| FR-007 | CONFIRMED | Fair Match shows participating clinics and lets a requester select a clinic and submit preferred date, preferred time, and contact details. | Approved functional spec; client confirmation |
-| FR-008 | CONFIRMED | Fair Match requests appear to authorized staff and generate an email notification; staff can manually confirm, propose another time, or decline. | Approved functional spec; client confirmation |
+| FR-007 | CONFIRMED | Fair Match is an information page with a contact or matchmaking request form; it explains the service, its benefits, and how the organizing team follows up manually. | Proposal; latest client scope clarification |
+| FR-008 | CONFIRMED | Fair Match requests are forwarded to the organizing team for manual follow-up and may appear with other website form requests. The website has no appointment, availability, clinic-dashboard, or request-status workflow. | Proposal; latest client scope clarification |
 | FR-009 | CONFIRMED | Provide general contact, Fair Match, media/press, influencer, and exhibitor information/participation forms with required-field validation, confirmation, and basic anti-automation protection. | Proposal; approved functional spec |
 | FR-010 | CONFIRMED | Internal users authenticate and have one of three roles: Administrator, Employee/Staff, or Organizer. | Client conversation; approved functional spec |
 | FR-011 | CONFIRMED | Administrator has all agreed management access, including user, exhibitor, event, media, forms/requests, predefined site information, and ticket link. | Proposal |
@@ -109,7 +109,7 @@
 | OS-002 | OUT OF SCOPE | Booth reservation/payment system |
 | OS-003 | OUT OF SCOPE | Interactive drag-and-drop floor plan |
 | OS-004 | OUT OF SCOPE | Automatic matching algorithm, instant messaging, favorites, or B2B social platform |
-| OS-005 | OUT OF SCOPE | Live booking calendar, automatic availability, clinic dashboards, or calendar synchronization |
+| OS-005 | OUT OF SCOPE | Live booking calendar, automatic availability, clinic dashboards, appointment/request-status management, or calendar synchronization |
 | OS-006 | DEFERRED | Exhibitor registration accounts, personal dashboard, purchased-service tracking, extra-service ordering/payment |
 | OS-007 | OUT OF SCOPE | Dedicated mobile app |
 | OS-008 | OUT OF SCOPE | Advanced simultaneous multi-edition administration |

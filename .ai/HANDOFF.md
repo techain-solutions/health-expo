@@ -45,7 +45,7 @@ All F-000 acceptance criteria and commands listed in `FEATURE_PLAN.md`, `TEST_PL
 - Final commercial timeline does not override feature testing gates.
 
 ## Decisions
-See `DECISIONS.md`. Key approved decisions are custom Next.js, five languages, external ticketing, static floor plan, manual Fair Match, deferred exhibitor portal, and static Paris 2027.
+See `DECISIONS.md`. Key approved decisions are custom Next.js, five languages, external ticketing, static floor plan, Fair Match request forwarding only (DEC-014), deferred exhibitor portal, and static Paris 2027.
 
 ## Exact Next Human Action
 1. Place this scaffold at the repository root without overwriting existing valid code.
