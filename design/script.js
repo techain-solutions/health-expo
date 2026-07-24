@@ -67,7 +67,7 @@ function homePage() {
       </div>
       <div class="hero-slide-note reveal"><span>01</span><div><b>International perspective</b><small>Health · Beauty · Wellness</small></div></div>
     </div>
-    <div class="shell sector-bar sector-bar--overlay reveal"><p>Discover</p><a href="?page=exhibitors"><span>＋</span><b>Health</b></a><a href="?page=exhibitors"><span>✦</span><b>Beauty</b></a><a href="?page=exhibitors"><span>◌</span><b>Wellness</b></a><a href="?page=exhibitors"><span>◇</span><b>Medical tourism</b></a></div>
+    <div class="shell sector-bar sector-bar--overlay reveal"><p>Explore the expo</p><a href="?page=exhibitors"><span>01</span><b>Health</b></a><a href="?page=exhibitors"><span>02</span><b>Beauty</b></a><a href="?page=exhibitors"><span>03</span><b>Wellness</b></a><a href="?page=exhibitors"><span>04</span><b>Medical tourism</b></a></div>
   </section>
 
   <section class="section section--cream"><div class="shell">
