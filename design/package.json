@@ -1,0 +1,11 @@
+{
+  "name": "health-expo-client-concept",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "check": "node --check script.js && node --check admin.js && node --check dev-server.js && node validate.js",
+    "build": "node build.js"
+  }
+}
