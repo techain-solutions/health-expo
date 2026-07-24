@@ -49,8 +49,9 @@ function staticForm(title, fields, submit = "Submit request") {
 }
 
 function homePage() {
-  return `<section class="hero">
-    <div class="shell hero-grid">
+  return `<section class="hero hero--cinematic">
+    <div class="hero-backdrop" role="img" aria-label="Professionals meeting at an international health and beauty expo"></div>
+    <div class="shell hero-cinematic__content">
       <div class="hero-copy reveal">
         <p class="eyebrow">Rijswijk 2026 · International exhibition</p>
         <h1>Where health, beauty and <em>opportunity</em> meet.</h1>
@@ -64,13 +65,9 @@ function homePage() {
           <div><span class="meta-icon">⌖</span><p><b>De Broodfabriek</b><small>Rijswijk, NL</small></p></div>
         </div>
       </div>
-      <div class="hero-visual reveal">
-        <div class="hero-photo" role="img" aria-label="Professionals meeting at an international health and beauty expo"></div>
-        <div class="hero-card hero-card--top"><b>2</b><p><b>Inspiring days</b><small>Discovery & connection</small></p></div>
-        <div class="hero-card hero-card--bottom"><b>∞</b><p><b>International network</b><small>Professionals & visitors</small></p></div>
-      </div>
+      <div class="hero-slide-note reveal"><span>01</span><div><b>International perspective</b><small>Health · Beauty · Wellness</small></div></div>
     </div>
-    <div class="shell sector-bar reveal"><p>Discover</p><a href="?page=exhibitors"><span>＋</span><b>Health</b></a><a href="?page=exhibitors"><span>✦</span><b>Beauty</b></a><a href="?page=exhibitors"><span>◌</span><b>Wellness</b></a><a href="?page=exhibitors"><span>◇</span><b>Medical tourism</b></a></div>
+    <div class="shell sector-bar sector-bar--overlay reveal"><p>Discover</p><a href="?page=exhibitors"><span>＋</span><b>Health</b></a><a href="?page=exhibitors"><span>✦</span><b>Beauty</b></a><a href="?page=exhibitors"><span>◌</span><b>Wellness</b></a><a href="?page=exhibitors"><span>◇</span><b>Medical tourism</b></a></div>
   </section>
 
   <section class="section section--cream"><div class="shell">
