@@ -99,7 +99,7 @@ h1, h2, h3, h4 { color: var(--navy); font-family: var(--display); letter-spacing
 .event-meta small { margin-top: 5px; color: var(--muted); font-size: 11px; }
 .hero-visual { position: relative; align-self: end; min-height: 640px; padding: 12px 0 0 12px; }
 .hero-visual::before { content: ""; position: absolute; z-index: 0; inset: 50px 28px 0 0; border: 1px solid rgba(21,153,170,.22); border-radius: 220px 220px 30px 30px; transform: translate(18px, 18px); }
-.hero-photo { position: absolute; z-index: 1; inset: 0 0 0 12px; border-radius: 220px 220px 30px 30px; background: linear-gradient(180deg, rgba(10,39,75,0), rgba(10,39,75,.12)), url("assets/expo-hero-editorial-v2.png") center / cover; box-shadow: 0 28px 70px rgba(10,39,75,.18); }
+.hero-photo { position: absolute; z-index: 1; inset: 0 0 0 12px; border-radius: 220px 220px 30px 30px; background: linear-gradient(180deg, rgba(10,39,75,0), rgba(10,39,75,.12)), url("assets/expo-hero-editorial-v2.png") 50% 27% / cover; box-shadow: 0 28px 70px rgba(10,39,75,.18); }
 .hero-card { position: absolute; z-index: 2; padding: 15px 18px; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,.92); border: 1px solid rgba(255,255,255,.8); border-radius: 17px; box-shadow: 0 18px 42px rgba(10,39,75,.16); backdrop-filter: blur(14px); }
 .hero-card--top { left: -24px; top: 70px; }
 .hero-card--bottom { right: -20px; bottom: 42px; }
