@@ -8,6 +8,7 @@ const requiredFiles = [
   "admin.css",
   "admin.js",
   "assets/health-beauty-expo-logo.png",
+  "assets/expo-hero-editorial-v2.png",
   "assets/expo-floor-plan.jpg",
   "downloads/expo-floor-plan.pdf"
 ];

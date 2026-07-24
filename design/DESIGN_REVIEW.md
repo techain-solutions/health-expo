@@ -47,7 +47,7 @@ It must not be presented as a working production system. Forms, uploads, saves, 
 - Speaker names, portraits, organisations, and biographies.
 - Exhibitor names, logos, descriptions, stands, and contact details.
 - Dashboard counts, users, requests, status history, and activity.
-- Unsplash photography.
+- Generated editorial hero imagery and Unsplash photography, both used as direction-only placeholders.
 - Ticket state, address, contact recipients, and certain public contact values.
 - Translation completion percentages.
 

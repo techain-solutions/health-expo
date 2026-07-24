@@ -59,3 +59,4 @@
 - 2026-07-24 - Security note recorded: disclosed legacy WordPress credential must not be used and requires rotation.
 - 2026-07-24 - Project gate set to `READY_FOR_CODEX`; F-000 set to `READY`.
 - 2026-07-24 - Static client-approval prototype aligned with the proposal’s internal-admin scope; no product feature status changed.
+- 2026-07-24 - Public client-approval prototype visually elevated with bespoke editorial expo photography and refined premium landing-page art direction; no product feature status changed.

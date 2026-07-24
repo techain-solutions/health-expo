@@ -13,6 +13,7 @@
 - Prepared a self-contained Codex prompt for F-000.
 - Recorded unresolved architecture/content/privacy questions.
 - Recorded the disclosed legacy credential as compromised without copying it.
+- Refined the static client-approval prototype with a premium public landing-page direction; this remains separate from the gated Next.js implementation.
 
 ## Files Created
 - `AGENTS.md`

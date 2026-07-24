@@ -27,6 +27,7 @@ The production-ready static output is written to `dist/`. Do not edit `dist/` di
 ## Included resources
 
 - Original Health & Beauty Expo logo crop from the supplied PDFs.
+- Bespoke editorial expo hero image created for this static approval prototype; replace or license final campaign photography before production.
 - Supplied floor plan, English and Turkish posters, and stand visual references.
 - Original participant manual, exhibitor agreement, stand pricing, and floor-plan PDFs in `downloads/`.
 - Static forms and dashboard actions for interaction design only; they do not send or save data.
