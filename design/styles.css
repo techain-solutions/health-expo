@@ -92,6 +92,8 @@ h1, h2, h3, h4 { color: var(--navy); font-family: var(--display); letter-spacing
 .hero h1 em { color: var(--sky); font-style: normal; }
 .hero-copy > p { max-width: 560px; margin: 0; color: rgba(255,255,255,.72); font-size: 18px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.hero--cinematic .button--outline { color: var(--white); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.58); }
+.hero--cinematic .button--outline:hover { color: var(--navy-deep); background: var(--white); border-color: var(--white); }
 .event-meta { display: flex; gap: 36px; margin-top: 40px; }
 .event-meta div { display: flex; align-items: center; gap: 11px; }
 .meta-icon { width: 40px; height: 40px; display: grid; place-items: center; color: var(--sky); border: 1px solid rgba(255,255,255,.24); background: rgba(255,255,255,.07); border-radius: 11px; font-size: 11px; font-weight: 800; }

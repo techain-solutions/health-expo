@@ -62,3 +62,4 @@
 - 2026-07-24 - Public client-approval prototype visually elevated with bespoke editorial expo photography and refined premium landing-page art direction; no product feature status changed.
 - 2026-07-24 - Replaced the portrait-style public hero with a cinematic landscape campaign treatment after design feedback; no product feature status changed.
 - 2026-07-24 - Refined the public sector widgets into spaced, bordered rectangular cards after visual design feedback; no product feature status changed.
+- 2026-07-24 - Corrected hero secondary-call-to-action contrast for the dark cinematic background after visual design feedback; no product feature status changed.
