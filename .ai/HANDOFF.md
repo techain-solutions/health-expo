@@ -14,6 +14,7 @@
 - Recorded unresolved architecture/content/privacy questions.
 - Recorded the disclosed legacy credential as compromised without copying it.
 - Refined the static client-approval prototype with a premium public landing-page direction; this remains separate from the gated Next.js implementation.
+- Aligned the client-approval prototype with the supplied client documents: Fair Match now follows the confirmed clinic-selection + preferred date/time manual flow, a Featured Exhibitors section was added, real venue/contact data was populated (flagged to confirm before launch), and stand copy matches the price list. Decorative photography remains temporary direction imagery pending client-supplied photos. Still separate from the gated Next.js implementation; no product feature status changed.
 
 ## Files Created
 - `AGENTS.md`

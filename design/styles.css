@@ -43,7 +43,8 @@ img { max-width: 100%; display: block; }
 .concept-ribbon a:hover { color: var(--white); }
 .concept-ribbon b { color: var(--sky); margin-left: 5px; }
 
-.site-header { position: sticky; top: 0; z-index: 60; background: rgba(255,255,255,.94); border-bottom: 1px solid rgba(24,63,112,.08); backdrop-filter: blur(18px); }
+.site-header { position: sticky; top: 0; z-index: 60; background: rgba(255,255,255,.94); border-bottom: 1px solid rgba(24,63,112,.08); backdrop-filter: blur(18px); transition: box-shadow .25s ease, background .25s ease; }
+.site-header.is-scrolled { background: rgba(255,255,255,.98); box-shadow: 0 8px 30px rgba(10,39,75,.09); }
 .nav-shell { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .logo-link { flex: 0 0 auto; width: 136px; height: 58px; overflow: hidden; display: flex; align-items: center; }
 .logo-link img { width: 130px; mix-blend-mode: multiply; }
@@ -195,6 +196,24 @@ h1, h2, h3, h4 { color: var(--navy); font-family: var(--display); letter-spacing
 .exhibitor-card p { margin: 0; color: var(--muted); font-size: 13px; }
 .exhibitor-card a { display: inline-flex; margin-top: 18px; color: var(--navy); font-size: 12px; font-weight: 800; }
 .demo-note { margin: 20px 0 0; color: var(--muted); text-align: center; font-size: 11px; }
+
+.clinic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.clinic-card { display: flex; flex-direction: column; gap: 14px; padding: 24px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); transition: transform .2s ease, box-shadow .2s ease; }
+.clinic-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.clinic-card__head { display: flex; align-items: center; gap: 14px; }
+.clinic-card__head small { color: var(--teal); font-size: 9px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.clinic-card__head h3 { margin: 3px 0 0; font-size: 19px; }
+.clinic-card > p { flex: 1; margin: 0; color: var(--muted); font-size: 13px; }
+.clinic-card .button { align-self: flex-start; }
+.field-hint { display: block; margin-top: 6px; color: var(--muted); font-size: 11px; font-weight: 400; }
+
+.map-card { display: flex; align-items: center; gap: 24px; padding: 28px; background: linear-gradient(120deg, #eef4fa, #edf8f7); border: 1px solid var(--line); border-radius: var(--radius); }
+.map-card__pin { flex: 0 0 auto; width: 66px; height: 66px; display: grid; place-items: center; color: var(--white); background: var(--teal); border-radius: 50%; font-size: 28px; box-shadow: 0 12px 28px rgba(21,153,170,.24); }
+.map-card__body { display: flex; flex-direction: column; gap: 2px; }
+.map-card__body b { color: var(--navy); font-size: 18px; }
+.map-card__body span { color: var(--muted); font-size: 13px; }
+.map-card__link { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; color: var(--navy); font-size: 12px; font-weight: 800; white-space: nowrap; }
+body[dir="rtl"] .map-card__link { margin-left: 0; margin-right: auto; }
 
 .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .price-card { position: relative; overflow: hidden; padding: 27px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
@@ -392,7 +411,7 @@ body[dir="rtl"] .download-card a, body[dir="rtl"] .download-card button { text-a
   .sector-bar > * { min-height: 68px; }
   .section { padding: 82px 0; }
   .section-heading { grid-template-columns: 1fr; gap: 20px; }
-  .card-grid, .card-grid--4, .exhibitor-grid { grid-template-columns: repeat(2, 1fr); }
+  .card-grid, .card-grid--4, .exhibitor-grid, .clinic-grid { grid-template-columns: repeat(2, 1fr); }
   .speaker-grid { grid-template-columns: repeat(2, 1fr); }
   .approval-note { grid-template-columns: 1fr; }
   .pricing-grid { grid-template-columns: repeat(2, 1fr); }
@@ -432,7 +451,10 @@ body[dir="rtl"] .download-card a, body[dir="rtl"] .download-card button { text-a
   .page-hero h1 { font-size: 43px; }
   .section { padding: 68px 0; }
   .section-heading h2, .split-copy h2 { font-size: 36px; }
-  .card-grid, .card-grid--4, .exhibitor-grid, .pricing-grid, .sponsor-grid, .download-grid, .speaker-grid { grid-template-columns: 1fr; }
+  .card-grid, .card-grid--4, .exhibitor-grid, .clinic-grid, .pricing-grid, .sponsor-grid, .download-grid, .speaker-grid { grid-template-columns: 1fr; }
+  .map-card { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .map-card__link { margin-left: 0; }
+  body[dir="rtl"] .map-card__link { margin-right: 0; }
   .schedule article { grid-template-columns: 1fr; gap: 8px; }
   .speaker-photo { height: 250px; }
   .info-card { min-height: 220px; }
