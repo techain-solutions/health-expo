@@ -29,7 +29,7 @@ The production-ready static output is written to `dist/`. Do not edit `dist/` di
 - Original Health & Beauty Expo logo crop from the supplied PDFs.
 - Bespoke editorial expo hero image created for this static approval prototype; replace or license final campaign photography before production.
 - Supplied floor plan, English and Turkish posters, and stand visual references.
-- All other decorative imagery uses self-contained, on-brand SVG placeholders (labelled "direction placeholder"). They are intentionally not photographs: they let the client judge layout and visual direction while the final client-supplied photos are awaited. No image is loaded from an external service.
+- Other decorative photography is temporary direction imagery and must be replaced with final client-supplied photos before production.
 - Fair Match is presented as the agreed manual flow: the page lists the participating clinics, and the request form lets a visitor choose a clinic and propose a preferred date and time. There is no automated matching, availability, booking calendar, chat or calendar sync.
 - Contact and venue details are populated from the supplied client documents (De Broodfabriek, Volmerlaan 12, 2288 GD Rijswijk; info@expofuar.nl; +31 (0)570 238 100) and flagged to confirm before launch.
 - Original participant manual, exhibitor agreement, stand pricing, and floor-plan PDFs in `downloads/`.

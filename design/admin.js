@@ -53,12 +53,12 @@ function exhibitorsPage() {
 
 function mediaPage() {
   const media = [
-    ["assets/scene-health.svg","hero-medical-team.jpg","Homepage hero"],
+    ["https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=500&q=80","hero-medical-team.jpg","Homepage hero"],
     ["assets/poster-english.png","campaign-en.png","English campaign"],
     ["assets/poster-turkish.png","campaign-tr.png","Turkish campaign"],
     ["assets/stands-1-2.jpg","stands-1-2.jpg","Stand packages"],
     ["assets/expo-floor-plan.jpg","floor-plan.jpg","Floor plan"],
-    ["assets/scene-wellness.svg","wellness.jpg","Visitor section"]
+    ["https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=500&q=80","wellness.jpg","Visitor section"]
   ];
   return `<div class="admin-page">${pageHead("Media library", "Manage approved images, videos, documents and accessibility metadata.", `<button class="admin-btn admin-btn--primary static-save" type="button">Upload media</button>`)}<div class="upload-zone"><div><span>⇧</span><b>Drop approved media here</b><small>Images, approved video references and documents · validation applies</small></div></div><div class="media-grid" style="margin-top:16px">${media.map(item=>`<article class="media-item"><div class="media-thumb" style="background-image:url('${item[0]}')"></div><div class="media-body"><b>${item[1]}</b><small>${item[2]} · Alt text added</small></div></article>`).join("")}</div></div>`;
 }

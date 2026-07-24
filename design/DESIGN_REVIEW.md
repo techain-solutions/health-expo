@@ -27,7 +27,7 @@ It must not be presented as a working production system. Forms, uploads, saves, 
 5. Open the admin preview and switch between the three roles.
 6. Confirm whether the proposed Employee/Staff and Organizer navigation limits match the intended responsibilities.
 7. Confirm the Fair Match flow: choose a clinic from the participating-clinic list, propose a preferred date and time, then manual confirm/reschedule/decline by the team — no booking calendar, availability, clinic dashboard, or appointment-status workflow.
-8. Confirm that all decorative imagery is understood as self-contained on-brand placeholders for new client-supplied photography (no external image services are used).
+8. Confirm that all temporary stock images are clearly understood as placeholders for new client-supplied photography.
 9. Review participant, agreement, and price-list downloads. They must not be published without organizer and legal approval.
 10. Review the unresolved items below before sharing a final direction with the client.
 
