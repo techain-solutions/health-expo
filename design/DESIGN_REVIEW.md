@@ -10,6 +10,7 @@ It must not be presented as a working production system. Forms, uploads, saves, 
 
 - Professional responsive public direction for Health & Beauty Expo Rijswijk 2026.
 - Public journeys for visitors, exhibitors, media/influencers, Fair Match, tickets, the static floor plan, contact, and informational pages.
+- Fair Match shown as the agreed manual flow: the page lists participating clinics, and the request form lets a visitor choose a clinic and propose a preferred date and time for the organizing team to confirm, reschedule or decline by hand.
 - A five-language selector covering Dutch, Turkish, English, Russian, and Arabic.
 - Arabic right-to-left layout behavior.
 - Administration concepts for event details, client-supplied media, event speakers, exhibitors, floor plan, predefined page content, website-form requests, users/roles, and settings.
@@ -25,8 +26,8 @@ It must not be presented as a working production system. Forms, uploads, saves, 
 4. Review Arabic direction, especially navigation, buttons, dates, phone numbers, and mixed Latin/Arabic content.
 5. Open the admin preview and switch between the three roles.
 6. Confirm whether the proposed Employee/Staff and Organizer navigation limits match the intended responsibilities.
-7. Confirm that Fair Match is shown only as a website form request for manual follow-up, with no booking, availability, clinic dashboard, or appointment-status workflow.
-8. Confirm that all temporary stock images are clearly understood as placeholders for new client-supplied photography.
+7. Confirm the Fair Match flow: choose a clinic from the participating-clinic list, propose a preferred date and time, then manual confirm/reschedule/decline by the team — no booking calendar, availability, clinic dashboard, or appointment-status workflow.
+8. Confirm that all decorative imagery is understood as self-contained on-brand placeholders for new client-supplied photography (no external image services are used).
 9. Review participant, agreement, and price-list downloads. They must not be published without organizer and legal approval.
 10. Review the unresolved items below before sharing a final direction with the client.
 

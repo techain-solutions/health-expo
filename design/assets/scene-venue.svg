@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" role="img" aria-label="De Broodfabriek · Rijswijk — illustrative placeholder">
+  <defs>
+    <linearGradient id="bgscenevenue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a274b"/><stop offset="1" stop-color="#4f7fae"/>
+    </linearGradient>
+    <radialGradient id="glscenevenue" cx="0.72" cy="0.26" r="0.75">
+      <stop offset="0" stop-color="#53bbe0" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#53bbe0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgscenevenue)"/>
+  <rect width="1200" height="800" fill="url(#glscenevenue)"/>
+  <g fill="none" stroke="#ffffff" opacity="0.12" stroke-width="2.5">
+    <circle cx="245" cy="640" r="150"/><circle cx="245" cy="640" r="240"/><circle cx="245" cy="640" r="330"/>
+  </g>
+  <g fill="#ffffff" opacity="0.06">
+    <circle cx="980" cy="180" r="120"/><circle cx="1080" cy="470" r="70"/>
+  </g>
+  <g transform="translate(600 360)" opacity="0.92"><g fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round" opacity="0.9"><path d="M-120 60 V-30 A120 60 0 0 1 120 -30 V60"/><path d="M-60 60 V-10 A60 34 0 0 1 60 -10 V60"/><line x1="-120" y1="60" x2="120" y2="60"/></g></g>
+  <text x="70" y="735" fill="#ffffff" opacity="0.85" font-family="Manrope, Arial, sans-serif" font-size="30" font-weight="800" letter-spacing="4">DE BROODFABRIEK · RIJSWIJK</text>
+  <text x="70" y="770" fill="#ffffff" opacity="0.45" font-family="DM Sans, Arial, sans-serif" font-size="19">Health &amp; Beauty Expo · direction placeholder</text>
+</svg>
