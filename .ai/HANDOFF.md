@@ -17,6 +17,7 @@
 - Aligned the client-approval prototype with the supplied client documents: Fair Match now follows the confirmed clinic-selection + preferred date/time manual flow, a Featured Exhibitors section was added, real venue/contact data was populated (flagged to confirm before launch), and stand copy matches the price list. Decorative photography remains temporary direction imagery pending client-supplied photos. Still separate from the gated Next.js implementation; no product feature status changed.
 - Refocused the static admin client-approval prototype to only the requested management areas: event information, exhibitors, photos/videos, website-form requests, and an external ticketing link. No product feature status changed.
 - Published the client-supplied English exhibitor manual in the prototype and added the requested footer Documents menu, including the placeholder route for the general terms. The three-part English agreement, the flyer, and the English stand-information document were requested by the client but not supplied; they remain awaited inputs. No product feature status changed.
+- Replaced all decorative character icons in the public and admin client-approval prototypes with Google Material Symbols. This remains separate from the gated Next.js implementation; no product feature status changed.
 
 ## Files Created
 - `AGENTS.md`

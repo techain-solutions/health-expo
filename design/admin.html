@@ -7,8 +7,8 @@
     <title>Admin preview — Health & Beauty Expo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="admin.css?v=20260724-scope" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="admin.css?v=20260727-icons" />
   </head>
   <body>
     <div class="admin-app">
@@ -16,32 +16,32 @@
         <div class="admin-logo"><img src="assets/health-beauty-expo-logo.png" alt="Health and Beauty Expo" /><span>ADMIN PREVIEW</span></div>
         <nav class="side-nav" aria-label="Administration">
           <p>Panel</p>
-          <a href="admin.html?page=dashboard" data-page="dashboard"><span>⌂</span>Overview</a>
+          <a href="admin.html?page=dashboard" data-page="dashboard"><span class="material-symbols-rounded" aria-hidden="true">space_dashboard</span>Overview</a>
           <p>Manage</p>
-          <a href="admin.html?page=event" data-page="event"><span>◫</span>Event information</a>
-          <a href="admin.html?page=exhibitors" data-page="exhibitors"><span>◎</span>Exhibitors</a>
-          <a href="admin.html?page=media" data-page="media"><span>▧</span>Photos &amp; videos</a>
-          <a href="admin.html?page=ticketing" data-page="ticketing"><span>↗</span>Ticketing link</a>
+          <a href="admin.html?page=event" data-page="event"><span class="material-symbols-rounded" aria-hidden="true">event</span>Event information</a>
+          <a href="admin.html?page=exhibitors" data-page="exhibitors"><span class="material-symbols-rounded" aria-hidden="true">storefront</span>Exhibitors</a>
+          <a href="admin.html?page=media" data-page="media"><span class="material-symbols-rounded" aria-hidden="true">perm_media</span>Photos &amp; videos</a>
+          <a href="admin.html?page=ticketing" data-page="ticketing"><span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>Ticketing link</a>
           <p>Inbox</p>
-          <a href="admin.html?page=requests" data-page="requests"><span>✉</span>Form requests <i>12</i></a>
+          <a href="admin.html?page=requests" data-page="requests"><span class="material-symbols-rounded" aria-hidden="true">inbox</span>Form requests <i>12</i></a>
         </nav>
-        <div class="sidebar-foot"><div class="avatar">AD</div><p><b>Admin Demo</b><span>Administrator</span></p><button type="button" aria-label="Sign out">↗</button></div>
+        <div class="sidebar-foot"><div class="avatar">AD</div><p><b>Admin Demo</b><span>Administrator</span></p><button class="material-symbols-rounded" type="button" aria-label="Sign out">logout</button></div>
       </aside>
 
       <div class="admin-main">
         <header class="admin-topbar">
-          <button class="sidebar-toggle" type="button" aria-expanded="false" aria-controls="sidebar">☰</button>
+          <button class="sidebar-toggle material-symbols-rounded" type="button" aria-expanded="false" aria-controls="sidebar">menu</button>
           <div class="topbar-context"><span>Health & Beauty Expo</span><b>Rijswijk 2026</b></div>
           <div class="topbar-actions">
             <label class="role-preview"><span>Preview as</span><select id="rolePreview"><option value="administrator">Administrator</option><option value="staff">Employee / Staff</option><option value="organizer">Organizer</option></select></label>
-            <span class="prototype-chip">Static prototype</span><a href="index.html?page=home" target="_blank">View website ↗</a><button class="notification" type="button" aria-label="Notifications">●<i>3</i></button>
+            <span class="prototype-chip">Static prototype</span><a href="index.html?page=home" target="_blank">View website <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span></a><button class="notification material-symbols-rounded" type="button" aria-label="Notifications">notifications<i>3</i></button>
           </div>
         </header>
         <main id="adminMain"></main>
       </div>
     </div>
 
-    <div class="admin-toast" role="status" aria-live="polite"><span>✓</span><p><b>Preview saved</b><small>This is a static demonstration. No data changed.</small></p></div>
-    <script src="admin.js?v=20260724-scope"></script>
+    <div class="admin-toast" role="status" aria-live="polite"><span class="material-symbols-rounded" aria-hidden="true">check</span><p><b>Preview saved</b><small>This is a static demonstration. No data changed.</small></p></div>
+    <script src="admin.js?v=20260727-icons"></script>
   </body>
 </html>
