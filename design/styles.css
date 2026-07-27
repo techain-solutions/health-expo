@@ -288,6 +288,7 @@ body[dir="rtl"] .map-card__link { margin-left: 0; margin-right: auto; }
 .download-card b { margin: 15px 0 5px; color: var(--navy); font: 700 15px var(--display); }
 .download-card small { color: var(--muted); font-size: 10px; }
 .download-card a, .download-card button { margin-top: auto; padding: 0; color: var(--teal); background: transparent; border: 0; text-align: left; font-size: 11px; font-weight: 800; cursor: pointer; }
+.download-card a + a { margin-top: 7px; }
 .speaker-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .speaker-card { overflow: hidden; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 16px 45px rgba(13, 50, 85, .07); }
 .speaker-card > div:last-child { padding: 22px; }
@@ -334,7 +335,7 @@ body[dir="rtl"] .map-card__link { margin-left: 0; margin-right: auto; }
 .cta-band p { margin: 0; color: rgba(255,255,255,.7); }
 
 footer { padding: 78px 0 23px; color: rgba(255,255,255,.65); background: var(--navy-deep); }
-.footer-main { display: grid; grid-template-columns: 1.45fr repeat(3, .65fr) 1fr; gap: 45px; padding-bottom: 55px; }
+.footer-main { display: grid; grid-template-columns: 1.3fr repeat(4, .62fr) .95fr; gap: 45px; padding-bottom: 55px; }
 .footer-brand img { width: 135px; background: var(--white); border-radius: 10px; }
 .footer-brand p { max-width: 270px; font-size: 12px; }
 .social-row { display: flex; gap: 7px; margin-top: 18px; }
@@ -389,8 +390,8 @@ body[dir="rtl"] .download-card a, body[dir="rtl"] .download-card button { text-a
 @media (max-width: 1040px) {
   .desktop-nav { gap: 15px; }
   .hero-cinematic__content { gap: 30px; }
-  .footer-main { grid-template-columns: 1.3fr repeat(3, .7fr); }
-  .footer-event { grid-column: 1 / 5; }
+  .footer-main { grid-template-columns: 1.2fr repeat(4, .7fr); }
+  .footer-event { grid-column: 1 / 6; }
 }
 
 @media (max-width: 880px) {
@@ -424,9 +425,9 @@ body[dir="rtl"] .download-card a, body[dir="rtl"] .download-card button { text-a
   .legal-layout { grid-template-columns: 1fr; gap: 35px; }
   .legal-nav { position: static; display: flex; overflow-x: auto; gap: 6px; }
   .legal-nav a { flex: 0 0 auto; }
-  .footer-main { grid-template-columns: repeat(3, 1fr); }
-  .footer-brand { grid-column: 1 / 4; }
-  .footer-event { grid-column: 1 / 4; }
+  .footer-main { grid-template-columns: repeat(2, 1fr); }
+  .footer-brand { grid-column: 1 / 3; }
+  .footer-event { grid-column: 1 / 3; }
 }
 
 @media (max-width: 580px) {

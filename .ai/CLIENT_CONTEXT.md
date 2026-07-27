@@ -86,5 +86,7 @@
 - OPEN QUESTION: Database, authentication provider, media storage, email provider, hosting, and region.
 - OPEN QUESTION: Analytics/cookie tooling.
 - OPEN QUESTION: Browser support matrix.
-- OPEN QUESTION: Whether participant manual, agreement, and stand-price PDFs are public downloads or internal content references only.
+- RESOLVED 2026-07-26: The participant/exhibitor manual is a public download. The client supplied an English exhibitor manual and asked for it in a documents menu at the bottom of the website, alongside the future general terms.
+- OPEN QUESTION: Whether the agreement and stand-price PDFs are public downloads or internal content references only.
+- AWAITED INPUT: English agreement supplied as three separate files in the 2026-07-26 conversation and to be published as one agreement; `Flyer 1.pdf`; `Engels information stand.pdf`. None of these files have been supplied to the repository yet.
 - OPEN QUESTION: Safe migration method after credential rotation.
