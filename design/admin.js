@@ -35,7 +35,7 @@ function exhibitorsPage() {
 }
 
 function mediaPage() {
-  const media = [["assets/poster-english.png", "campaign-en.png", "Image"], ["assets/poster-turkish.png", "campaign-tr.png", "Image"], ["assets/stands-1-2.jpg", "stands-1-2.jpg", "Image"], ["https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=500&q=80", "wellness-video-cover.jpg", "Video"]];
+  const media = [["assets/poster-english.png", "campaign-en.png", "Image"], ["assets/poster-turkish.png", "campaign-tr.png", "Image"], ["assets/stands-1-2.jpg", "stands-1-2.jpg", "Image"], ["assets/media-sample.jpg", "wellness-video-cover.jpg", "Video"]];
   return `<div class="admin-page">${pageHead("Photos & videos", "Manage approved images and video references for the website.", `<button class="admin-btn admin-btn--primary static-save" type="button">Add media</button>`)}<div class="upload-zone"><div><span>⇧</span><b>Add approved photos or videos</b><small>Static preview only · final production validation will apply</small></div></div><div class="media-grid" style="margin-top:16px">${media.map(item => `<article class="media-item"><div class="media-thumb" style="background-image:url('${item[0]}')"></div><div class="media-body"><b>${item[1]}</b><small>${item[2]} · Ready to assign</small></div></article>`).join("")}</div></div>`;
 }
 

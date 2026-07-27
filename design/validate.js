@@ -42,10 +42,30 @@ const adminRoutes = [
 
 await Promise.all(requiredFiles.map(file => access(file)));
 
-const [publicSource, adminSource] = await Promise.all([
+const [publicSource, adminSource, markup, publicStyles, adminStyles] = await Promise.all([
   readFile("script.js", "utf8"),
-  readFile("admin.js", "utf8")
+  readFile("admin.js", "utf8"),
+  readFile("index.html", "utf8"),
+  readFile("styles.css", "utf8"),
+  readFile("admin.css", "utf8")
 ]);
+
+const externalImageSources = Object.entries({
+  "script.js": publicSource,
+  "admin.js": adminSource,
+  "styles.css": publicStyles,
+  "admin.css": adminStyles
+}).filter(([, source]) => source.includes("images.unsplash.com")).map(([file]) => file);
+
+if (externalImageSources.length) {
+  throw new Error(`Imagery must be self-hosted in assets/. Remote images found in: ${externalImageSources.join(", ")}`);
+}
+
+if (!markup.includes("language-trigger")) throw new Error("The flag language switcher is missing from index.html");
+const missingLanguages = ["en", "nl", "tr", "ru", "ar"].filter(code => !markup.includes(`data-lang="${code}"`));
+if (missingLanguages.length) throw new Error(`Language switcher is missing options: ${missingLanguages.join(", ")}`);
+const missingFlags = ["flag-gb", "flag-nl", "flag-tr", "flag-ru", "flag-sa"].filter(flag => !markup.includes(`id="${flag}"`));
+if (missingFlags.length) throw new Error(`Flag artwork is missing from the sprite: ${missingFlags.join(", ")}`);
 
 const hasRoute = (source, route) =>
   source.includes(`${route}:`) ||

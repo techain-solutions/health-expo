@@ -11,7 +11,7 @@ It must not be presented as a working production system. Forms, uploads, saves, 
 - Professional responsive public direction for Health & Beauty Expo Rijswijk 2026.
 - Public journeys for visitors, exhibitors, media/influencers, Fair Match, tickets, the static floor plan, contact, and informational pages.
 - Fair Match shown as the agreed manual flow: the page lists participating clinics, and the request form lets a visitor choose a clinic and propose a preferred date and time for the organizing team to confirm, reschedule or decline by hand.
-- A five-language selector covering Dutch, Turkish, English, Russian, and Arabic.
+- A five-language flag selector covering English, Dutch, Turkish, Russian, and Arabic.
 - Arabic right-to-left layout behavior.
 - Administration concepts for event details, exhibitors, client-supplied photos/videos, website-form requests, and the external ticketing link.
 - Distinct navigation previews for Administrator, Employee/Staff, and Organizer.
@@ -22,8 +22,8 @@ It must not be presented as a working production system. Forms, uploads, saves, 
 
 1. Review the public homepage at desktop and mobile widths.
 2. Review every navigation destination and confirm that the information architecture feels appropriate for the client.
-3. Switch through all five languages. Treat current translations as machine-assisted direction copy, not final approved commercial, medical, or legal text.
-4. Review Arabic direction, especially navigation, buttons, dates, phone numbers, and mixed Latin/Arabic content.
+3. Switch through all five languages using the flag selector. Only navigation, footer labels and the homepage hero are translated — every other page shows English body copy under translated navigation. Decide whether to translate before sharing, or to tell the client explicitly that this is a navigation-level preview.
+4. Review Arabic direction, especially navigation, buttons, dates, phone numbers, and mixed Latin/Arabic content. Note that untranslated English sentences render with their closing punctuation on the wrong side under right-to-left, which resolves itself once the copy is translated.
 5. Open the admin preview and switch between the three roles.
 6. Confirm whether the proposed Employee/Staff and Organizer navigation limits match the intended responsibilities.
 7. Confirm the Fair Match flow: choose a clinic from the participating-clinic list, propose a preferred date and time, then manual confirm/reschedule/decline by the team — no booking calendar, availability, clinic dashboard, or appointment-status workflow.
@@ -40,13 +40,15 @@ It must not be presented as a working production system. Forms, uploads, saves, 
 5. Please supply approved new photos and videos. No old WordPress photos are intended for automatic migration.
 6. Please provide the official address, public contact details, ticket platform URL, final exhibitor records, form recipients, and legal copy.
 7. Who will approve the five translated versions before launch?
+8. Please send the temporary exhibitor list as a structured file, and the three-part English agreement for the `Documents` menu.
+9. Please confirm the Instagram and Facebook profile URLs, and the public phone number — the current `+31 (0)570 238 100` carries the Deventer dialling code rather than a Rijswijk one.
 
 ## Content that is intentionally illustrative
 
 - Speaker names, portraits, organisations, and biographies.
-- Exhibitor names, logos, descriptions, stands, and contact details.
+- Exhibitor names, logos, descriptions, stands, and contact details. The temporary exhibitor list supplied on 26 July is **not** yet integrated; it is still needed as a structured list.
 - Dashboard counts, users, requests, status history, and activity.
-- Generated editorial hero imagery and Unsplash photography, both used as direction-only placeholders.
+- Generated editorial hero imagery and stock photography, both used as direction-only placeholders and self-hosted in `assets/`.
 - Ticket state, address, contact recipients, and certain public contact values.
 - Translation completion percentages.
 
