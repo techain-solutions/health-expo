@@ -16,6 +16,41 @@
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
+    <svg class="flag-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="flag-gb" viewBox="0 0 60 40">
+        <clipPath id="flag-gb-quadrants">
+          <path d="M30 20 60 20 60 40Z M30 20 30 40 0 40Z M30 20 0 20 0 0Z M30 20 30 0 60 0Z" />
+        </clipPath>
+        <rect width="60" height="40" fill="#012169" />
+        <path d="M0 0 60 40M60 0 0 40" stroke="#fff" stroke-width="8" />
+        <path d="M0 0 60 40M60 0 0 40" stroke="#C8102E" stroke-width="5" clip-path="url(#flag-gb-quadrants)" />
+        <path d="M30 0v40M0 20h60" stroke="#fff" stroke-width="13" />
+        <path d="M30 0v40M0 20h60" stroke="#C8102E" stroke-width="8" />
+      </symbol>
+      <symbol id="flag-nl" viewBox="0 0 60 40">
+        <rect width="60" height="40" fill="#fff" />
+        <rect width="60" height="13.33" fill="#AE1C28" />
+        <rect y="26.67" width="60" height="13.33" fill="#21468B" />
+      </symbol>
+      <symbol id="flag-tr" viewBox="0 0 60 40">
+        <rect width="60" height="40" fill="#E30A17" />
+        <circle cx="24" cy="20" r="9" fill="#fff" />
+        <circle cx="27.5" cy="20" r="7.2" fill="#E30A17" />
+        <path d="m35.4 20 8.1-2.63-5.01 6.9v-8.53l5.01 6.9z" fill="#fff" />
+      </symbol>
+      <symbol id="flag-ru" viewBox="0 0 60 40">
+        <rect width="60" height="40" fill="#fff" />
+        <rect y="13.33" width="60" height="13.33" fill="#0039A6" />
+        <rect y="26.67" width="60" height="13.33" fill="#D52B1E" />
+      </symbol>
+      <symbol id="flag-sa" viewBox="0 0 60 40">
+        <rect width="60" height="40" fill="#165D31" />
+        <path d="M12 15.5h30M12 19h22M12 22.5h26" stroke="#fff" stroke-width="1.9" stroke-linecap="round" />
+        <path d="M12 27.5h30" stroke="#fff" stroke-width="1.6" stroke-linecap="round" />
+        <path d="M42 26v3" stroke="#fff" stroke-width="1.6" stroke-linecap="round" />
+      </symbol>
+    </svg>
+
     <div class="concept-ribbon">
       <div class="shell">
         <p><span></span>Client validation prototype</p>
@@ -48,16 +83,21 @@
         </nav>
 
         <div class="nav-actions">
-          <label class="language-picker">
-            <span class="sr-only">Select language</span>
-            <select id="languageSelect" aria-label="Select language">
-              <option value="en">EN</option>
-              <option value="nl">NL</option>
-              <option value="tr">TR</option>
-              <option value="ru">RU</option>
-              <option value="ar">AR</option>
-            </select>
-          </label>
+          <div class="language-picker">
+            <button class="language-trigger" id="languageTrigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="languageMenu">
+              <span class="sr-only">Select language — current language: </span>
+              <svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#flag-gb" /></svg>
+              <b class="language-trigger__code">EN</b>
+              <span class="language-trigger__caret" aria-hidden="true">⌄</span>
+            </button>
+            <div class="language-menu" id="languageMenu" role="listbox" aria-label="Select language" tabindex="-1" hidden>
+              <button role="option" type="button" data-lang="en" data-flag="flag-gb" aria-selected="true"><svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#flag-gb" /></svg><span>English</span></button>
+              <button role="option" type="button" data-lang="nl" data-flag="flag-nl" aria-selected="false"><svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#flag-nl" /></svg><span>Nederlands</span></button>
+              <button role="option" type="button" data-lang="tr" data-flag="flag-tr" aria-selected="false"><svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#flag-tr" /></svg><span>Türkçe</span></button>
+              <button role="option" type="button" data-lang="ru" data-flag="flag-ru" aria-selected="false"><svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#flag-ru" /></svg><span>Русский</span></button>
+              <button role="option" type="button" data-lang="ar" data-flag="flag-sa" aria-selected="false"><svg class="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><use href="#flag-sa" /></svg><span lang="ar">العربية</span></button>
+            </div>
+          </div>
           <a class="button button--small button--primary" href="?page=tickets">Tickets <span>↗</span></a>
           <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobileMenu">
             <span></span><span></span><span></span><i class="sr-only">Open menu</i>

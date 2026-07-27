@@ -4,7 +4,10 @@ const modal = document.querySelector("#assetModal");
 const modalContent = document.querySelector("#modalContent");
 const menuToggle = document.querySelector(".menu-toggle");
 const mobileMenu = document.querySelector("#mobileMenu");
-const languageSelect = document.querySelector("#languageSelect");
+const languageTrigger = document.querySelector("#languageTrigger");
+const languageMenu = document.querySelector("#languageMenu");
+const languageOptions = [...languageMenu.querySelectorAll("[role='option']")];
+let currentLanguage = localStorage.getItem("expo-language") || "en";
 let toastTimer;
 
 const icons = {
@@ -77,9 +80,9 @@ function homePage() {
   <section class="section section--cream"><div class="shell">
     <div class="section-heading reveal"><div><p class="kicker">THE EXPERIENCE</p><h2>Discover the ideas shaping better care and better living.</h2></div><p>Health & Beauty Expo brings national and international brands, professionals and visitors together for two focused days of discovery, demonstrations and valuable business connections.</p></div>
     <div class="card-grid">
-      <article class="image-card reveal" style="background-image:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=85')"><div class="image-card__content"><p class="kicker">LIVE EXPERIENCE</p><h3>Innovation in action</h3><p>See treatments, technologies and launches presented by specialists.</p></div></article>
-      <article class="image-card reveal" style="background-image:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=85')"><div class="image-card__content"><p class="kicker">BUSINESS</p><h3>Connections that matter</h3><p>Meet brands, clinics, partners and decision-makers from across markets.</p></div></article>
-      <article class="image-card reveal" style="background-image:url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=85')"><div class="image-card__content"><p class="kicker">PERSONAL DISCOVERY</p><h3>Care for body and mind</h3><p>Explore aesthetics, skincare, preventive care and holistic wellness.</p></div></article>
+      <article class="image-card reveal" style="background-image:url('assets/about-hero.jpg')"><div class="image-card__content"><p class="kicker">LIVE EXPERIENCE</p><h3>Innovation in action</h3><p>See treatments, technologies and launches presented by specialists.</p></div></article>
+      <article class="image-card reveal" style="background-image:url('assets/experience-card.jpg')"><div class="image-card__content"><p class="kicker">BUSINESS</p><h3>Connections that matter</h3><p>Meet brands, clinics, partners and decision-makers from across markets.</p></div></article>
+      <article class="image-card reveal" style="background-image:url('assets/media-sample.jpg')"><div class="image-card__content"><p class="kicker">PERSONAL DISCOVERY</p><h3>Care for body and mind</h3><p>Explore aesthetics, skincare, preventive care and holistic wellness.</p></div></article>
     </div>
   </div></section>
 
@@ -125,7 +128,7 @@ function homePage() {
 }
 
 function aboutPage() {
-  return `${pageHero("Where health & beauty grow together.", "A professional international stage for discovery, brand visibility, specialist expertise and meaningful connections.", `<a class="button button--white" href="?page=tickets">Visit the expo ${icons.arrow}</a><a class="button button--ghost" href="?page=participate">Become an exhibitor ${icons.arrow}</a>`, "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1800&q=86")}
+  return `${pageHero("Where health & beauty grow together.", "A professional international stage for discovery, brand visibility, specialist expertise and meaningful connections.", `<a class="button button--white" href="?page=tickets">Visit the expo ${icons.arrow}</a><a class="button button--ghost" href="?page=participate">Become an exhibitor ${icons.arrow}</a>`, "assets/about-hero.jpg")}
   <section class="section"><div class="shell split"><div class="split-copy reveal"><p class="kicker">OUR POSITIONING</p><h2>More than an exhibition—a place to meet, learn and move forward.</h2><p>Health & Beauty Expo 2026 takes place on 24 and 25 October at De Broodfabriek in Rijswijk. The two-day event brings national and international brands, professionals and visitors together to discover trends, present innovation and build valuable relationships.</p><p>The expo covers cosmetics, aesthetic treatments, skincare, haircare, wellness, preventive care, lifestyle, medical tourism and related services.</p></div><div class="quote-card reveal"><p>“A serious, modern and professional international expo—designed around quality, visibility and result.”</p><small>Health & Beauty Expo 2026 positioning</small></div></div></section>
   <section class="section section--soft"><div class="shell"><div class="section-heading section-heading--center reveal"><p class="kicker">WHAT TO EXPECT</p><h2>A complete health and beauty experience.</h2></div><div class="card-grid"><article class="info-card reveal"><span class="info-card__number">01</span><h3>Live demonstrations</h3><p>See innovative treatments and technologies presented in context.</p></article><article class="info-card reveal"><span class="info-card__number">02</span><h3>New launches</h3><p>Discover emerging brands, products and solutions before the wider market.</p></article><article class="info-card reveal"><span class="info-card__number">03</span><h3>Personal advice</h3><p>Ask experienced specialists about relevant approaches and options.</p></article><article class="info-card reveal"><span class="info-card__number">04</span><h3>Fresh insight</h3><p>Hear ideas, trends and professional perspectives across the sector.</p></article><article class="info-card reveal"><span class="info-card__number">05</span><h3>Business visibility</h3><p>Give your organisation a credible platform for international growth.</p></article><article class="info-card info-card--teal reveal"><span class="info-card__number">06</span><h3>Human connection</h3><p>Build relationships with people who share your ambition.</p></article></div></div></section>
   <section class="section"><div class="shell"><div class="stats-row reveal"><div class="stat"><b>2</b><span>Full exhibition days</span></div><div class="stat"><b>5</b><span>Website languages</span></div><div class="stat"><b>4</b><span>Core sectors</span></div><div class="stat"><b>1</b><span>International meeting point</span></div></div></div></section>
@@ -174,20 +177,20 @@ function exhibitorDetailPage() {
   const params = new URLSearchParams(location.search);
   const name = params.get("name") || "Nova Medical Group";
   return `${pageHero(name, "Featured exhibitor · Medical tourism and specialist healthcare.", `<a class="button button--white demo-action" href="#">Contact exhibitor ${icons.arrow}</a><a class="button button--ghost" href="?page=exhibitors">All exhibitors</a>`)}
-  <section class="section"><div class="shell split"><div class="media-frame" style="background-image:url('https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1200&q=85')"></div><div class="split-copy"><p class="kicker">ABOUT THE EXHIBITOR</p><h2>International expertise, personal coordination.</h2><p>This profile demonstrates how an active exhibitor can present a logo, category, description, key information, media and a relevant contact action.</p><ul class="detail-list"><li><b>Category</b><span>Medical tourism · Hospital group</span></li><li><b>Specialisms</b><span>Diagnostics, specialist care, international patients</span></li><li><b>Country</b><span>International</span></li><li><b>Stand</b><span>Hall A · A12</span></li></ul><div class="tag-row"><span class="tag">International care</span><span class="tag">Diagnostics</span><span class="tag">Specialists</span></div></div></div></section>
+  <section class="section"><div class="shell split"><div class="media-frame" style="background-image:url('assets/exhibitor-frame.jpg')"></div><div class="split-copy"><p class="kicker">ABOUT THE EXHIBITOR</p><h2>International expertise, personal coordination.</h2><p>This profile demonstrates how an active exhibitor can present a logo, category, description, key information, media and a relevant contact action.</p><ul class="detail-list"><li><b>Category</b><span>Medical tourism · Hospital group</span></li><li><b>Specialisms</b><span>Diagnostics, specialist care, international patients</span></li><li><b>Country</b><span>International</span></li><li><b>Stand</b><span>Hall A · A12</span></li></ul><div class="tag-row"><span class="tag">International care</span><span class="tag">Diagnostics</span><span class="tag">Specialists</span></div></div></div></section>
   <section class="section section--soft"><div class="shell"><div class="section-heading"><div><p class="kicker">AT THE EXPO</p><h2>Meet the team in Rijswijk.</h2></div><p>Visitors can use an exhibitor’s approved contact action or send a Fair Match introduction request to the organizing team.</p></div><div class="card-grid"><article class="info-card"><span class="info-card__number">01</span><h3>Visit stand A12</h3><p>Meet representatives throughout both exhibition days.</p></article><article class="info-card"><span class="info-card__number">02</span><h3>Ask a specialist</h3><p>Discuss services and international patient coordination.</p></article><article class="info-card info-card--teal"><span class="info-card__number">03</span><h3>Request an introduction</h3><p>Use Fair Match to tell the team what connection you are looking for.</p><a href="?page=fair-match">Open Fair Match ${icons.arrow}</a></article></div></div></section>`;
 }
 
 function ticketsPage() {
   return `${pageHero("Plan your visit.", "Everything you need to prepare for Health & Beauty Expo Rijswijk 2026. Ticket sales will connect to the approved external ticketing platform.", `<button class="button button--white ticket-pending" type="button">Ticket sales opening soon ${icons.external}</button>`)}
-  <section class="section"><div class="shell split"><div class="split-copy"><p class="kicker">EVENT DETAILS</p><h2>Two days of international discovery.</h2><ul class="detail-list"><li><b>Saturday</b><span>24 October 2026 · 10:00–18:00</span></li><li><b>Sunday</b><span>25 October 2026 · 10:00–18:00</span></li><li><b>Venue</b><span>De Broodfabriek, Volmerlaan 12, 2288 GD Rijswijk</span></li><li><b>Format</b><span>Public exhibition, professional networking and live discovery</span></li></ul><p class="validation-banner">The final ticket price and external ticketing URL are awaiting client confirmation.</p></div><div class="media-frame" style="background-image:url('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1200&q=85')"></div></div></section>
+  <section class="section"><div class="shell split"><div class="split-copy"><p class="kicker">EVENT DETAILS</p><h2>Two days of international discovery.</h2><ul class="detail-list"><li><b>Saturday</b><span>24 October 2026 · 10:00–18:00</span></li><li><b>Sunday</b><span>25 October 2026 · 10:00–18:00</span></li><li><b>Venue</b><span>De Broodfabriek, Volmerlaan 12, 2288 GD Rijswijk</span></li><li><b>Format</b><span>Public exhibition, professional networking and live discovery</span></li></ul><p class="validation-banner">The final ticket price and external ticketing URL are awaiting client confirmation.</p></div><div class="media-frame" style="background-image:url('assets/tickets-frame.jpg')"></div></div></section>
   <section class="section section--soft"><div class="shell"><div class="section-heading section-heading--center"><p class="kicker">YOUR VISIT</p><h2>Everything is designed for a clear, enjoyable day.</h2></div><div class="card-grid"><article class="info-card"><span class="info-card__number">01</span><h3>Prepare</h3><p>Review exhibitors, sectors and the floor plan before you arrive.</p><a href="?page=floor-plan">Open floor plan ${icons.arrow}</a></article><article class="info-card"><span class="info-card__number">02</span><h3>Discover</h3><p>Explore health, beauty, wellness and medical tourism solutions.</p><a href="?page=exhibitors">Browse exhibitors ${icons.arrow}</a></article><article class="info-card info-card--teal"><span class="info-card__number">03</span><h3>Connect</h3><p>Request a manual introduction to a participating clinic.</p><a href="?page=fair-match">Use Fair Match ${icons.arrow}</a></article></div></div></section>
   ${cta("Need practical information?", "Find venue, accessibility and arrival guidance on the visit page.", "?page=visit", "Plan your journey")}`;
 }
 
 function visitPage() {
   return `${pageHero("Plan your day in Rijswijk.", "Dates, opening hours, venue information and practical guidance for a smooth visit.")}
-  <section class="section"><div class="shell split"><div class="split-copy"><p class="kicker">PRACTICAL INFORMATION</p><h2>De Broodfabriek, Rijswijk.</h2><ul class="detail-list"><li><b>Dates</b><span>24–25 October 2026</span></li><li><b>Opening hours</b><span>10:00–18:00 on both days</span></li><li><b>Venue</b><span>De Broodfabriek, Rijswijk, The Netherlands</span></li><li><b>Address</b><span>Volmerlaan 12, 2288 GD Rijswijk</span></li><li><b>Languages</b><span>Dutch, Turkish, English, Russian and Arabic</span></li></ul><a class="button button--primary" href="?page=floor-plan">View floor plan ${icons.arrow}</a></div><div class="media-frame" style="background-image:url('https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1200&q=85')"></div></div></section>
+  <section class="section"><div class="shell split"><div class="split-copy"><p class="kicker">PRACTICAL INFORMATION</p><h2>De Broodfabriek, Rijswijk.</h2><ul class="detail-list"><li><b>Dates</b><span>24–25 October 2026</span></li><li><b>Opening hours</b><span>10:00–18:00 on both days</span></li><li><b>Venue</b><span>De Broodfabriek, Rijswijk, The Netherlands</span></li><li><b>Address</b><span>Volmerlaan 12, 2288 GD Rijswijk</span></li><li><b>Languages</b><span>Dutch, Turkish, English, Russian and Arabic</span></li></ul><a class="button button--primary" href="?page=floor-plan">View floor plan ${icons.arrow}</a></div><div class="media-frame" style="background-image:url('assets/visit-frame.jpg')"></div></div></section>
   <section class="section section--soft"><div class="shell"><div class="section-heading"><div><p class="kicker">BEFORE YOU ARRIVE</p><h2>Make the most of your visit.</h2></div></div><div class="card-grid card-grid--4"><article class="info-card"><span class="info-card__number">01</span><h3>Get your ticket</h3><p>Ticketing redirects to the approved external provider.</p></article><article class="info-card"><span class="info-card__number">02</span><h3>Browse exhibitors</h3><p>Identify the clinics, brands and specialists you want to meet.</p></article><article class="info-card"><span class="info-card__number">03</span><h3>Review the plan</h3><p>Use the static floor plan to understand the hall layout.</p></article><article class="info-card info-card--teal"><span class="info-card__number">04</span><h3>Fair Match</h3><p>Suggest a preferred meeting time with an eligible clinic.</p></article></div></div></section>
   ${cta("Questions about your visit?", "Our team can help with practical information before the expo.", "?page=contact", "Contact the team")}`;
 }
@@ -242,7 +245,7 @@ function mediaPage() {
   const fields = `<div class="form-row">${formField("Full name", "text", "Your full name")}${formField("Professional email", "email", "name@publication.com")}</div><div class="form-row">${formField("Organisation / publication", "text", "Publication or channel")}${formField("Application type", "select", "Select one", "<option>Journalist / editor</option><option>Freelance journalist / photographer</option><option>Digital media / podcast</option><option>Industry analyst</option><option>Influencer / creator</option>")}</div>${formField("Website or profile URL", "url", "https://")}${formField("Audience and recent coverage", "textarea", "Share relevant reach, engagement and recent health, technology or innovation work.")}`;
   return `${pageHero("Media, press & influencers.", "Accreditation for professionals producing original coverage of healthcare, health technology, beauty, wellness and innovation.", `<a class="button button--white" href="#accreditation">Apply for accreditation ${icons.arrow}</a>`)}
   <section class="section"><div class="shell"><div class="section-heading"><div><p class="kicker">ACCREDITATION</p><h2>Professional access for credible, original coverage.</h2></div><p>Applications are reviewed individually. Additional evidence may be requested, and approval remains at the discretion of the organiser.</p></div><div class="card-grid"><article class="info-card"><span class="info-card__number">01</span><h3>Established media</h3><p>Print, radio, television and news agencies with active editorial roles covering relevant sectors.</p></article><article class="info-card"><span class="info-card__number">02</span><h3>Digital & freelance</h3><p>Regular websites, blogs, podcasts, assigned journalists, photographers and analysts with evidence.</p></article><article class="info-card info-card--teal"><span class="info-card__number">03</span><h3>Influencers</h3><p>Creators with relevant recent content, meaningful reach and demonstrated original work.</p></article></div></div></section>
-  <section class="section section--soft"><div class="shell split"><div><p class="kicker">CRITERIA AT A GLANCE</p><div class="accordion"><details open><summary>Digital media</summary><div>Publication name and website, regular monthly coverage, and at least 7,500 unique monthly interactions. Corporate bloggers, marketing/PR staff and purely personal bloggers are not eligible under the supplied criteria.</div></details><details><summary>Freelance journalists & photographers</summary><div>An assignment letter or email from an editor on official stationery or from a publication email, with qualifications in the publication’s name.</div></details><details><summary>Industry analysts</summary><div>A publicly available attributed report from the previous six months. Client-exclusive reports, financial analysts and corporate consultants are excluded.</div></details><details><summary>Influencers & creators</summary><div>At least 50% relevant recent content, 10,000 followers on one platform, approximately 2% engagement and evidence of original work. Podcast/video thresholds and blogger/newsletter criteria are reviewed separately.</div></details></div></div><div class="media-frame" style="background-image:url('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1200&q=85')"></div></div></section>
+  <section class="section section--soft"><div class="shell split"><div><p class="kicker">CRITERIA AT A GLANCE</p><div class="accordion"><details open><summary>Digital media</summary><div>Publication name and website, regular monthly coverage, and at least 7,500 unique monthly interactions. Corporate bloggers, marketing/PR staff and purely personal bloggers are not eligible under the supplied criteria.</div></details><details><summary>Freelance journalists & photographers</summary><div>An assignment letter or email from an editor on official stationery or from a publication email, with qualifications in the publication’s name.</div></details><details><summary>Industry analysts</summary><div>A publicly available attributed report from the previous six months. Client-exclusive reports, financial analysts and corporate consultants are excluded.</div></details><details><summary>Influencers & creators</summary><div>At least 50% relevant recent content, 10,000 followers on one platform, approximately 2% engagement and evidence of original work. Podcast/video thresholds and blogger/newsletter criteria are reviewed separately.</div></details></div></div><div class="media-frame" style="background-image:url('assets/tickets-frame.jpg')"></div></div></section>
   <section class="section"><div class="shell"><div class="section-heading section-heading--center"><p class="kicker">INFLUENCER COMMITMENT</p><h2>Three moments. Nine purposeful posts.</h2><p>The supplied guidelines propose three posts before, three during and three after the event, using the official event hashtag and appropriate disclosure.</p></div><div class="stats-row"><div class="stat"><b>3</b><span>Before the expo</span></div><div class="stat"><b>3</b><span>During the expo</span></div><div class="stat"><b>3</b><span>After the expo</span></div><div class="stat"><b>9</b><span>Total posts</span></div></div></div></section>
   <section class="section section--cream" id="accreditation"><div class="shell form-shell"><div class="form-intro"><p class="kicker">APPLICATION</p><h2>Request accreditation.</h2><p>Provide enough professional context for the organiser to assess the application.</p><div class="contact-card"><b>Supporting evidence</b><span>The final form can support links or controlled file upload after provider decisions are approved.</span></div></div>${staticForm("Professional details", fields, "Submit application")}</div></section>`;
 }
@@ -257,7 +260,7 @@ function contactPage() {
 }
 
 function parisPage() {
-  return `${pageHero("Paris 2027.", "A new city. The same international ambition. Health & Beauty Expo Paris is coming soon.", `<a class="button button--white" href="#updates">Keep me updated ${icons.arrow}</a>`, "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1800&q=86")}
+  return `${pageHero("Paris 2027.", "A new city. The same international ambition. Health & Beauty Expo Paris is coming soon.", `<a class="button button--white" href="#updates">Keep me updated ${icons.arrow}</a>`, "assets/paris-hero.jpg")}
   <section class="section"><div class="shell split"><div class="split-copy"><p class="kicker">COMING SOON</p><h2>The next chapter of our international journey.</h2><p>Paris 2027 is presented as a static coming-soon edition. Dates, venue, programme and participation details will be announced after organiser approval.</p><p>This page intentionally does not imply independent multi-edition administration in the first product phase.</p></div><div class="quote-card"><p>“Health, beauty and wellness—connected across borders.”</p><small>Paris 2027 preview positioning</small></div></div></section>
   <section class="section section--soft" id="updates"><div class="shell form-shell"><div class="form-intro"><p class="kicker">UPDATES</p><h2>Be the first to know.</h2><p>Register interest for announcements about the Paris edition.</p></div>${staticForm("Update preference", `<div class="form-row">${formField("Name", "text", "Your name")}${formField("Email", "email", "name@example.com")}</div>${formField("I am interested as", "select", "Select one", "<option>Visitor</option><option>Exhibitor</option><option>Sponsor</option><option>Media / influencer</option>")}`, "Keep me updated")}</div></section>`;
 }
@@ -450,7 +453,7 @@ function renderPage() {
   document.querySelectorAll("[data-nav]").forEach(link => link.classList.toggle("is-active", link.dataset.nav === page));
   document.title = `${page === "home" ? "Health & Beauty Expo" : page.replaceAll("-", " ").replace(/\b\w/g, letter => letter.toUpperCase())} — Rijswijk 2026`;
   wirePage();
-  translateRenderedContent(languageSelect.value);
+  translateRenderedContent(currentLanguage);
   if (location.hash) setTimeout(() => document.querySelector(location.hash)?.scrollIntoView(), 50);
   else window.scrollTo(0, 0);
 }
@@ -465,9 +468,39 @@ mobileMenu.querySelectorAll("a").forEach(link => link.addEventListener("click", 
   menuToggle.setAttribute("aria-expanded", "false");
   document.body.classList.remove("menu-open");
 }));
-languageSelect.addEventListener("change", event => {
-  localStorage.setItem("expo-language", event.target.value);
+function setLanguageMenuOpen(open) {
+  languageMenu.hidden = !open;
+  languageTrigger.setAttribute("aria-expanded", String(open));
+  document.body.classList.toggle("language-open", open);
+  if (open) (languageOptions.find(option => option.dataset.lang === currentLanguage) || languageOptions[0]).focus();
+}
+
+function moveLanguageFocus(step) {
+  const index = languageOptions.indexOf(document.activeElement);
+  const next = (index + step + languageOptions.length) % languageOptions.length;
+  languageOptions[next].focus();
+}
+
+languageTrigger.addEventListener("click", () => setLanguageMenuOpen(languageMenu.hidden));
+languageTrigger.addEventListener("keydown", event => {
+  if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+  event.preventDefault();
+  setLanguageMenuOpen(true);
+});
+languageOptions.forEach(option => option.addEventListener("click", () => {
+  localStorage.setItem("expo-language", option.dataset.lang);
   location.reload();
+}));
+languageMenu.addEventListener("keydown", event => {
+  if (event.key === "ArrowDown") { event.preventDefault(); moveLanguageFocus(1); }
+  else if (event.key === "ArrowUp") { event.preventDefault(); moveLanguageFocus(-1); }
+  else if (event.key === "Home") { event.preventDefault(); languageOptions[0].focus(); }
+  else if (event.key === "End") { event.preventDefault(); languageOptions[languageOptions.length - 1].focus(); }
+  else if (event.key === "Escape") { setLanguageMenuOpen(false); languageTrigger.focus(); }
+  else if (event.key === "Tab") setLanguageMenuOpen(false);
+});
+document.addEventListener("click", event => {
+  if (!languageMenu.hidden && !event.target.closest(".language-picker")) setLanguageMenuOpen(false);
 });
 const siteHeader = document.querySelector(".site-header");
 window.addEventListener("scroll", () => siteHeader?.classList.toggle("is-scrolled", window.scrollY > 8), { passive: true });
@@ -475,7 +508,14 @@ toast.querySelector("button").addEventListener("click", () => toast.classList.re
 modal.querySelector(".modal-close").addEventListener("click", () => modal.close());
 modal.addEventListener("click", event => { if (event.target === modal) modal.close(); });
 
-const storedLanguage = localStorage.getItem("expo-language") || "en";
-languageSelect.value = storedLanguage;
-setLanguage(storedLanguage);
+function syncLanguageControl() {
+  const active = languageOptions.find(option => option.dataset.lang === currentLanguage) || languageOptions[0];
+  languageOptions.forEach(option => option.setAttribute("aria-selected", String(option === active)));
+  languageTrigger.querySelector("use").setAttribute("href", `#${active.dataset.flag}`);
+  languageTrigger.querySelector(".language-trigger__code").textContent = active.dataset.lang.toUpperCase();
+  languageTrigger.querySelector(".sr-only").textContent = `Select language — current language: ${active.textContent.trim()}`;
+}
+
+syncLanguageControl();
+setLanguage(currentLanguage);
 renderPage();
