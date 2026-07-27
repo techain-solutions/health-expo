@@ -10,7 +10,8 @@ const requiredFiles = [
   "assets/health-beauty-expo-logo.png",
   "assets/expo-hero-panorama-v3.png",
   "assets/expo-floor-plan.jpg",
-  "downloads/expo-floor-plan.pdf"
+  "downloads/expo-floor-plan.pdf",
+  "downloads/participant-manual-2026-en.pdf"
 ];
 
 const publicRoutes = [

@@ -50,6 +50,7 @@
 - None registered after the approved functional specification.
 - The requested exhibitor portal is recorded as DEFERRED, not active scope.
 - 2026-07-24 - Scope clarification: Fair Match remains an information/request form forwarded to the organizing team for manual follow-up. Appointment booking, availability, clinic dashboards, and request-status management are not included.
+- 2026-07-26 - Client request: publish the supplied English exhibitor manual in a documents menu at the bottom of the website, in the place where the general terms will later be added. Implemented in the client-approval prototype only. The client also asked for a three-part English agreement, a flyer, and an English stand-information document; those files have not been supplied and are recorded as awaited inputs in `CLIENT_CONTEXT.md`.
 
 ## Next Eligible Feature
 - `F-001 - Multilingual Public Shell and RTL` becomes eligible only after the user/team explicitly confirms `F-000` passed testing.
@@ -66,3 +67,4 @@
 - 2026-07-24 - Replaced public-sector cards with an integrated numbered editorial ribbon after visual design feedback; no product feature status changed.
 - 2026-07-24 - Aligned the client-approval prototype with the supplied client documents: corrected Fair Match to the confirmed flow (participating-clinic list + choose-clinic + preferred date/time, manual confirm), added the spec-required Featured Exhibitors section, populated real venue/contact data (De Broodfabriek, Volmerlaan 12, 2288 GD Rijswijk; info@expofuar.nl; +31 (0)570 238 100) with a map link, and corrected stand-package copy to the price list; decorative photography remains temporary direction imagery pending client-supplied photos; no product feature status changed.
 - 2026-07-24 - Refocused the static admin client-approval prototype to the requested management areas only: event information, exhibitors, photos/videos, website-form requests, and external ticketing link. Removed speakers, floor plan, page-content builder, user management, settings, and project-scope previews; no product feature status changed.
+- 2026-07-27 - Added the client-supplied English exhibitor manual to the client-approval prototype as `design/downloads/participant-manual-2026-en.pdf` and introduced a footer Documents menu holding the manual, the already-published PDFs, and a link to the general-terms page. Labels translated for all five languages. No product feature status changed; F-000 remains `READY`.
