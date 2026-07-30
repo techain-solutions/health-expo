@@ -127,3 +127,93 @@ This log is append-only. Do not rewrite earlier records; add a superseding decis
 - Consequences: Remove the dedicated Fair Match admin queue and appointment controls. Show Fair Match submissions only in the general form-request area.
 - Supersedes: DEC-005 - Manual Fair Match.
 - Superseded by:
+
+## DEC-015 - F-000 foundation toolchain
+- Status: APPROVED
+- Context: No application, root package manager, lockfile, tests, or CI configuration existed when F-000 began.
+- Decision: Use npm with a committed lockfile, Next.js 16 App Router and TypeScript, Node.js 22 for local/CI execution, ESLint for linting, and Vitest for lightweight smoke tests. Keep standard Next.js build output compatible with Vercel without adding provider configuration during F-000.
+- Source: F-000 acceptance criteria and repository inspection on 29 July 2026.
+- Consequences: Later features inherit repeatable `dev`, `lint`, `typecheck`, `test`, and `build` commands. Supabase and provider deployment configuration remain deferred to their approved features.
+- Supersedes:
+- Superseded by:
+
+## DEC-016 - Locale routes and static administration preview
+- Status: APPROVED
+- Context: The approved prototype dispatched views and language changes in one standalone document, while F-001 requires refresh-safe Next.js routes and equivalent-page language switching without adding backend behavior.
+- Decision: Use one locale-prefixed App Router catch-all for public presentation pages and one administration-preview catch-all under `/admin`. Keep shared shells and typed page data in React components; keep all forms and business-effect controls inert.
+- Source: F-001 acceptance criteria and implementation inspection on 29 July 2026.
+- Consequences: `/en`, `/nl`, `/tr`, `/ru`, and `/ar` preserve equivalent page paths; Arabic applies RTL at the localized application wrapper. Administration roles demonstrate navigation visibility only and provide no authentication or authorization.
+- Supersedes:
+- Superseded by:
+
+## DEC-017 - Remove managed media and managed informational-content features
+- Status: APPROVED
+- Context: The client explicitly decided not to implement the planned general media-management feature or the managed Media/Press and legal/informational-content feature.
+- Decision: Remove F-006 and F-010 from the implementation plan without renumbering the remaining feature IDs.
+- Source: Client direction, 30 July 2026.
+- Consequences: No general media upload/library workflow and no managed Media/Press or legal-content editor/publication workflow will be implemented. Existing static F-001 presentation pages remain unchanged. F-007 owns only the narrowly scoped floor-plan replacement behavior, and F-011 depends explicitly on F-005, F-007, F-008, and F-009.
+- Supersedes: The general media/object-storage portion of DEC-013; maintained authentication remains proposed.
+- Superseded by:
+
+## DEC-018 - Supabase authentication and relational staff roles
+- Status: APPROVED
+- Context: F-002 requires maintained authentication, server-enforced roles, local development now, and environment-based replacement with remote Supabase later.
+- Decision: Use Supabase Auth email/password sessions through `@supabase/ssr`, a protected `staff_profiles` table keyed to `auth.users`, tracked SQL migrations, RLS self-read, and server-side route authorization. Disable public signup and provision staff through a server-only administrative workflow.
+- Source: Client direction and F-002 implementation, 30 July 2026.
+- Consequences: Local development uses the Supabase CLI stack and ignored `.env.local` values. Vercel later receives only approved remote environment values. Missing, inactive, malformed, or unauthorized staff profiles fail closed. Recovery, MFA, production invitation UX, and user-management UI remain outside F-002.
+- Supersedes: The authentication-provider uncertainty in DEC-013 and the F-002 portion of DEC-011/DEC-012.
+- Superseded by:
+
+## DEC-019 - Initial administrator bootstrap and later delegated staff management
+- Status: APPROVED
+- Context: The client needs a non-technical way to create operational staff accounts, but initial privileged access must not be self-created through the product interface.
+- Decision: Keep the first Administrator bootstrap in the existing server-only provisioning script. Plan F-014 for an Administrator-only interface that can create/invite and manage `staff` and `organizer` accounts, but cannot create or promote another Administrator.
+- Source: Client direction, 30 July 2026.
+- Consequences: The client can delegate ordinary staff access after an initial Administrator exists. The future feature requires server-side service-role operations, enforced authorization, invitation/email configuration, safe deactivation, and privilege-escalation tests. It is not part of F-002 and remains locked pending explicit team approval.
+- Supersedes:
+- Superseded by:
+
+## DEC-020 - Local initial-password workflow for delegated staff accounts
+- Status: APPROVED
+- Context: F-014 must be functionally testable with local Supabase before remote email and sender configuration are available.
+- Decision: The bootstrap Administrator remains script-provisioned. The F-014 Administrator-only interface creates only `staff` and `organizer` accounts with a validated, administrator-supplied initial password, then permits only those two roles to be changed and accounts to be deactivated/reactivated. A service-role server boundary records minimal account lifecycle audit events. It does not create or promote Administrators.
+- Source: Client direction to proceed with F-014, 30 July 2026.
+- Consequences: Local account delivery requires sharing the initial password through a secure out-of-band channel. A production invitation workflow requires later remote Supabase email sender, template, Site URL, and redirect configuration; it is not silently simulated. The service-role key is now required by the secure server runtime for this approved F-014 feature and must never reach browser code.
+- Supersedes: The server-key runtime limitation stated for F-002 in DEC-018.
+- Superseded by:
+
+## DEC-021 - Standing sequential feature authorization
+- Status: APPROVED
+- Context: The client requested that implementation continue feature by feature without waiting for individual approval, with final client testing after all planned work.
+- Decision: Treat internal verification as sufficient to move each remaining planned feature from implementation to passed under the client's standing authorization, then begin the next eligible planned feature. Continue to preserve scope gates, safety requirements, and removed/deferred exclusions.
+- Source: Client direction, 30 July 2026.
+- Consequences: Codex documents internal evidence per feature and progresses automatically. F-006 and F-010 remain removed; any new material scope, credential, provider, legal, or production decision still requires client direction.
+- Supersedes: Per-feature manual acceptance requirement for remaining planned features.
+- Superseded by:
+
+## DEC-022 - Locale dictionaries own public presentation copy
+- Status: APPROVED
+- Context: F-011 requires five public languages, correct Arabic RTL behavior, and removal of prototype or fabricated presentation content while preserving managed business data.
+- Decision: Source public presentation copy from typed per-locale dictionaries. Keep exhibitors and event values database-backed. Represent missing client-controlled programme, ticketing, legal, social, or download content truthfully as unavailable or pending rather than fabricating it.
+- Source: F-011 acceptance audit, 30 July 2026.
+- Consequences: Locale coverage is consistent and testable. Final translations, legal copy, external URLs, and client assets still require client acceptance.
+- Supersedes:
+- Superseded by:
+
+## DEC-023 - Database-first request notification delivery
+- Status: APPROVED
+- Context: Public requests must not be lost when an external email provider is unavailable or unconfigured.
+- Decision: Commit public requests before notification. Store notification work in the outbox and optionally deliver it through Resend only when an approved API key, verified sender, and recipient are configured. Missing provider configuration leaves the notification pending and the request available in the staff inbox. Store request types and workflow statuses as constrained text to avoid stale application-enum failures.
+- Source: F-011 acceptance audit, 30 July 2026.
+- Consequences: Form acceptance is independent of third-party email availability. Production operators must configure and verify delivery. Retries are bounded and opportunistic; a scheduled worker may be approved later if stricter latency is required.
+- Supersedes:
+- Superseded by:
+
+## DEC-024 - Shared privacy-preserving request throttling
+- Status: APPROVED
+- Context: A process-local counter does not enforce consistent limits across serverless instances and a strict low per-IP limit can unfairly block visitors behind shared networks.
+- Decision: Enforce public-request limits through an atomic Supabase sliding-window function. Store only HMAC-SHA256 key digests and timestamps. Apply five requests per normalized e-mail/network identity plus a broader thirty-request network ceiling over ten minutes.
+- Source: F-011 counter-audit, 30 July 2026.
+- Consequences: Limits survive application restarts and concurrent instances; shared networks receive more headroom; raw IP/e-mail identifiers are not stored in the throttle table. The service-role secret remains server-only and doubles as the HMAC key.
+- Supersedes: The process-local request limiter introduced during the first F-011 audit repair.
+- Superseded by:

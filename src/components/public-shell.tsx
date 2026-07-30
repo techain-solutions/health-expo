@@ -1,0 +1,293 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
+
+import { FlagSprite, LocaleFlag } from "@/components/locale-flag";
+import { MaterialIcon } from "@/components/material-icon";
+import { getDictionary } from "@/lib/i18n";
+import { localeMeta, locales, pageHref, type Locale, type PublicPage } from "@/lib/site";
+
+type PublicShellProps = {
+  locale: Locale;
+  page: PublicPage;
+  children: ReactNode;
+  routeExtra?: string;
+};
+
+const primaryPages: Array<[PublicPage, "about" | "exhibitors" | "program" | "exhibit" | "media" | "contact"]> = [
+  ["about", "about"],
+  ["exhibitors", "exhibitors"],
+  ["program", "program"],
+  ["participate", "exhibit"],
+  ["media", "media"],
+  ["contact", "contact"],
+];
+
+export function PublicShell({ locale, page, children, routeExtra }: PublicShellProps) {
+  const dictionary = getDictionary(locale);
+  const copy = dictionary.shell;
+  const nav = copy.nav;
+  const meta = localeMeta[locale];
+  const preserveExtra = page === "legal" || page === "exhibitor-detail" ? routeExtra : undefined;
+  const [languageOpen, setLanguageOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const languagePickerRef = useRef<HTMLDivElement>(null);
+  const languageTriggerRef = useRef<HTMLButtonElement>(null);
+  const languageOptionRefs = useRef<Array<HTMLAnchorElement | null>>([]);
+
+  useEffect(() => {
+    document.documentElement.lang = locale;
+    document.documentElement.dir = meta.dir;
+  }, [locale, meta.dir]);
+
+  useEffect(() => {
+    document.body.classList.toggle("language-open", languageOpen);
+    if (languageOpen) {
+      requestAnimationFrame(() => languageOptionRefs.current[locales.indexOf(locale)]?.focus());
+    }
+    return () => document.body.classList.remove("language-open");
+  }, [languageOpen, locale]);
+
+  useEffect(() => {
+    document.body.classList.toggle("menu-open", mobileOpen);
+    return () => document.body.classList.remove("menu-open");
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    function closeLanguageMenu(event: MouseEvent) {
+      if (!languagePickerRef.current?.contains(event.target as Node)) setLanguageOpen(false);
+    }
+    document.addEventListener("click", closeLanguageMenu);
+    return () => document.removeEventListener("click", closeLanguageMenu);
+  }, []);
+
+  function handleLanguageTriggerKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
+    if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+    event.preventDefault();
+    setLanguageOpen(true);
+  }
+
+  function handleLanguageMenuKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    const activeIndex = languageOptionRefs.current.indexOf(document.activeElement as HTMLAnchorElement);
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setLanguageOpen(false);
+      languageTriggerRef.current?.focus();
+      return;
+    }
+    if (event.key === "Tab") {
+      setLanguageOpen(false);
+      return;
+    }
+    let nextIndex: number | null = null;
+    if (event.key === "ArrowDown") nextIndex = (activeIndex + 1 + locales.length) % locales.length;
+    if (event.key === "ArrowUp") nextIndex = (activeIndex - 1 + locales.length) % locales.length;
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = locales.length - 1;
+    if (nextIndex === null) return;
+    event.preventDefault();
+    languageOptionRefs.current[nextIndex]?.focus();
+  }
+
+  return (
+    <div className="public-site" lang={locale} dir={meta.dir} data-locale={locale}>
+      <FlagSprite />
+      <a className="skip-link" href="#main">
+        {copy.skipToContent}
+      </a>
+      <header className="site-header">
+        <div className="shell nav-shell">
+          <Link className="logo-link" href={pageHref(locale, "home")} aria-label={copy.homeLabel}>
+            <Image
+              src="/assets/health-beauty-expo-logo.png"
+              alt="Health and Beauty Expo"
+              width={260}
+              height={116}
+              priority
+            />
+          </Link>
+          <nav className="desktop-nav" aria-label={copy.primaryNav}>
+            {primaryPages.slice(0, 3).map(([target, key]) => (
+              <Link className={page === target ? "is-active" : ""} href={pageHref(locale, target)} key={target}>
+                {nav[key]}
+              </Link>
+            ))}
+            <div className="nav-drop">
+              <button type="button" aria-haspopup="true">
+                {nav.visit} <MaterialIcon name="expand_more" />
+              </button>
+              <div className="nav-drop__panel">
+                <Link href={pageHref(locale, "tickets")}>
+                  <b>{nav.tickets}</b>
+                  <small>{copy.navHints.tickets}</small>
+                </Link>
+                <Link href={pageHref(locale, "visit")}>
+                  <b>{nav.planVisit}</b>
+                  <small>{copy.navHints.visit}</small>
+                </Link>
+                <Link href={pageHref(locale, "floor-plan")}>
+                  <b>{nav.plan}</b>
+                  <small>{copy.navHints.plan}</small>
+                </Link>
+                <Link href={pageHref(locale, "fair-match")}>
+                  <b>{nav.fairMatch}</b>
+                  <small>{copy.navHints.fairMatch}</small>
+                </Link>
+              </div>
+            </div>
+            {primaryPages.slice(3).map(([target, key]) => (
+              <Link className={page === target ? "is-active" : ""} href={pageHref(locale, target)} key={target}>
+                {nav[key]}
+              </Link>
+            ))}
+          </nav>
+          <div className="nav-actions">
+            <div className="language-picker" ref={languagePickerRef}>
+              <button
+                className="language-trigger"
+                aria-controls="language-menu"
+                aria-expanded={languageOpen}
+                aria-label={`${copy.selectLanguage} — ${copy.currentLanguage}: ${meta.label}`}
+                aria-haspopup="listbox"
+                onClick={() => setLanguageOpen((open) => !open)}
+                onKeyDown={handleLanguageTriggerKeyDown}
+                ref={languageTriggerRef}
+                type="button"
+              >
+                <LocaleFlag locale={locale} />
+                <b className="language-trigger__code">{locale.toUpperCase()}</b>
+                <MaterialIcon className="language-trigger__caret" name="expand_more" />
+              </button>
+              <div
+                className="language-menu"
+                id="language-menu"
+                role="listbox"
+                aria-label={copy.selectLanguage}
+                hidden={!languageOpen}
+                onKeyDown={handleLanguageMenuKeyDown}
+              >
+                {locales.map((targetLocale, index) => (
+                  <Link
+                    aria-selected={targetLocale === locale}
+                    href={pageHref(targetLocale, page, preserveExtra)}
+                    key={targetLocale}
+                    onClick={() => setLanguageOpen(false)}
+                    ref={(node) => {
+                      languageOptionRefs.current[index] = node;
+                    }}
+                    role="option"
+                  >
+                    <LocaleFlag locale={targetLocale} />
+                    <span>{localeMeta[targetLocale].label}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <Link className="button button--small button--primary desktop-ticket" href={pageHref(locale, "tickets")}>
+              {nav.tickets} <MaterialIcon name="open_in_new" />
+            </Link>
+            <button
+                className="menu-toggle"
+                aria-controls="mobile-menu"
+                aria-expanded={mobileOpen}
+                aria-label={mobileOpen ? copy.closeNav : copy.openNav}
+                onClick={() => setMobileOpen((open) => !open)}
+                type="button"
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+            <nav
+              className={`mobile-menu${mobileOpen ? " is-open" : ""}`}
+              id="mobile-menu"
+              aria-label={copy.mobileNav}
+            >
+              {primaryPages.map(([target, key]) => (
+                <Link href={pageHref(locale, target)} key={target} onClick={() => setMobileOpen(false)}>
+                  {nav[key]}
+                </Link>
+              ))}
+              <Link href={pageHref(locale, "tickets")} onClick={() => setMobileOpen(false)}>{nav.tickets}</Link>
+              <Link href={pageHref(locale, "visit")} onClick={() => setMobileOpen(false)}>{nav.planVisit}</Link>
+              <Link href={pageHref(locale, "floor-plan")} onClick={() => setMobileOpen(false)}>{nav.plan}</Link>
+              <Link href={pageHref(locale, "fair-match")} onClick={() => setMobileOpen(false)}>{nav.fairMatch}</Link>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main id="main" tabIndex={-1}>
+        {children}
+      </main>
+      <footer className="site-footer">
+        <div className="shell footer-main">
+          <div className="footer-brand">
+            <Image
+              src="/assets/health-beauty-expo-logo.png"
+              alt="Health and Beauty Expo"
+              width={260}
+              height={116}
+            />
+            <p>{copy.footer.tagline}</p>
+          </div>
+          <div className="footer-links">
+            <b>{nav.explore}</b>
+            <Link href={pageHref(locale, "about")}>{nav.about}</Link>
+            <Link href={pageHref(locale, "exhibitors")}>{nav.exhibitors}</Link>
+            <Link href={pageHref(locale, "program")}>{nav.program}</Link>
+            <Link href={pageHref(locale, "fair-match")}>{nav.fairMatch}</Link>
+            <Link href={pageHref(locale, "media")}>{nav.media}</Link>
+          </div>
+          <div className="footer-links">
+            <b>{nav.participate}</b>
+            <Link href={pageHref(locale, "participate")}>{copy.footer.standPackages}</Link>
+            <Link href={`${pageHref(locale, "participate")}#sponsorship`}>{copy.footer.sponsorship}</Link>
+            <Link href={pageHref(locale, "participant-info")}>{copy.footer.participantGuide}</Link>
+          </div>
+          <div className="footer-links">
+            <b>{nav.documents}</b>
+            <a href="/downloads/participant-manual-2026-en.pdf" target="_blank">
+              {copy.footer.exhibitorManualEn}
+            </a>
+            <a href="/downloads/participant-manual-2026.pdf" target="_blank">
+              {copy.footer.participantManualNl}
+            </a>
+            <a href="/downloads/exhibitor-agreement-nl.pdf" target="_blank">
+              {copy.footer.exhibitorAgreement}
+            </a>
+            <a href="/downloads/stand-pricing-2026.pdf" target="_blank">
+              {copy.footer.standPriceList}
+            </a>
+            <a href="/downloads/expo-floor-plan.pdf" target="_blank">
+              {copy.footer.floorPlanPdf}
+            </a>
+            <Link href={pageHref(locale, "legal", "terms")}>{copy.footer.generalTerms}</Link>
+          </div>
+          <div className="footer-links">
+            <b>{nav.visit}</b>
+            <Link href={pageHref(locale, "tickets")}>{nav.tickets}</Link>
+            <Link href={pageHref(locale, "visit")}>{nav.planVisit}</Link>
+            <Link href={pageHref(locale, "floor-plan")}>{nav.plan}</Link>
+            <Link href={pageHref(locale, "paris")}>{copy.footer.paris}</Link>
+          </div>
+          <div className="footer-event">
+            <p>{copy.footer.dates}</p>
+            <b>{copy.footer.venue}</b>
+            <span>{copy.footer.city}</span>
+            <small>{copy.footer.hours}</small>
+          </div>
+        </div>
+        <div className="shell footer-bottom">
+          <p>{copy.footer.rights}</p>
+          <div>
+            <Link href={pageHref(locale, "legal", "privacy")}>{copy.footer.privacy}</Link>
+            <Link href={pageHref(locale, "legal", "cookies")}>{copy.footer.cookies}</Link>
+            <Link href={pageHref(locale, "legal", "terms")}>{copy.footer.terms}</Link>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

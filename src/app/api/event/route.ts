@@ -1,0 +1,2 @@
+import {NextResponse} from "next/server";import {getEvent} from "@/lib/event/service";
+export async function GET(){try{const e=await getEvent();if(e.publication_status!=="published")return NextResponse.json({event:null});return NextResponse.json({event:{title:e.title,startsOn:e.starts_on,endsOn:e.ends_on,opensAt:e.opens_at,closesAt:e.closes_at,venue:e.venue,city:e.city,address:e.address,description:e.description,visitorInformation:e.visitor_information,ticketUrl:e.ticket_url}})}catch{return NextResponse.json({event:null},{status:503})}}

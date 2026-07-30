@@ -83,7 +83,7 @@
 - OPEN QUESTION: Final legal texts and legal approver.
 - OPEN QUESTION: Form recipient email addresses and sender domain.
 - OPEN QUESTION: Data retention/deletion rules for contact, accreditation, and Fair Match requests.
-- OPEN QUESTION: Database, authentication provider, media storage, email provider, hosting, and region.
+- OPEN QUESTION: Database, authentication provider, floor-plan file storage, email provider, hosting, and region.
 - OPEN QUESTION: Analytics/cookie tooling.
 - OPEN QUESTION: Browser support matrix.
 - RESOLVED 2026-07-26: The participant/exhibitor manual is a public download. The client supplied an English exhibitor manual and asked for it in a documents menu at the bottom of the website, alongside the future general terms.

@@ -1,0 +1,5 @@
+"use server";
+import {forbidden,redirect} from "next/navigation";import {revalidatePath} from "next/cache";import {getStaffAuthState} from "@/lib/auth/dal";import {parseEventInput} from "@/lib/event/input";import {saveEvent,setPublication} from "@/lib/event/service";
+async function editor(){const {staff}=await getStaffAuthState();if(!staff||staff.role==="organizer")forbidden();return staff} const go=(n:string)=>redirect(`/admin/event?notice=${n}`);
+export async function saveEventAction(f:FormData){const s=await editor();const i=parseEventInput(Object.fromEntries(f));if(!i)return go("error");try{await saveEvent(s.userId,i)}catch{return go("error")}revalidatePath("/admin/event");revalidatePath("/api/event");go("saved")}
+export async function publishEventAction(f:FormData){const {staff}=await getStaffAuthState();if(!staff||staff.role!=="administrator")forbidden();const p=f.get("status")==="published";try{await setPublication(staff.userId,p)}catch{go("error")}revalidatePath("/admin/event");revalidatePath("/api/event");go(p?"published":"draft")}

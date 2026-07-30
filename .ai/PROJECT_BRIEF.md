@@ -69,7 +69,7 @@ Build a custom Next.js event platform that:
 ## Assumptions
 - PROPOSED: Use locale-prefixed routes and server-rendered public content for discoverability and reliable localization.
 - PROPOSED: Use a relational database for roles, event content, exhibitors, clinics, form requests, and statuses.
-- PROPOSED: Use managed object storage for logos, images, videos or video references, and floor-plan assets.
+- PROPOSED: Use narrowly scoped managed file storage only for floor-plan replacement if repository-managed static delivery is insufficient; general media upload/library management is excluded.
 - PROPOSED: Use a maintained authentication solution instead of custom password cryptography.
 - PROPOSED: Use a transactional email provider or verified SMTP service for form notifications.
 - Each proposal is made to reduce custom infrastructure risk; none is approved until repository/hosting constraints are reviewed.

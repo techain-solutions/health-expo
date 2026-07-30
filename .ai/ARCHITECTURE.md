@@ -13,14 +13,14 @@
 - CONFIRMED: Production includes domain/SSL/deployment support, while paid third-party costs are client-owned.
 
 ## Proposed Architecture
-Every item below is PROPOSED because no repository/provider evidence has yet approved it.
+Items explicitly approved by a recorded decision are marked accordingly; remaining provider and later-feature details stay proposed or unknown.
 
 ### Application Boundary
 - One Next.js TypeScript full-stack application.
-- Supabase backend
+- Supabase backend (APPROVED for local development and future remote replacement)
 - Resend for emails
 - App Router with server-rendered public pages and server-side mutations/actions or route handlers.
-- Shared domain/service modules for event, exhibitors, requests, media, and permissions.
+- Shared domain/service modules for event, exhibitors, requests, and permissions.
 - Reason: The scope and delivery window favor one deployable unit while retaining clear internal boundaries.
 
 ### Frontend
@@ -44,30 +44,31 @@ Every item below is PROPOSED because no repository/provider evidence has yet app
   - `LocalizedEventContent`.
   - `Speaker`.
   - `Exhibitor`, `ExhibitorCategory`, localized exhibitor content.
-  - `MediaAsset`.
   - `FloorPlan`.
   - `ClinicEligibility` or exhibitor clinic flag.
   - `Request`, specialized request detail, status history.
-  - `ManagedPage`, localized page content, publication state.
   - `SiteSetting`.
 - Use migrations, constraints, timestamps, stable identifiers, and soft delete only where justified.
 - Exact ORM/query layer remains UNKNOWN until repository convention is known.
 
 ### Authentication and Authorization
-- Use a maintained framework/provider rather than custom password storage.
-- Server-enforced policy checks map Administrator, Employee, and Organizer to explicit capabilities.
-- Initial staff accounts are provisioned by an administrator or deployment process; public self-registration is excluded.
-- Exact provider, password recovery, MFA, session duration, and user invitation flow remain UNKNOWN.
+- APPROVED: Supabase Auth email/password sessions through `@supabase/ssr`; no custom password storage.
+- APPROVED: A protected `staff_profiles` table stores the active application role and is readable only by its owning authenticated user through RLS.
+- Server-enforced policy checks map Administrator, Employee, and Organizer to explicit administration routes.
+- Initial staff accounts are provisioned through a server-only administrative process; public self-registration is excluded.
+- APPROVED for F-014: the bootstrap Administrator can use a server-authorized `/admin/team` interface to create and manage only `staff` and `organizer` accounts. Service-role Auth administration stays in server-only code; minimal account lifecycle events are recorded for operations review.
+- Password recovery, MFA, production email invitations, and final session policy remain deferred beyond F-014.
 
-### Media Storage
-- Managed object storage/CDN with database metadata.
-- Images are uploaded with file/size limits and optimized derivatives where supported.
-- Video policy should prefer approved external-hosted links unless direct upload/storage cost and limits are confirmed.
-- Exact provider, retention, and deletion behavior remain UNKNOWN.
+### Floor-Plan File Storage
+- Only the active static floor-plan file requires a privileged replacement boundary.
+- The file uses strict type/size validation, safe generated naming, and database metadata where applicable.
+- General image/video upload, media-library management, and direct video storage are excluded.
+- Exact floor-plan storage provider, retention, and replacement behavior remain UNKNOWN.
 
 ### Forms and Email
 - Persist a request before sending notification so an email outage does not lose the submission.
 - Transactional email adapter with verified sender domain and configurable recipients.
+- Public request throttling uses atomic Supabase sliding-window events keyed by server-side HMAC digests. A 5-request identity/network limit is paired with a broader 30-request network ceiling to reduce shared-NAT false positives while preserving abuse protection.
 - Rate limiting, anti-automation control, server validation, and safe logging.
 - Exact provider and retry/alert behavior remain UNKNOWN.
 
@@ -79,7 +80,7 @@ Every item below is PROPOSED because no repository/provider evidence has yet app
 - Client review is required for legal, medical, commercial, names, dates, and official text.
 
 ### Deployment
-- PROPOSED: Vercel-compatible deployment for the Next.js application, with managed PostgreSQL and object storage.
+- PROPOSED: Vercel-compatible deployment for the Next.js application, with managed PostgreSQL and narrowly scoped floor-plan file storage if repository-managed static delivery is insufficient.
 - Local, preview/staging, and production environments.
 - Locked dependencies, repeatable build, reviewed migrations, health endpoint, structured error monitoring, and rollback notes.
 - Hosting, region, database, storage, email, DNS ownership, and monitoring provider remain UNKNOWN.
@@ -102,10 +103,10 @@ Every item below is PROPOSED because no repository/provider evidence has yet app
 
 ## Unknown Decisions Blocking Later Features
 1. Existing repository state and package manager.
-2. Database and ORM.
-3. Authentication provider, account provisioning, recovery, MFA, and session policy.
+2. Query/ORM strategy for later business tables beyond the approved Supabase client.
+3. Production account provisioning, recovery, MFA, and final session policy.
 4. Role capability matrix, especially Organizer limits.
-5. Object storage/CDN and direct-video policy.
+5. Floor-plan file storage and replacement policy.
 6. Email provider, sender, recipients, retries, and alerts.
 7. Hosting platform, region, environment ownership, and backups.
 8. Request retention/deletion/export policy.

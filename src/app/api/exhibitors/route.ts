@@ -1,0 +1,1 @@
+import {NextResponse} from "next/server";import {listExhibitors} from "@/lib/exhibitors/service";export async function GET(){try{return NextResponse.json({exhibitors:await listExhibitors(true)})}catch{return NextResponse.json({exhibitors:[]},{status:503})}}
