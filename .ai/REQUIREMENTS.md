@@ -95,9 +95,9 @@
 | INT-002 | OPEN QUESTION | Select ticketing platform URL and whether campaign/locale parameters are needed. | UNKNOWN |
 | INT-003 | OPEN QUESTION | Select email delivery provider and verified sender/recipient configuration. | UNKNOWN |
 | INT-004 | OPEN QUESTION | Select map provider/embedding approach. | UNKNOWN |
-| INT-005 | OPEN QUESTION | Select relational database and ORM/query layer. | UNKNOWN |
-| INT-006 | OPEN QUESTION | Select authentication provider/library and account provisioning/recovery workflow. | UNKNOWN |
-| INT-007 | OPEN QUESTION | Select media storage/CDN and video upload versus external video-link policy. | UNKNOWN |
+| INT-005 | CONFIRMED | Use Supabase PostgreSQL with tracked SQL migrations; select any additional ORM/query abstraction only if a later feature needs it. | Client direction and F-002 implementation, 30 July 2026 |
+| INT-006 | CONFIRMED | Use Supabase Auth with `@supabase/ssr`, server-only staff provisioning, and no public signup; recovery, MFA, and production invitation workflows remain deferred. | Client direction and F-002 implementation, 30 July 2026 |
+| INT-007 | CONFIRMED | General media upload/library and direct video storage are excluded; select storage only for the narrowly scoped active floor-plan replacement if needed. | Client direction, 30 July 2026 |
 | INT-008 | OPEN QUESTION | Select hosting platform, database/storage region, preview environment, and production ownership. | UNKNOWN |
 | INT-009 | CONFIRMED | Migration must use a rotated credential, safe export, or public content capture; never the disclosed credential. | Security requirement |
 | INT-010 | OPEN QUESTION | Define form email/admin synchronization and retry behavior when email delivery fails. | UNKNOWN |

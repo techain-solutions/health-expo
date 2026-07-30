@@ -12,7 +12,7 @@ Cover:
 - Exhibitor ordering/activation.
 - Fair Match status transitions.
 - Ticket URL and safe-link rules.
-- Upload type/size/name rules.
+- Floor-plan upload type/size/name rules.
 - Content completeness and redirect mapping.
 - Error handling and email retry/failure decisions.
 
@@ -21,10 +21,10 @@ Cover:
 - Database repositories and migrations.
 - Authentication/session/provider integration.
 - Server authorization at route/action boundaries.
-- Admin CRUD for event, exhibitors, media, managed pages.
+- Admin CRUD for event and exhibitors.
 - Form persistence plus email adapter behavior.
 - Fair Match creation and staff resolution.
-- Object-storage adapter behavior.
+- Floor-plan storage adapter behavior when an external adapter is selected.
 - Static floor-plan replacement/download.
 - Public read isolation from drafts/inactive records.
 
@@ -85,7 +85,7 @@ For each UI feature document:
 - Backup before destructive migration.
 - Form retention/deletion behavior after policy approval.
 - Import idempotency and source provenance.
-- Media delete/reference integrity.
+- Floor-plan replace/reference integrity.
 
 ## F-000 Required Commands
 Codex must report actual repository commands. At minimum, the equivalent of:
@@ -111,3 +111,11 @@ For an implementation to be `AWAITING_TEST`:
 
 For `PASSED`:
 - An authorized user explicitly confirms testing passed against the active feature acceptance criteria.
+
+## F-011 Counter-Audit Regression Checks
+
+- Verify delete controls on both exhibitor and request tables retain red backgrounds, white text, full labels, and content-sized dimensions.
+- Verify five valid requests for one identity are accepted and the sixth returns 429 across shared application instances.
+- Verify throttle records contain only HMAC digests and timestamps, never raw IP or e-mail values.
+- Verify the 30-request network ceiling and 5-request network/e-mail identity limit use a ten-minute sliding window.
+- Verify the home title contains the brand once, the hero loads WebP, CSP is present, and no unconfirmed programme sessions or speakers are published.

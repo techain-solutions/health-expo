@@ -1,3 +1,16 @@
+node_modules/
+.next/
+out/
+coverage/
+
+.env
+.env.local
+.env.*.local
+!.env.example
+
 design/dist/
-.idea/*
+.idea/
 .DS_Store
+*.log
+*.tsbuildinfo
+.auth-test.local.json
