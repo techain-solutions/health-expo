@@ -97,6 +97,7 @@ export default async function LocalePage({
     text: exhibitor.description,
     websiteUrl: exhibitor.website_url,
     isFeatured: exhibitor.is_featured,
+    imageUrl: exhibitor.image_url,
   }));
 
   return (

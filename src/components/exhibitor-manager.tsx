@@ -1,7 +1,7 @@
+/* eslint-disable @next/next/no-img-element -- exhibitor images use an environment-specific Supabase Storage origin */
 "use client";
 
-import Link from "next/link";
-import type { FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 
 import { deleteExhibitorAction, saveExhibitorAction } from "@/app/admin/exhibitor-actions";
 import { MaterialIcon } from "@/components/material-icon";
@@ -13,6 +13,7 @@ export type ExhibitorRow = {
   category: string;
   description: string;
   website_url: string | null;
+  image_url: string | null;
   is_active: boolean;
   is_featured: boolean;
   display_order: number;
@@ -40,9 +41,20 @@ export function ExhibitorManager({
   selectedId?: string;
   isNew?: boolean;
 }) {
-  const selected = isNew ? undefined : items.find((item) => item.id === selectedId);
   const message = notice ? notices[notice] : undefined;
   const nextOrder = items.reduce((highest, item) => Math.max(highest, item.display_order), -1) + 1;
+  const [editingId, setEditingId] = useState<string | undefined>(isNew ? undefined : selectedId);
+  const [formOpen, setFormOpen] = useState(Boolean(isNew || selectedId));
+  const selected = items.find((item) => item.id === editingId);
+
+  useEffect(() => {
+    if (!formOpen) return;
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") setFormOpen(false);
+    }
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [formOpen]);
 
   function confirmDelete(event: FormEvent<HTMLFormElement>) {
     const name = event.currentTarget.dataset.exhibitorName ?? "this exhibitor";
@@ -60,9 +72,9 @@ export function ExhibitorManager({
         </div>
         {editable ? (
           <div className="head-actions">
-            <Link className="admin-btn admin-btn--primary" href="/admin/exhibitors?new=1">
+            <button className="admin-btn admin-btn--primary" onClick={() => { setEditingId(undefined); setFormOpen(true); }} type="button">
               <MaterialIcon name="add" /> New exhibitor
-            </Link>
+            </button>
           </div>
         ) : null}
       </div>
@@ -74,7 +86,7 @@ export function ExhibitorManager({
           {message}
         </p>
       ) : null}
-      <div className="admin-grid">
+      <div>
         <section className="table-panel">
           <table>
             <thead>
@@ -91,9 +103,10 @@ export function ExhibitorManager({
                 items.map((item) => (
                   <tr key={item.id} className={item.id === selected?.id ? "is-selected" : undefined}>
                     <td>
-                      <strong>{item.name}</strong>
-                      <br />
-                      <small>{item.slug}</small>
+                      <div className="table-identity">
+                        {item.image_url ? <img className="exhibitor-admin-thumb" src={item.image_url} alt="" /> : <span className="mini-logo">{item.name.slice(0, 1)}</span>}
+                        <span><strong>{item.name}</strong><br /><small>{item.slug}</small></span>
+                      </div>
                     </td>
                     <td>{item.category}</td>
                     <td>
@@ -105,13 +118,14 @@ export function ExhibitorManager({
                     <td>{item.display_order}</td>
                     <td>
                       <div className="row-actions">
-                        <Link
+                        <button
                           aria-label={`Edit ${item.name}`}
                           className="admin-btn admin-btn--outline"
-                          href={`/admin/exhibitors?id=${item.id}`}
+                          onClick={() => { setEditingId(item.id); setFormOpen(true); }}
+                          type="button"
                         >
                           <MaterialIcon name="edit" /> Edit
-                        </Link>
+                        </button>
                         {editable ? (
                           <form
                             action={deleteExhibitorAction}
@@ -140,14 +154,23 @@ export function ExhibitorManager({
             </tbody>
           </table>
         </section>
-        <form action={saveExhibitorAction} className="form-panel" key={selected?.id ?? (isNew ? "new" : "empty")}>
-          <h2>{selected ? `Edit ${selected.name}` : "Add exhibitor"}</h2>
+      </div>
+      {formOpen ? <div className="admin-modal-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setFormOpen(false); }}>
+        <div aria-labelledby="exhibitor-form-title" aria-modal="true" className="admin-modal" role="dialog">
+        <form action={saveExhibitorAction} className="form-panel" key={selected?.id ?? "new"}>
+          <div className="admin-modal__head"><h2 id="exhibitor-form-title">{selected ? `Edit ${selected.name}` : "Add exhibitor"}</h2><button aria-label="Close exhibitor form" className="admin-modal__close" onClick={() => setFormOpen(false)} type="button"><MaterialIcon name="close" /></button></div>
           <fieldset disabled={!editable}>
             <input name="id" type="hidden" value={selected?.id ?? ""} />
             <label className="admin-field">
               Name
               <input defaultValue={selected?.name ?? ""} maxLength={140} minLength={2} name="name" required />
             </label>
+            <label className="admin-field">
+              Exhibitor image
+              <input accept="image/jpeg,image/png,image/webp" name="image" required={!selected} type="file" />
+              <span className="helper">JPG, PNG or WebP, maximum 5 MB.{selected?.image_url ? " Leave empty to keep the current image." : ""}</span>
+            </label>
+            {selected?.image_url ? <img className="exhibitor-form-preview" src={selected.image_url} alt={`Current image for ${selected.name}`} /> : null}
             <label className="admin-field">
               Slug
               <input
@@ -203,14 +226,13 @@ export function ExhibitorManager({
               {selected ? "Save changes" : "Create exhibitor"}
             </button>
             {selected ? (
-              <Link className="admin-btn admin-btn--outline" href="/admin/exhibitors?new=1">
-                Cancel and start a new exhibitor
-              </Link>
+              <button className="admin-btn admin-btn--outline" onClick={() => setFormOpen(false)} type="button">Cancel</button>
             ) : null}
           </fieldset>
           {editable ? null : <p className="helper">Organizers have read-only access to exhibitors.</p>}
         </form>
-      </div>
+        </div>
+      </div> : null}
     </div>
   );
 }

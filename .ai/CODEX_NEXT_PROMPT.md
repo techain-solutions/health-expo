@@ -10,6 +10,7 @@ Consolidate approved supplied content and ensure the public application has a co
 
 ## Scope
 - Preserve the explicit manual-offline follow-up wording and exclude appointment booking, clinic selection, availability, scheduling, confirmation, rescheduling, decline, dashboards, chat, favorites, and algorithms.
+- Acceptance repair completed on 2026-07-31: admin-managed exhibitor images, modal exhibitor editing, embedded public PDF floor plan, and persistent authenticated admin navigation.
 
 ## Completion
-The implementation is ready for team acceptance testing. Do not begin the next feature until the team explicitly approves F-011.
+The administration CRUD and spacing repair is ready for renewed team acceptance testing. Do not begin the next feature until the team explicitly approves F-011.

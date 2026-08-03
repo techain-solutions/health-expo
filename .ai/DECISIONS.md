@@ -217,3 +217,12 @@ This log is append-only. Do not rewrite earlier records; add a superseding decis
 - Consequences: Limits survive application restarts and concurrent instances; shared networks receive more headroom; raw IP/e-mail identifiers are not stored in the throttle table. The service-role secret remains server-only and doubles as the HMAC key.
 - Supersedes: The process-local request limiter introduced during the first F-011 audit repair.
 - Superseded by:
+
+## DEC-025 - Dedicated public exhibitor-image storage
+- Status: APPROVED
+- Context: Acceptance testing requires every newly managed exhibitor to receive an image uploaded by non-technical staff and displayed on public cards and detail pages.
+- Decision: Use a dedicated public Supabase Storage bucket limited to JPG, PNG, and WebP files up to 5 MB. Store only the controlled object path and content type on the exhibitor row; perform upload, replacement, and deletion through the server-only service-role boundary.
+- Source: Client acceptance-repair request, 31 July 2026.
+- Consequences: New exhibitors require an image, existing legacy rows can be repaired through edit, public rendering uses the environment-specific Storage origin, and CSP explicitly permits that configured origin.
+- Supersedes:
+- Superseded by:

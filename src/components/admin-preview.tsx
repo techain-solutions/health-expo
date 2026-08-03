@@ -330,12 +330,14 @@ export function AdminPreview({
   accounts = [],
   status,
   notice,
+  content,
 }: {
   page: AdminPage;
   staff: StaffIdentity;
   accounts?: ManagedStaffAccount[];
   status: DashboardStatus;
   notice?: string;
+  content?: React.ReactNode;
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const allowed = [...allowedAdminPages(staff.role)];
@@ -405,11 +407,11 @@ export function AdminPreview({
           <span>{roleDescriptions[staff.role]}</span>
           <i>{staff.email}</i>
         </div>
-        {page === "team" ? (
+        {content ?? (page === "team" ? (
           <TeamPage accounts={accounts} notice={notice} />
         ) : (
           <Dashboard allowed={allowed} status={status} />
-        )}
+        ))}
       </div>
     </div>
   );

@@ -4,7 +4,7 @@
 - Project gate: `AWAITING_TEAM_TEST`
 - Active feature: `F-011 - Content Migration and Five-Language Integration`
 - Active feature status: `AWAITING_TEST`
-- Last confirmed event: F-011 audit remediation was implemented and internally verified on 2026-07-30.
+- Last confirmed event: F-011 administration CRUD and spacing repair was internally verified on 2026-07-31.
 - Current blocker: Production email delivery and deployment require approved sender/recipient values, a provider API key, and production access. Final client-owned copy/assets remain required where noted.
 - Delivery mode: Client authorized automatic progression through all remaining planned features on 2026-07-30. Codex will internally verify each feature, mark it passed under this standing approval, and continue sequentially; client performs one final end-to-end acceptance pass. Removed F-006 and F-010 remain excluded.
 
@@ -21,7 +21,7 @@
 | F-007 | Static Floor-Plan Management and Display | PASSED | F-002, F-005 PASSED | Local Storage migration/reference, safe upload validation, RBAC, public view/download, 32 tests, lint, typecheck, build, storage smoke, and schema lint passed under standing approval |
 | F-008 | Contact, Participation, and Accreditation Requests | PASSED | F-001, F-002, F-005 PASSED | Public validation, honeypot, deduplication, persistence, staff inbox/outbox and API smoke passed under standing approval; production sender/recipient remains unconfigured |
 | F-009 | Fair Match Manual Request Workflow | PASSED | F-002, F-008 PASSED | Manual-only information, validated request persistence and authorized inbox passed under standing approval |
-| F-011 | Content Migration and Five-Language Integration | AWAITING_TEST | F-005, F-007, F-008, F-009 PASSED | Five-language public experience, managed exhibitors, secure request intake/outbox, metadata, responsive RTL, and audit remediation internally verified |
+| F-011 | Content Migration and Five-Language Integration | AWAITING_TEST | F-005, F-007, F-008, F-009 PASSED | Exhibitor edit interaction, administration CRUD, and responsive spacing internally verified |
 | F-012 | SEO, Accessibility, Performance, Security Hardening | PASSED | F-011 PASSED | SEO routes, security headers, clean build and production dependency audit passed |
 | F-013 | Deployment, Domain, SSL, Launch Verification | AWAITING_EXTERNAL_DEPLOYMENT | F-012 PASSED | Vercel runbook and environment template ready; remote authority required |
 
@@ -32,7 +32,8 @@
 - Prepared one F-000 Codex task only.
 
 ## Current Work
-- F-011 is implemented and is the sole feature awaiting team acceptance testing.
+- F-011 is implemented and is the sole feature awaiting renewed team acceptance testing.
+- The 2026-07-31 acceptance repair adds a constrained public `exhibitor-images` bucket, required images for new exhibitors, modal create/edit UI, image rendering on cards/details, embedded PDF plan preview with a download endpoint, and the shared sidebar shell on every authenticated admin page.
 - Five-language public content, managed exhibitor rendering, localized metadata, secure request intake, outbox-backed notification delivery, and staff request management are implemented locally.
 - Production email delivery remains configuration-dependent; without the optional Resend variables, requests remain visible in the staff inbox and pending in the outbox.
 - No next feature has been started.
@@ -74,6 +75,8 @@
 - None. Do not start another feature until F-011 receives explicit team approval.
 
 ## Activity Log
+- 2026-07-31 - Repaired F-011 exhibitor editing: edit now selects the record and opens the popup locally instead of relying on a same-route navigation that preserved a closed dialog state. Browser verification covered exhibitor create/update/delete (with temporary data removed), event save/publish/restore, staff role/access controls, request review/delete (with temporary data removed), floor-plan storage verification, and desktop/mobile administration spacing. Lint, typecheck, 16 test files/49 tests, production build, floor-plan storage smoke, request smoke, and three-role Auth/RLS checks passed. F-011 returned to `AWAITING_TEST`; no next feature was started.
+- 2026-07-31 - Completed the requested F-011 acceptance repair on local `main`: merged the completed application branch locally, added admin-managed exhibitor images, changed exhibitor create/edit to a popup, embedded managed PDF floor plans on the public page, and kept the admin sidebar on all authenticated pages. Migration, schema lint, 48 tests, lint, typecheck, build, production audit, HTTP checks, and browser QA passed. F-011 remains `AWAITING_TEST`.
 - 2026-07-24 - NEW_PROJECT intake completed from supplied conversation, specifications, proposals, resources, and standards.
 - 2026-07-24 - Security note recorded: disclosed legacy WordPress credential must not be used and requires rotation.
 - 2026-07-24 - Project gate set to `READY_FOR_CODEX`; F-000 set to `READY`.

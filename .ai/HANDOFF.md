@@ -1,5 +1,27 @@
 # Handoff
 
+## 2026-07-31 administration CRUD and spacing repair
+
+- Fixed the exhibitor Edit control: it now selects the row and opens the modal locally. The previous same-route URL navigation could update the selected record while retaining the client dialog's closed state.
+- Added a focused regression test to prevent reverting the Edit control to same-page navigation.
+- Browser verification passed for exhibitor create/update/delete with an uploaded image; the temporary QA exhibitor and its Storage object were deleted afterwards. Event save, draft/publish/restore, request review/delete with a temporary request removed afterwards, and staff role/access updates were also exercised. The original event and staff states were restored.
+- Floor-plan storage verification passed through `npm run floor-plan:test:local`. At 1440 px, the administration page uses the approved 30 px outer padding and 25 px heading separation; at 390 px it correctly changes to 18 px/12 px spacing and scrolls wide tables within their panel.
+- Verification passed: `npm run lint`; `npm run typecheck`; `npm test` (16 files, 49 tests); `npm run build`; `npm run floor-plan:test:local`; `npm run requests:test:local`; and `npm run staff:test:local`.
+- No database migration or environment-variable change was made. F-011 is `AWAITING_TEST`; no next feature was started.
+
+## 2026-07-31 exhibitor, floor-plan, and admin-shell acceptance repair
+
+- Working branch is local `main`. The completed application branch was merged locally because remote `main` still contained only the earlier prototype baseline. No push was performed.
+- Migration `20260731164521_exhibitor_images.sql` creates the public `exhibitor-images` bucket (JPG/PNG/WebP, 5 MB) and adds paired image metadata to exhibitors.
+- New exhibitors require an image. Existing exhibitors without one retain the initial fallback until edited. Image files are removed when their exhibitor is deleted.
+- The exhibitor form is no longer rendered beside the table. “New exhibitor” opens an accessible dialog-style popup; edit URLs open the same popup with the current record and image.
+- Managed exhibitor images render in the admin table, public cards, featured cards, and exhibitor detail page.
+- Managed PDF floor plans render inline at a responsive height. `/api/floor-plan/download` returns the current plan as an attachment; image plans retain the large-preview action.
+- Every authenticated admin business page now renders inside the shared administration shell, keeping sidebar, topbar, role context, and sign-out visible on desktop.
+- CSP now permits the environment-specific Supabase origin for public images and embedded PDF frames.
+- Verification passed: migration-up, database lint, lint, typecheck, 15 test files/48 tests, production build, production dependency audit (0 vulnerabilities), whitespace check, download HTTP headers, browser popup/sidebar/PDF checks, real local image create/render/delete, and Storage cleanup.
+- The pre-existing local audit document and generated `next-env.d.ts` change were preserved in `stash@{0}` named `preserve-local-audit-before-main-switch` before switching branches.
+
 ## 2026-07-30 F-011 counter-audit repair
 
 - Corrected the destructive row-action cascade. Delete buttons in both `/admin/exhibitors` and `/admin/requests` now retain red/white contrast and content-sized dimensions.

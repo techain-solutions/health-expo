@@ -2,7 +2,7 @@
 
 ## Planning Rules
 - Only one feature may be `READY`, `IN_PROGRESS`, `AWAITING_TEST`, `FAILED`, or `IN_REPAIR`.
-- Current active feature: `F-011` awaiting team acceptance.
+- Current active feature: `F-011` awaiting renewed team acceptance.
 - Audit remediation is limited to F-011 until it is ready for team testing.
 - Feature order follows dependency and risk, not the commercial milestone wording.
 
@@ -19,7 +19,7 @@
 | F-007 | Static floor-plan management and display | PLANNED | F-002, F-005 PASSED | FR-019 |
 | F-008 | Contact, participation, and accreditation requests | PLANNED | F-001, F-002, F-005 PASSED | FR-009, SEC-005, SEC-007, PRIV-001 |
 | F-009 | Fair Match information and request form | PLANNED | F-002, F-008 PASSED | FR-007, FR-008 |
-| F-011 | Content migration and five-language integration | AWAITING_TEST | F-005, F-007, F-008, F-009 PASSED | Five locale routes, managed content, RTL, forms, metadata, and audit remediation internally verified |
+| F-011 | Content migration and five-language integration | AWAITING_TEST | F-005, F-007, F-008, F-009 PASSED | Exhibitor edit interaction, administration CRUD, and responsive spacing internally verified |
 | F-012 | SEO, accessibility, performance, and security hardening | PASSED | F-011 PASSED | SEO routes, security headers, lint/typecheck/build and production dependency audit passed |
 | F-013 | Deployment, domain, SSL, and launch verification | AWAITING_EXTERNAL_DEPLOYMENT | F-012 PASSED | Vercel-ready build and remote environment runbook complete; remote authority is required |
 

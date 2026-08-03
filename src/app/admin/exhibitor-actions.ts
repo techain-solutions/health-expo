@@ -5,6 +5,7 @@ import { forbidden, redirect } from "next/navigation";
 
 import { getStaffAuthState } from "@/lib/auth/dal";
 import { parseExhibitorInput } from "@/lib/exhibitors/input";
+import { validateExhibitorImage } from "@/lib/exhibitors/image";
 import { deleteExhibitor, saveExhibitor } from "@/lib/exhibitors/service";
 
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -27,8 +28,12 @@ export async function saveExhibitorAction(formData: FormData) {
   const id = typeof rawId === "string" && uuid.test(rawId) ? rawId : undefined;
   const input = parseExhibitorInput(Object.fromEntries(formData));
   if (!input) redirect(`/admin/exhibitors?notice=error${id ? `&id=${id}` : "&new=1"}`);
+  const rawImage = formData.get("image");
+  const image = rawImage instanceof File && rawImage.size > 0 ? rawImage : undefined;
+  if (!id && !image) redirect("/admin/exhibitors?notice=error&new=1");
   try {
-    await saveExhibitor(input, id);
+    if (image) validateExhibitorImage(image);
+    await saveExhibitor(input, id, image);
   } catch {
     redirect(`/admin/exhibitors?notice=${id ? "error" : "duplicate"}${id ? `&id=${id}` : "&new=1"}`);
   }

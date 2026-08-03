@@ -4,6 +4,13 @@ const scriptSource =
   process.env.NODE_ENV === "development"
     ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
     : "script-src 'self' 'unsafe-inline'";
+const supabaseOrigin = (() => {
+  try {
+    return process.env.NEXT_PUBLIC_SUPABASE_URL ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).origin : "";
+  } catch {
+    return "";
+  }
+})();
 
 const nextConfig: NextConfig = {
   experimental: {
@@ -28,7 +35,8 @@ const nextConfig: NextConfig = {
             scriptSource,
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "font-src 'self' https://fonts.gstatic.com",
-            "img-src 'self' data: blob: https:",
+            `img-src 'self' data: blob: https: ${supabaseOrigin}`.trim(),
+            `frame-src 'self' ${supabaseOrigin}`.trim(),
             "connect-src 'self' http: https: ws: wss:",
           ].join("; "),
         },

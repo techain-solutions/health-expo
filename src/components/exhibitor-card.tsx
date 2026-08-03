@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element -- exhibitor images use an environment-specific Supabase Storage origin */
 import Link from "next/link";
 
 import { MaterialIcon } from "@/components/material-icon";
@@ -14,6 +15,7 @@ export type PublicExhibitor = {
   text: string;
   websiteUrl: string | null;
   isFeatured: boolean;
+  imageUrl?: string | null;
 };
 
 export function ExhibitorCard({ locale, exhibitor }: { locale: Locale; exhibitor: PublicExhibitor }) {
@@ -21,9 +23,7 @@ export function ExhibitorCard({ locale, exhibitor }: { locale: Locale; exhibitor
   return (
     <article className="exhibitor-card" data-category={exhibitor.category.toLowerCase()}>
       <div className="exhibitor-card__visual">
-        <span className={`fake-logo${exhibitor.style ? ` fake-logo--${exhibitor.style}` : ""}`}>
-          {exhibitor.letter}
-        </span>
+        {exhibitor.imageUrl ? <img src={exhibitor.imageUrl} alt={`${exhibitor.name} exhibitor`} /> : <span className={`fake-logo${exhibitor.style ? ` fake-logo--${exhibitor.style}` : ""}`}>{exhibitor.letter}</span>}
       </div>
       <div className="exhibitor-card__body">
         <small>{exhibitor.category}</small>

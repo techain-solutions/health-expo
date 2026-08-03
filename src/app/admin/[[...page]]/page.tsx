@@ -1,4 +1,5 @@
 import { forbidden, notFound, redirect } from "next/navigation";
+import type { ReactNode } from "react";
 
 import { AdminPreview } from "@/components/admin-preview";
 import { EventManager } from "@/components/event-manager";
@@ -51,10 +52,26 @@ export default async function AdminPage({
 
   const query = await searchParams;
   const canEdit = staff.role !== "organizer";
+  const [newRequests, eventStatus, activeExhibitors, floorPlanStatus] = await Promise.all([
+    canAccessAdminPage(staff.role, "requests") ? countNewRequests().catch(() => 0) : Promise.resolve(0),
+    getEvent().catch(() => null),
+    listExhibitors(true).catch(() => []),
+    getFloorPlan().catch(() => null),
+  ]);
+  const status = {
+    newRequests,
+    ticketUrlSet: Boolean(eventStatus?.ticket_url),
+    floorPlanPublished: Boolean(floorPlanStatus),
+    eventPublished: eventStatus?.publication_status === "published",
+    exhibitorCount: activeExhibitors?.length ?? 0,
+  };
+  const shell = (content: ReactNode) => (
+    <AdminPreview content={content} page={requestedPage} staff={staff} status={status} />
+  );
 
   if (requestedPage === "event") {
     const event = await getEvent();
-    return (
+    return shell(
       <EventManager
         canEdit={canEdit}
         canPublish={staff.role === "administrator"}
@@ -66,7 +83,7 @@ export default async function AdminPage({
 
   if (requestedPage === "exhibitors") {
     const items = await listExhibitors();
-    return (
+    return shell(
       <ExhibitorManager
         editable={canEdit}
         isNew={query.new === "1"}
@@ -79,7 +96,7 @@ export default async function AdminPage({
 
   if (requestedPage === "floor-plan") {
     const asset = await getFloorPlan();
-    return <FloorPlanManager asset={asset} editable={canEdit} notice={query.notice} />;
+    return shell(<FloorPlanManager asset={asset} editable={canEdit} notice={query.notice} />);
   }
 
   if (requestedPage === "requests") {
@@ -90,7 +107,7 @@ export default async function AdminPage({
     const requestedIndex = Number.parseInt(query.page ?? "1", 10);
     const pageIndex = Number.isFinite(requestedIndex) && requestedIndex > 0 ? requestedIndex : 1;
     const { items, total } = await listPublicRequests({ page: pageIndex, status, type });
-    return (
+    return shell(
       <RequestManager
         canDelete={staff.role === "administrator"}
         items={items}
@@ -103,13 +120,7 @@ export default async function AdminPage({
     );
   }
 
-  const [accounts, newRequests, event, exhibitors, floorPlan] = await Promise.all([
-    requestedPage === "team" ? listManagedStaffAccounts() : Promise.resolve([]),
-    canAccessAdminPage(staff.role, "requests") ? countNewRequests().catch(() => 0) : Promise.resolve(0),
-    getEvent().catch(() => null),
-    listExhibitors(true).catch(() => []),
-    getFloorPlan().catch(() => null),
-  ]);
+  const accounts = requestedPage === "team" ? await listManagedStaffAccounts() : [];
 
   return (
     <AdminPreview
@@ -117,13 +128,7 @@ export default async function AdminPage({
       notice={query.notice}
       page={requestedPage}
       staff={staff}
-      status={{
-        newRequests,
-        ticketUrlSet: Boolean(event?.ticket_url),
-        floorPlanPublished: Boolean(floorPlan),
-        eventPublished: event?.publication_status === "published",
-        exhibitorCount: exhibitors?.length ?? 0,
-      }}
+      status={status}
     />
   );
 }
