@@ -478,8 +478,8 @@ footer { padding: 78px 0 23px; color: rgba(255,255,255,.65); background: var(--n
 }
 
 .home-main .hero-backdrop { animation: home-hero-drift 18s ease-in-out infinite alternate; }
-body[dir="rtl"] .hero-backdrop { transform: scaleX(-1); }
-body[dir="rtl"] .home-main .hero-backdrop { animation-name: home-hero-drift-rtl; }
+.hero--cinematic--rtl .hero-backdrop { transform: scaleX(-1); }
+.home-main .hero--cinematic--rtl .hero-backdrop { animation-name: home-hero-drift-rtl; }
 .home-main .hero-copy > *, .home-main .sector-bar > * { animation: home-rise 1.45s both cubic-bezier(.2,.75,.25,1); }
 .home-main .hero-copy > :nth-child(1) { animation-delay: .2s; }
 .home-main .hero-copy > :nth-child(2) { animation-delay: .48s; }

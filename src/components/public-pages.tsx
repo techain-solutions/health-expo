@@ -319,7 +319,7 @@ function HomePage({
 
   return (
     <>
-      <section className="hero hero--cinematic">
+      <section className={`hero hero--cinematic${locale === "ar" ? " hero--cinematic--rtl" : ""}`}>
         <div
           className="hero-backdrop"
           role="img"
