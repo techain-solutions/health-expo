@@ -10,6 +10,7 @@ import { ExclusiveAccordion } from "@/components/exclusive-accordion";
 import { MaterialIcon } from "@/components/material-icon";
 import { StaticForm } from "@/components/static-form";
 import { getDictionary } from "@/lib/i18n";
+import { localizeExhibitor } from "@/lib/exhibitors/localize";
 import {
   pageHref,
   shellCopy,
@@ -103,6 +104,10 @@ export const exhibitors: PublicExhibitor[] = [
     isFeatured: false,
   },
 ];
+
+function getLocalizedExhibitors(locale: Locale, managedExhibitors?: PublicExhibitor[]) {
+  return (managedExhibitors ?? exhibitors).map((exhibitor) => localizeExhibitor(exhibitor, locale));
+}
 
 function formatEventDates(event: PublishedEvent, locale: Locale) {
   const start = new Date(`${event.starts_on}T00:00:00Z`);
@@ -420,11 +425,11 @@ function HomePage({
             </Link>
           </div>
           <div className="exhibitor-grid">
-            {(managedExhibitors ?? exhibitors).filter((exhibitor) => exhibitor.isFeatured).slice(0, 3).map((exhibitor) => (
+            {getLocalizedExhibitors(locale, managedExhibitors).filter((exhibitor) => exhibitor.isFeatured).slice(0, 3).map((exhibitor) => (
               <ExhibitorCard exhibitor={exhibitor} key={exhibitor.name} locale={locale} />
             ))}
           </div>
-          {(managedExhibitors ?? exhibitors).some((exhibitor) => exhibitor.isFeatured) ? null : <p className="demo-note">{pageCopy.featured.empty}</p>}
+          {getLocalizedExhibitors(locale, managedExhibitors).some((exhibitor) => exhibitor.isFeatured) ? null : <p className="demo-note">{pageCopy.featured.empty}</p>}
         </div>
       </section>
       <section className="section">
@@ -499,7 +504,7 @@ function AboutPage({ locale }: PageProps) {
 
 function ExhibitorsPage({ locale, managedExhibitors, sector }: PageProps & { managedExhibitors?: PublicExhibitor[] }) {
   const copy = getDictionary(locale).exhibitors;
-  const directory = managedExhibitors ?? exhibitors;
+  const directory = getLocalizedExhibitors(locale, managedExhibitors);
   const sectorLabels = getDictionary(locale).home.sectors;
   const sectorIndex = ["health", "beauty", "wellness", "medical-tourism"].indexOf(sector ?? "");
   return (
@@ -523,7 +528,7 @@ function ProgramPage({ locale }: PageProps) {
 
 function ExhibitorDetailPage({ locale, detail, managedExhibitors }: PageProps & { managedExhibitors?: PublicExhibitor[] }) {
   const copy = getDictionary(locale);
-  const directory = managedExhibitors ?? exhibitors;
+  const directory = getLocalizedExhibitors(locale, managedExhibitors);
   const matched = directory.find((item) => item.slug === detail);
   const aboutTitleWords = copy.exhibitorDetail.about.title.split(" ");
   const aboutTitleEnding = aboutTitleWords.splice(-2).join(" ");
@@ -582,7 +587,7 @@ function FloorPlanPage({ locale, floorPlan }: PageProps & { floorPlan?: PublicFl
 
 function FairMatchPage({ locale, managedExhibitors }: PageProps & { managedExhibitors?: PublicExhibitor[] }) {
   const copy = getDictionary(locale).fairMatch;
-  const directory = managedExhibitors ?? exhibitors;
+  const directory = getLocalizedExhibitors(locale, managedExhibitors);
   return (
     <>
       <PageHero locale={locale} title={copy.title} subtitle={copy.subtitle} description={copy.description}>

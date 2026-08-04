@@ -12,6 +12,7 @@ export type PublicExhibitor = {
   name: string;
   slug: string;
   category: string;
+  filterCategory?: string;
   text: string;
   websiteUrl: string | null;
   isFeatured: boolean;

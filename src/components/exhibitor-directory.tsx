@@ -61,7 +61,7 @@ export function ExhibitorDirectory({
     const normalized = query.trim().toLocaleLowerCase(locale);
     return exhibitors.filter(
       (item) =>
-        (!selectedSector || matchesSector(item.category, selectedSector)) &&
+        (!selectedSector || matchesSector(item.filterCategory ?? item.category, selectedSector)) &&
         (!category || item.category === category) &&
         (!normalized ||
           `${item.name} ${item.category} ${item.text}`.toLocaleLowerCase(locale).includes(normalized)),
