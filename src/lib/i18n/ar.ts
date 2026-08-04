@@ -1,13 +1,5 @@
 import type { Dictionary } from "./en";
 import { en } from "./en";
-
-/*
- * The Arabic public copy is intentionally explicit at the shell and page
- * boundaries. Remaining operational/legal detail inherits the reviewed
- * English source until client/legal Arabic wording is supplied; those pages
- * display their legal-review notice and are not represented as certified
- * translations.
- */
 export const ar: Dictionary = {
   ...en,
   shell: {
@@ -167,7 +159,7 @@ export const ar: Dictionary = {
   about: {
     ...en.about,
     title: "حيث تنمو الصحة والجمال معاً.",
-    description: "منصة مهنية دولية للاكتشاف وإبراز العلامات والخبرات المتخصصة وبناء العلاقات.",
+    description: "منصة دولية مهنية تجمع الاكتشاف وإبراز العلامات والخبرة المتخصصة والعلاقات الهادفة في الصحة والجمال والعافية.",
     metaTitle: "عن المعرض",
     heroImageAlt: "زوار في معرض الصحة والجمال",
     primaryCta: "زر المعرض",
@@ -204,7 +196,7 @@ export const ar: Dictionary = {
   exhibitors: {
     ...en.exhibitors,
     title: "تعرّف إلى العارضين.",
-    description: "استكشف العيادات ومجموعات الرعاية ومبتكري الجمال وخبراء العافية المشاركين في رايسفايك 2026.",
+    description: "استكشف العيادات ومؤسسات الرعاية ومبتكري الجمال وخبراء العافية والموردين والشركاء الذين يشكلون رايسفايك 2026.",
     metaTitle: "العارضون",
     searchLabel: "البحث عن عارضين",
     searchPlaceholder: "ابحث عن عارض…",
@@ -231,11 +223,11 @@ export const ar: Dictionary = {
   program: {
     ...en.program,
     title: "البرنامج والمتحدثون.",
-    description: "محاضرات وعروض وجلسات متخصصة خلال يومي المعرض. يُعلن البرنامج الكامل قبل الفعالية.",
+    description: "محاضرات وعروض حية وجلسات يقودها خبراء خلال يومي المعرض، بأفكار عملية ونقاشات من قطاع الصحة والجمال.\nيُعلن البرنامج الكامل قبل الفعالية.",
     metaTitle: "البرنامج",
     pending: {
       title: "يجري استكمال برنامج 2026.",
-      text: "يتم تأكيد المتحدثين والموضوعات والمواعيد مع شركائنا ونشرها هنا فور اعتمادها.",
+      text: "يتم تأكيد المتحدثين والموضوعات ومواعيد الجلسات مع شركائنا ونشرها هنا فور اعتمادها.\nسجّل عبر نموذج التواصل لتصلك التحديثات.",
       cta: "اطلب إشعاراً",
     },
     structure: {
@@ -258,7 +250,7 @@ export const ar: Dictionary = {
     metaTitle: "التذاكر",
     openTickets: "احصل على تذكرتك",
     ticketsPending: "ستفتح مبيعات التذاكر قريباً. تواصل معنا ليصلك إشعار.",
-    details: { ...en.tickets.details, kicker: "تفاصيل الفعالية", title: "يومان من الاكتشاف الدولي.", dates: "التواريخ", hours: "ساعات الافتتاح", venue: "المكان", format: "النوع" },
+    details: { ...en.tickets.details, kicker: "تفاصيل الفعالية", title: "يومان من الاكتشاف الدولي.", dates: "التواريخ", hours: "ساعات الافتتاح", venue: "المكان", format: "النوع", formatFallback: "معرض عام، وتواصل مهني، واكتشافات حية" },
     visit: {
       kicker: "زيارتك",
       title: "كل شيء مصمم ليوم واضح وممتع.",
@@ -319,14 +311,15 @@ export const ar: Dictionary = {
   },
   fairMatch: {
     ...en.fairMatch,
-    title: "Fair Match — اطلب تعارفاً.",
-    description: "أخبرنا بما تبحث عنه وسيرتب فريقنا تعارفاً شخصياً مع أحد العارضين.",
+    title: "Fair Match",
+    subtitle: "اطلب تعارفاً شخصياً.",
+    description: "أخبرنا بما تبحث عنه، وسينسق فريقنا تعارفاً شخصياً مع عارض مشارك تتوافق خبرته مع أولوياتك.",
     metaTitle: "Fair Match",
     heroCta: "انتقل إلى نموذج الطلب",
     how: {
       kicker: "كيف تعمل",
       title: "طلب واضح وشخصي.",
-      text: "يقرأ كل طلب شخص من فريق التنظيم. لا توجد مطابقة آلية أو حجز تلقائي.",
+      text: "يقرأ كل طلب ويتابعه أحد أعضاء فريق التنظيم.\nلا توجد مطابقة أو حجوزات آلية.",
       cards: [
         { title: "اشرح طلبك", text: "شارك نوع التواصل أو المعلومات التي تبحث عنها." },
         { title: "أرسله إلى الفريق", text: "تصل بياناتك مباشرة إلى فريق التنظيم." },
@@ -440,7 +433,12 @@ export const ar: Dictionary = {
       text: "الدليل والاتفاقية هما المرجع الملزم للمشاركة.",
       sourceLabel: "مستند PDF",
       open: "فتح PDF",
-      items: en.participantInfo.documents.items,
+      items: [
+        { title: "دليل المشارك 2026 (NL)", href: "/downloads/participant-manual-2026.pdf" },
+        { title: "دليل العارض (EN)", href: "/downloads/participant-manual-2026-en.pdf" },
+        { title: "اتفاقية العارض (NL)", href: "/downloads/exhibitor-agreement-nl.pdf" },
+        { title: "قائمة أسعار الأجنحة 2026", href: "/downloads/stand-pricing-2026.pdf" },
+      ],
     },
     topics: {
       kicker: "موضوعات متكررة",
@@ -455,7 +453,7 @@ export const ar: Dictionary = {
   },
   media: {
     title: "الإعلام والصحافة وصناع المحتوى.",
-    description: "اعتماد للمهنيين الذين ينتجون تغطية أصلية للصحة والجمال والعافية والابتكار.",
+    description: "اعتماد للمهنيين الذين يقدمون تغطية أصلية للصحة والجمال والعافية والابتكار، برؤية واضحة للأشخاص والأفكار التي تشكل القطاع.",
     metaTitle: "الإعلام",
     heroCta: "انتقل إلى نموذج الاعتماد",
     accreditation: {

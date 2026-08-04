@@ -92,7 +92,7 @@ export const tr: Dictionary = {
   home: {
     title: "Health & Beauty Expo Rijswijk 2026",
     description:
-      "Sağlık hizmetleri, güzellik inovasyonu, bütünsel iyi yaşam ve uluslararası sağlık turizmi profesyonellerini Rijswijk'teki De Broodfabriek'te buluşturan iki gün.",
+      "Rijswijk'teki De Broodfabriek'te sağlık profesyonellerini, güzellik yenilikçilerini, wellness uzmanlarını ve uluslararası sağlık turizmi temsilcilerini bir araya getiren iki ilham verici fuar günü.",
     heroImageAlt: "Uluslararası bir sağlık ve güzellik fuarında buluşan profesyoneller",
     exploreSuffix: "fuarı",
     sectors: ["Sağlık", "Güzellik", "İyi yaşam", "Sağlık turizmi"],
@@ -189,7 +189,7 @@ export const tr: Dictionary = {
   about: {
     title: "Sağlık ve güzelliğin birlikte büyüdüğü yer.",
     description:
-      "Keşif, marka görünürlüğü, uzmanlık ve anlamlı bağlantılar için profesyonel bir uluslararası sahne.",
+      "Sağlık, güzellik ve wellness alanında keşif, marka görünürlüğü, uzmanlık ve anlamlı bağlantılar için profesyonel, uluslararası bir buluşma noktası.",
     metaTitle: "Fuar hakkında",
     heroImageAlt: "Health and Beauty Expo ziyaretçileri",
     primaryCta: "Fuarı ziyaret et",
@@ -232,7 +232,7 @@ export const tr: Dictionary = {
   exhibitors: {
     title: "Katılımcılarla tanışın.",
     description:
-      "Rijswijk 2026'ya katılan klinikleri, sağlık gruplarını, güzellik yenilikçilerini, iyi yaşam uzmanlarını ve iş ortaklarını keşfedin.",
+      "Rijswijk 2026'ya yön veren klinikleri, sağlık kuruluşlarını, güzellik yenilikçilerini, wellness uzmanlarını, tedarikçileri ve iş ortaklarını keşfedin.",
     metaTitle: "Katılımcılar",
     searchLabel: "Katılımcı ara",
     searchPlaceholder: "Katılımcı ara…",
@@ -267,11 +267,11 @@ export const tr: Dictionary = {
   program: {
     title: "Program ve konuşmacılar.",
     description:
-      "İki fuar günü boyunca konuşmalar, canlı uygulamalar ve uzman oturumları. Tam program etkinlikten önce duyurulur.",
+      "Her iki fuar gününde pratik içgörüler, yeni fikirler ve sağlık-güzellik sektöründen sohbetler sunan konuşmalar, canlı uygulamalar ve uzman oturumları.\nProgramın tamamı etkinlikten önce açıklanacaktır.",
     metaTitle: "Program",
     pending: {
       title: "2026 programı tamamlanıyor.",
-      text: "Konuşmacılar, konular ve oturum saatleri iş ortaklarımızla netleştiriliyor ve kesinleştiği anda burada yayınlanıyor. Bilgilendirilmek için iletişim formunu kullanın.",
+      text: "Konuşmacılar, konular ve oturum saatleri iş ortaklarımızla kesinleştiriliyor ve onaylanır onaylanmaz burada yayımlanıyor.\nBilgilendirilmek için iletişim formu üzerinden kaydolun.",
       cta: "Bana haber verin",
     },
     structure: {
@@ -385,13 +385,13 @@ export const tr: Dictionary = {
     title: "Fair Match",
     subtitle: "Tanıştırma talep edin.",
     description:
-      "Ne aradığınızı bize anlatın; ekibimiz katılımcı bir firmayla kişisel tanıştırma ayarlar.",
+      "Ne aradığınızı anlatın; ekibimiz önceliklerinize en uygun uzmanlığa sahip katılımcıyla kişisel bir tanıştırma ayarlasın.",
     metaTitle: "Fair Match",
     heroCta: "Talep formuna git",
     how: {
       kicker: "NASIL ÇALIŞIR",
       title: "Net ve kişisel bir talep.",
-      text: "Her talep organizasyon ekibindeki bir kişi tarafından okunur ve ele alınır. Otomatik eşleştirme veya rezervasyon yoktur.",
+      text: "Her talep, organizasyon ekibinden bir kişi tarafından dikkatle okunur ve değerlendirilir.\nOtomatik eşleştirme veya rezervasyon yapılmaz.",
       cards: [
         { title: "Talebinizi anlatın", text: "Aradığınız bağlantıyı veya bilgiyi paylaşın." },
         { title: "Ekibe gönderin", text: "Bilgileriniz doğrudan organizasyon ekibine ulaşır." },
@@ -551,7 +551,7 @@ export const tr: Dictionary = {
   media: {
     title: "Medya, basın ve influencer'lar.",
     description:
-      "Sağlık, güzellik, iyi yaşam ve inovasyon alanında özgün içerik üreten profesyoneller için akreditasyon.",
+      "Sağlık, güzellik, wellness ve inovasyon alanlarında özgün içerik üreten profesyoneller için; sektörü şekillendiren insanlara ve fikirlere odaklanan akreditasyon.",
     metaTitle: "Medya",
     heroCta: "Akreditasyon formuna git",
     accreditation: {

@@ -92,7 +92,7 @@ export const nl: Dictionary = {
   home: {
     title: "Health & Beauty Expo Rijswijk 2026",
     description:
-      "Twee dagen waarin zorg, beauty-innovatie, holistische wellness en internationaal medisch toerisme samenkomen in De Broodfabriek in Rijswijk.",
+      "Twee inspirerende beursdagen in Rijswijk waar zorgprofessionals, beauty-innovatoren, wellness-experts en specialisten in medisch toerisme elkaar ontmoeten.",
     heroImageAlt: "Professionals ontmoeten elkaar op een internationale gezondheids- en beautybeurs",
     exploreSuffix: "de beurs",
     sectors: ["Gezondheid", "Beauty", "Wellness", "Medisch toerisme"],
@@ -189,7 +189,7 @@ export const nl: Dictionary = {
   about: {
     title: "Waar gezondheid & beauty samen groeien.",
     description:
-      "Een professioneel internationaal podium voor ontdekking, merkzichtbaarheid, specialistische kennis en waardevolle contacten.",
+      "Een professioneel internationaal podium voor ontdekking, merkzichtbaarheid, vakkennis en waardevolle verbindingen in gezondheid, beauty en wellness.",
     metaTitle: "Over de beurs",
     heroImageAlt: "Bezoekers op de Health and Beauty Expo",
     primaryCta: "Bezoek de beurs",
@@ -233,7 +233,7 @@ export const nl: Dictionary = {
   exhibitors: {
     title: "Ontmoet de exposanten.",
     description:
-      "Verken de klinieken, zorggroepen, beauty-innovators, wellness-experts en partners die naar Rijswijk 2026 komen.",
+      "Ontdek de klinieken, zorgorganisaties, beauty-innovatoren, wellness-experts, gespecialiseerde leveranciers en partners die Rijswijk 2026 vormgeven.",
     metaTitle: "Exposanten",
     searchLabel: "Zoek exposanten",
     searchPlaceholder: "Zoek exposanten…",
@@ -268,11 +268,11 @@ export const nl: Dictionary = {
   program: {
     title: "Programma & sprekers.",
     description:
-      "Lezingen, demonstraties en expertsessies op beide beursdagen. Het volledige programma wordt voor het evenement bekendgemaakt.",
+      "Lezingen, live demonstraties en sessies met experts op beide beursdagen, met praktische inzichten en actuele ideeën uit de gezondheids- en beautysector.\nHet volledige programma wordt vóór het evenement bekendgemaakt.",
     metaTitle: "Programma",
     pending: {
       title: "Het programma van 2026 wordt afgerond.",
-      text: "Sprekers, onderwerpen en tijden worden met onze partners vastgelegd en hier gepubliceerd zodra ze definitief zijn. Laat via het contactformulier weten dat je bericht wilt ontvangen.",
+      text: "Sprekers, onderwerpen en sessietijden worden met onze partners bevestigd en hier gepubliceerd zodra alles definitief is.\nMeld je via het contactformulier aan om een bericht te ontvangen.",
       cta: "Houd mij op de hoogte",
     },
     structure: {
@@ -391,13 +391,13 @@ export const nl: Dictionary = {
     title: "Fair Match",
     subtitle: "Vraag een introductie aan.",
     description:
-      "Vertel ons wat je zoekt en ons team regelt een persoonlijke introductie met een deelnemende exposant.",
+      "Vertel wat je zoekt; ons team regelt een persoonlijke introductie met een deelnemende exposant die goed aansluit bij je vraag.",
     metaTitle: "Fair Match",
     heroCta: "Naar het aanvraagformulier",
     how: {
       kicker: "ZO WERKT HET",
       title: "Een duidelijke, persoonlijke aanvraag.",
-      text: "Elke aanvraag wordt door een medewerker van het organisatieteam gelezen en behandeld. Er is geen geautomatiseerde matching of boeking.",
+      text: "Elke aanvraag wordt persoonlijk gelezen en behandeld door iemand uit het organisatieteam.\nEr is geen geautomatiseerde matching of boeking.",
       cards: [
         { title: "Leg je vraag uit", text: "Vertel welk contact of welke informatie je zoekt." },
         { title: "Stuur het naar het team", text: "Je gegevens komen direct bij het organisatieteam terecht." },
@@ -557,7 +557,7 @@ export const nl: Dictionary = {
   media: {
     title: "Media, pers & influencers.",
     description:
-      "Accreditatie voor professionals die originele content maken over zorg, beauty, wellness en innovatie.",
+      "Accreditatie voor professionals die originele content maken over zorg, beauty, wellness en innovatie, met oog voor de mensen en ideeën die de sector vormen.",
     metaTitle: "Media",
     heroCta: "Naar het accreditatieformulier",
     accreditation: {
