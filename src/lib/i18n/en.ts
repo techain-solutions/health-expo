@@ -97,8 +97,6 @@ export const en = {
     description:
       "Two days connecting healthcare, beauty innovation, holistic wellness and international medical tourism professionals at De Broodfabriek in Rijswijk.",
     heroImageAlt: "Professionals meeting at an international health and beauty expo",
-    slideNoteTitle: "International perspective",
-    slideNoteText: "Health · Beauty · Wellness",
     exploreSuffix: "the expo",
     sectors: ["Health", "Beauty", "Wellness", "Medical tourism"],
     experience: {
@@ -126,11 +124,11 @@ export const en = {
     ambition: {
       kicker: "FOR EVERY AMBITION",
       title: "One international meeting point. Many ways to take part.",
-      text: "Whether visiting, exhibiting, seeking a professional introduction or reporting on the sector.",
+      text: "For visitors, exhibitors and media across the health and beauty sector.",
       cards: [
         {
           title: "Visit the expo",
-          text: "Discover emerging treatments, products, knowledge and expert advice.",
+          text: "Explore treatments, products and expert advice.",
           link: "Plan your day",
         },
         {
@@ -140,7 +138,7 @@ export const en = {
         },
         {
           title: "Use Fair Match",
-          text: "Tell our team what you are looking for and request an introduction.",
+          text: "Request a tailored introduction from our team.",
           link: "Make a request",
         },
         {
@@ -194,7 +192,7 @@ export const en = {
   about: {
     title: "Where health & beauty grow together.",
     description:
-      "A professional international stage for discovery, brand visibility, specialist expertise and meaningful connections.",
+      "A professional international stage for discovery, brand visibility, specialist expertise and meaningful connections across health, beauty and wellness.",
     metaTitle: "About the expo",
     heroImageAlt: "Visitors at the Health and Beauty Expo",
     primaryCta: "Visit the expo",
@@ -238,7 +236,7 @@ export const en = {
   exhibitors: {
     title: "Meet the exhibitors.",
     description:
-      "Explore the clinics, healthcare groups, beauty innovators, wellness experts and partners joining Rijswijk 2026.",
+      "Explore the clinics, healthcare groups, beauty innovators, wellness experts, specialist suppliers and industry partners shaping Rijswijk 2026.",
     metaTitle: "Exhibitors",
     searchLabel: "Search exhibitors",
     searchPlaceholder: "Search exhibitors…",
@@ -273,11 +271,11 @@ export const en = {
   program: {
     title: "Programme & speakers.",
     description:
-      "Talks, demonstrations and expert sessions across both expo days. The full programme is announced ahead of the event.",
+      "Talks, live demonstrations and expert-led sessions across both expo days, with practical insight, fresh ideas and conversations from across the health and beauty sector.\nThe full programme is announced ahead of the event.",
     metaTitle: "Programme",
     pending: {
       title: "The 2026 programme is being finalised.",
-      text: "Speakers, topics and session times are confirmed with our partners and published here as soon as they are final. Subscribe through the contact form to be notified.",
+      text: "Speakers, topics and session times are confirmed with our partners and published here as soon as they are final.\nSubscribe through the contact form to be notified.",
       cta: "Ask to be notified",
     },
     structure: {
@@ -393,15 +391,16 @@ export const en = {
   },
 
   fairMatch: {
-    title: "Fair Match—request an introduction.",
+    title: "Fair Match",
+    subtitle: "Request an introduction.",
     description:
-      "Tell us what you are looking for and our team arranges a personal introduction with a participating exhibitor.",
+      "Tell us what you are looking for and our team arranges a personal introduction with a participating exhibitor whose expertise best matches your priorities.",
     metaTitle: "Fair Match",
     heroCta: "Go to the request form",
     how: {
       kicker: "HOW IT WORKS",
       title: "A clear, personal request.",
-      text: "Every request is read and handled by a person on the organizing team. There is no automated matching or booking.",
+      text: "Every request is read and handled by a person on the organizing team.\nThere is no automated matching or booking.",
       cards: [
         { title: "Explain your request", text: "Share the kind of connection or information you are looking for." },
         { title: "Send it to the team", text: "Your details reach the organizing team directly." },
@@ -561,7 +560,7 @@ export const en = {
   media: {
     title: "Media, press & influencers.",
     description:
-      "Accreditation for professionals producing original coverage of healthcare, beauty, wellness and innovation.",
+      "Accreditation for professionals producing original coverage of healthcare, beauty, wellness and innovation, with a perspective on the people and ideas shaping the sector.",
     metaTitle: "Media",
     heroCta: "Go to the accreditation form",
     accreditation: {

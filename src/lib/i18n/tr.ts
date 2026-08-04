@@ -94,8 +94,6 @@ export const tr: Dictionary = {
     description:
       "Sağlık hizmetleri, güzellik inovasyonu, bütünsel iyi yaşam ve uluslararası sağlık turizmi profesyonellerini Rijswijk'teki De Broodfabriek'te buluşturan iki gün.",
     heroImageAlt: "Uluslararası bir sağlık ve güzellik fuarında buluşan profesyoneller",
-    slideNoteTitle: "Uluslararası bakış",
-    slideNoteText: "Sağlık · Güzellik · İyi yaşam",
     exploreSuffix: "fuarı",
     sectors: ["Sağlık", "Güzellik", "İyi yaşam", "Sağlık turizmi"],
     experience: {
@@ -384,7 +382,8 @@ export const tr: Dictionary = {
   },
 
   fairMatch: {
-    title: "Fair Match—tanıştırma talep edin.",
+    title: "Fair Match",
+    subtitle: "Tanıştırma talep edin.",
     description:
       "Ne aradığınızı bize anlatın; ekibimiz katılımcı bir firmayla kişisel tanıştırma ayarlar.",
     metaTitle: "Fair Match",

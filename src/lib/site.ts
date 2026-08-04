@@ -73,7 +73,7 @@ export const shellCopy: Record<Locale, ShellCopy> = {
     documents: "Documents",
     hero: "Where health, beauty and opportunity meet.",
     heroBody:
-      "Connect with world-class healthcare, beauty innovation, holistic wellness and international medical tourism professionals—all under one roof.",
+      "Meet leaders in health, beauty, wellness and medical tourism.",
     primary: "Plan your visit",
     secondary: "Exhibit with us",
   },

@@ -94,8 +94,6 @@ export const nl: Dictionary = {
     description:
       "Twee dagen waarin zorg, beauty-innovatie, holistische wellness en internationaal medisch toerisme samenkomen in De Broodfabriek in Rijswijk.",
     heroImageAlt: "Professionals ontmoeten elkaar op een internationale gezondheids- en beautybeurs",
-    slideNoteTitle: "Internationaal perspectief",
-    slideNoteText: "Health · Beauty · Wellness",
     exploreSuffix: "de beurs",
     sectors: ["Gezondheid", "Beauty", "Wellness", "Medisch toerisme"],
     experience: {
@@ -390,7 +388,8 @@ export const nl: Dictionary = {
   },
 
   fairMatch: {
-    title: "Fair Match—vraag een introductie aan.",
+    title: "Fair Match",
+    subtitle: "Vraag een introductie aan.",
     description:
       "Vertel ons wat je zoekt en ons team regelt een persoonlijke introductie met een deelnemende exposant.",
     metaTitle: "Fair Match",

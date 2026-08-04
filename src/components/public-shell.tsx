@@ -56,6 +56,60 @@ export function PublicShell({ locale, page, children, routeExtra }: PublicShellP
   }, [mobileOpen]);
 
   useEffect(() => {
+    const motionClass = page === "home" ? "home-main--motion" : page === "about" ? "about-main--motion" : page === "program" ? "program-main--motion" : page === "exhibitors" ? "exhibitors-main--motion" : page === "exhibitor-detail" ? "exhibitor-detail-main--motion" : page === "tickets" ? "tickets-main--motion" : page === "floor-plan" ? "floor-plan-main--motion" : page === "visit" ? "visit-main--motion" : page === "fair-match" ? "fair-match-main--motion" : page === "participate" ? "participate-main--motion" : page === "media" ? "media-main--motion" : page === "contact" ? "contact-main--motion" : page === "paris" ? "paris-main--motion" : page === "participant-info" ? "participant-info-main--motion" : page === "legal" ? "legal-main--motion" : undefined;
+    const revealClass = page === "home" ? "home-reveal" : page === "about" ? "about-reveal" : page === "program" ? "program-reveal" : page === "exhibitors" ? "exhibitors-reveal" : page === "exhibitor-detail" ? "exhibitor-detail-reveal" : page === "tickets" ? "tickets-reveal" : page === "floor-plan" ? "floor-plan-reveal" : page === "visit" ? "visit-reveal" : page === "fair-match" ? "fair-match-reveal" : page === "participate" ? "participate-reveal" : page === "media" ? "media-reveal" : page === "contact" ? "contact-reveal" : page === "paris" ? "paris-reveal" : page === "participant-info" ? "participant-info-reveal" : page === "legal" ? "legal-reveal" : undefined;
+    if (!motionClass || !revealClass) return;
+    const main = document.getElementById("main");
+    if (!main) return;
+
+    const sections = [...main.querySelectorAll<HTMLElement>(":scope > .section, :scope > .cta-band")];
+    const animationFrames: number[] = [];
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function animateStats(section: HTMLElement) {
+      if (reduceMotion || (!section.classList.contains("section--about-stats") && !section.classList.contains("section--media-stats"))) return;
+      section.querySelectorAll<HTMLElement>(".stat b").forEach((stat) => {
+        if (stat.dataset.counted === "true") return;
+        const target = Number(stat.textContent?.trim());
+        if (!Number.isInteger(target) || target < 0) return;
+        stat.dataset.counted = "true";
+        stat.classList.add("is-counting");
+        stat.textContent = "0";
+        const duration = 1800;
+        let startTime: number | undefined;
+        const tick = (time: number) => {
+          startTime ??= time;
+          const progress = Math.min((time - startTime) / duration, 1);
+          const eased = 1 - (1 - progress) ** 3;
+          stat.textContent = String(Math.round(target * eased));
+          if (progress < 1) animationFrames.push(requestAnimationFrame(tick));
+        };
+        animationFrames.push(requestAnimationFrame(tick));
+      });
+    }
+    main.classList.add(motionClass);
+    sections.forEach((section) => section.classList.add(revealClass));
+
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        animateStats(entry.target as HTMLElement);
+        observer.unobserve(entry.target);
+      }),
+      { rootMargin: "0px 0px -8%", threshold: 0.08 },
+    );
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      observer.disconnect();
+      animationFrames.forEach((frame) => cancelAnimationFrame(frame));
+      main.classList.remove(motionClass);
+      sections.forEach((section) => section.classList.remove(revealClass, "is-visible"));
+    };
+  }, [page]);
+
+  useEffect(() => {
     function closeLanguageMenu(event: MouseEvent) {
       if (!languagePickerRef.current?.contains(event.target as Node)) setLanguageOpen(false);
     }
@@ -218,7 +272,7 @@ export function PublicShell({ locale, page, children, routeExtra }: PublicShellP
           </div>
         </div>
       </header>
-      <main id="main" tabIndex={-1}>
+      <main className={page === "home" ? "home-main" : page === "about" ? "about-main" : page === "program" ? "program-main" : page === "exhibitors" ? "exhibitors-main" : page === "exhibitor-detail" ? "exhibitor-detail-main" : page === "tickets" ? "tickets-main" : page === "floor-plan" ? "floor-plan-main" : page === "visit" ? "visit-main" : page === "fair-match" ? "fair-match-main" : page === "participate" ? "participate-main" : page === "media" ? "media-main" : page === "contact" ? "contact-main" : page === "paris" ? "paris-main" : page === "participant-info" ? "participant-info-main" : page === "legal" ? "legal-main" : undefined} id="main" tabIndex={-1}>
         {children}
       </main>
       <footer className="site-footer">

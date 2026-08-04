@@ -14,6 +14,10 @@ type RouteParams = {
   slug?: string[];
 };
 
+type RouteSearchParams = {
+  sector?: string | string[];
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -69,13 +73,17 @@ export async function generateMetadata({
 
 export default async function LocalePage({
   params,
+  searchParams,
 }: {
   params: Promise<RouteParams>;
+  searchParams: Promise<RouteSearchParams>;
 }) {
   const { locale, slug = [] } = await params;
   if (!isLocale(locale)) notFound();
   const route = resolvePublicRoute(slug);
   if (!route) notFound();
+  const query = await searchParams;
+  const sector = typeof query.sector === "string" ? query.sector : undefined;
 
   const routeExtra = route.page === "legal" ? route.legalTab : route.detail;
   const isDynamicPage = ["home", "exhibitors", "exhibitor-detail", "tickets", "fair-match"].includes(route.page);
@@ -129,6 +137,7 @@ export default async function LocalePage({
         legalTab={route.legalTab}
         locale={locale}
         page={route.page}
+        sector={sector}
         event={publishedEvent}
         managedExhibitors={managedExhibitors}
         floorPlan={floorPlan}

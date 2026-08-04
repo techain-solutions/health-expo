@@ -94,8 +94,6 @@ export const ru: Dictionary = {
     description:
       "Два дня, объединяющих специалистов здравоохранения, инноваций в красоте, холистического велнеса и международного медицинского туризма в De Broodfabriek в Рейсвейке.",
     heroImageAlt: "Профессионалы на международной выставке здоровья и красоты",
-    slideNoteTitle: "Международный взгляд",
-    slideNoteText: "Здоровье · Красота · Велнес",
     exploreSuffix: "о выставке",
     sectors: ["Здоровье", "Красота", "Велнес", "Медицинский туризм"],
     experience: {
@@ -385,7 +383,8 @@ export const ru: Dictionary = {
   },
 
   fairMatch: {
-    title: "Fair Match — запрос знакомства.",
+    title: "Fair Match",
+    subtitle: "Запрос знакомства.",
     description:
       "Расскажите, что вы ищете, и наша команда организует личное знакомство с участником выставки.",
     metaTitle: "Fair Match",
