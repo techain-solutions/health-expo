@@ -163,7 +163,7 @@ function CtaBand({
   page,
   label,
   className,
-  showArrow = true,
+  showArrow = false,
 }: {
   locale: Locale;
   title: string;
@@ -209,13 +209,14 @@ function InfoCard({
   );
 }
 
-function Field({
+export function Field({
   name,
   label,
   type = "text",
   placeholder,
   options,
   minLength,
+  locale,
 }: {
   name?: string;
   label: string;
@@ -223,8 +224,10 @@ function Field({
   placeholder?: string;
   options?: string[];
   minLength?: number;
+  locale?: Locale;
 }) {
   const fieldName = name ?? label.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-").replaceAll(/(^-|-$)/g, "");
+  const selectPlaceholder = placeholder ?? (locale ? getDictionary(locale).common.selectOne : "Select one");
   return (
     <div className="field">
       <label htmlFor={fieldName}>
@@ -232,7 +235,7 @@ function Field({
       </label>
       {options ? (
         <select defaultValue="" id={fieldName} name={fieldName} required>
-          <option value="">{placeholder ?? "Select one"}</option>
+          <option value="">{selectPlaceholder}</option>
           {options.map((option) => (
             <option key={option}>{option}</option>
           ))}
@@ -305,17 +308,24 @@ function HomePage({
   const dictionary = getDictionary(locale);
   const pageCopy = dictionary.home;
   const copy = shellCopy[locale];
-  const [beforeOpportunity, afterOpportunity = ""] = copy.hero.split("opportunity");
-  const localizedHero =
-    locale === "en" ? (
-      <>
-        {beforeOpportunity}
-        <em>opportunity</em>
-        {afterOpportunity}
-      </>
-    ) : (
-      copy.hero
-    );
+  const heroHighlightWord: Record<Locale, string> = {
+    en: "opportunity",
+    nl: "kansen",
+    tr: "fırsatın",
+    ru: "возможностей",
+    ar: "الفرص",
+  };
+  const highlightWord = heroHighlightWord[locale];
+  const [beforeOpportunity, afterOpportunity = ""] = copy.hero.split(highlightWord);
+  const localizedHero = afterOpportunity ? (
+    <>
+      {beforeOpportunity}
+      <em>{highlightWord}</em>
+      {afterOpportunity}
+    </>
+  ) : (
+    copy.hero
+  );
 
   return (
     <>
@@ -603,10 +613,10 @@ function FairMatchPage({ locale, managedExhibitors }: PageProps & { managedExhib
 function ParticipatePage({ locale }: PageProps) {
   const copy = getDictionary(locale).participate;
   const packages = [
-    ["Stand 1","15 m²","€3,495"],
-    ["Stand 2","30 m²","€4,950"],
-    ["Stand 3","15 m²","€4,995"],
-    ["Stand 4","30 m²","€6,995"],
+    [`${copy.packages.standLabel} 1`,"15 m²","€3,495"],
+    [`${copy.packages.standLabel} 2`,"30 m²","€4,950"],
+    [`${copy.packages.standLabel} 3`,"15 m²","€4,995"],
+    [`${copy.packages.standLabel} 4`,"30 m²","€6,995"],
   ];
   return (
     <>
@@ -639,7 +649,7 @@ function MediaPage({ locale }: PageProps) {
       <section className="section"><div className="shell"><div className="section-heading"><div><p className="kicker">{copy.accreditation.kicker}</p><h2>{copy.accreditation.title}</h2></div><p>{copy.accreditation.text}</p></div><div className="card-grid">{copy.accreditation.cards.map((card,index)=><InfoCard number={`0${index+1}`} title={card.title} text={card.text} key={card.title}/>)}</div></div></section>
       <section className="section section--soft"><div className="shell split"><div><p className="kicker">{copy.criteria.kicker}</p><ExclusiveAccordion items={copy.criteria.items}/></div><div className="media-frame" style={backgroundImage("/assets/tickets-frame.jpg")}/></div></section>
       <section className="section section--media-stats"><div className="shell"><div className="section-heading section-heading--center"><p className="kicker">{copy.commitment.kicker}</p><h2>{copy.commitment.title}</h2></div><div className="stats-row">{copy.commitment.stats.map((stat)=><div className="stat" key={stat.label}><b>{stat.value}</b><span>{stat.label}</span></div>)}</div></div></section>
-      <section className="section section--cream" id="accreditation"><FormLayout locale={locale} kicker={copy.form.kicker} title={copy.form.title} intro={copy.form.intro} noteTitle={copy.form.noteTitle} note={copy.form.note} formTitle={copy.form.formTitle} buttonLabel={copy.form.button} requestType="media"><div className="form-row"><Field name="name" label={copy.form.fields.name} placeholder={copy.form.fields.namePlaceholder}/><Field label={copy.form.fields.email} type="email" placeholder={copy.form.fields.emailPlaceholder}/></div><div className="form-row"><Field name="organisation" label={copy.form.fields.organisation} placeholder={copy.form.fields.organisationPlaceholder}/><Field name="application-type" label={copy.form.fields.type} options={copy.form.fields.typeOptions}/></div><Field name="website" label={copy.form.fields.website} type="url" placeholder="https://"/><Field name="audience" label={copy.form.fields.audience} type="textarea" placeholder={copy.form.fields.audiencePlaceholder}/></FormLayout></section>
+      <section className="section section--cream" id="accreditation"><FormLayout locale={locale} kicker={copy.form.kicker} title={copy.form.title} intro={copy.form.intro} noteTitle={copy.form.noteTitle} note={copy.form.note} formTitle={copy.form.formTitle} buttonLabel={copy.form.button} requestType="media"><div className="form-row"><Field name="name" label={copy.form.fields.name} placeholder={copy.form.fields.namePlaceholder}/><Field label={copy.form.fields.email} type="email" placeholder={copy.form.fields.emailPlaceholder}/></div><div className="form-row"><Field name="organisation" label={copy.form.fields.organisation} placeholder={copy.form.fields.organisationPlaceholder}/><Field name="application-type" label={copy.form.fields.type} options={copy.form.fields.typeOptions} locale={locale}/></div><Field name="website" label={copy.form.fields.website} type="url" placeholder="https://"/><Field name="audience" label={copy.form.fields.audience} type="textarea" placeholder={copy.form.fields.audiencePlaceholder}/></FormLayout></section>
     </>
   );
 }
@@ -649,7 +659,7 @@ function ContactPage({ locale }: PageProps) {
   return (
     <>
       <PageHero locale={locale} title={copy.title} description={copy.description}/>
-      <section className="section"><FormLayout locale={locale} kicker={copy.form.kicker} title={copy.form.title} intro={copy.form.intro} noteTitle={copy.form.noteTitle} note={copy.form.note} formTitle={copy.form.formTitle} buttonLabel={copy.form.button} requestType="contact"><div className="form-row"><Field name="name" label={copy.form.fields.name} placeholder={copy.form.fields.namePlaceholder}/><Field label={copy.form.fields.email} type="email" placeholder={copy.form.fields.emailPlaceholder}/></div><Field name="subject" label={copy.form.fields.subject} options={copy.form.fields.subjectOptions}/><Field name="message" label={copy.form.fields.message} type="textarea" placeholder={copy.form.fields.messagePlaceholder}/></FormLayout></section>
+      <section className="section"><FormLayout locale={locale} kicker={copy.form.kicker} title={copy.form.title} intro={copy.form.intro} noteTitle={copy.form.noteTitle} note={copy.form.note} formTitle={copy.form.formTitle} buttonLabel={copy.form.button} requestType="contact"><div className="form-row"><Field name="name" label={copy.form.fields.name} placeholder={copy.form.fields.namePlaceholder}/><Field label={copy.form.fields.email} type="email" placeholder={copy.form.fields.emailPlaceholder}/></div><Field name="subject" label={copy.form.fields.subject} options={copy.form.fields.subjectOptions} locale={locale}/><Field name="message" label={copy.form.fields.message} type="textarea" placeholder={copy.form.fields.messagePlaceholder}/></FormLayout></section>
       <section className="section section--soft"><div className="shell"><div className="section-heading"><div><p className="kicker">{copy.findUs.kicker}</p><h2>{copy.findUs.title}</h2></div><a className="button button--outline" href="https://maps.google.com/?q=De%20Broodfabriek%2C%20Volmerlaan%2012%2C%202288%20GD%20Rijswijk" target="_blank" rel="noopener noreferrer">{copy.findUs.maps} <MaterialIcon name="open_in_new" /></a></div><div className="map-card"><MaterialIcon className="map-card__pin" name="location_on" /><div className="map-card__body"><b>{copy.findUs.venue}</b><span>{copy.findUs.address}</span><span>{copy.findUs.country}</span></div></div></div></section>
     </>
   );

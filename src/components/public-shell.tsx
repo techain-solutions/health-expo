@@ -6,6 +6,8 @@ import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 
 
 import { FlagSprite, LocaleFlag } from "@/components/locale-flag";
 import { MaterialIcon } from "@/components/material-icon";
+import { Field } from "@/components/public-pages";
+import { StaticForm } from "@/components/static-form";
 import { getDictionary } from "@/lib/i18n";
 import { localeMeta, locales, pageHref, type Locale, type PublicPage } from "@/lib/site";
 
@@ -29,18 +31,48 @@ export function PublicShell({ locale, page, children, routeExtra }: PublicShellP
   const dictionary = getDictionary(locale);
   const copy = dictionary.shell;
   const nav = copy.nav;
+  const contactCopy = dictionary.contact;
   const meta = localeMeta[locale];
   const preserveExtra = page === "legal" || page === "exhibitor-detail" ? routeExtra : undefined;
   const [languageOpen, setLanguageOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const languagePickerRef = useRef<HTMLDivElement>(null);
   const languageTriggerRef = useRef<HTMLButtonElement>(null);
   const languageOptionRefs = useRef<Array<HTMLAnchorElement | null>>([]);
+  const scrollProgressRef = useRef<HTMLDivElement>(null);
+  const backToTopRef = useRef<HTMLButtonElement>(null);
+  const contactFabRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     document.documentElement.lang = locale;
     document.documentElement.dir = meta.dir;
   }, [locale, meta.dir]);
+
+  useEffect(() => {
+    const bar = scrollProgressRef.current;
+    if (!bar) return;
+    let ticking = false;
+    function update() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+      bar!.style.transform = `scaleX(${progress})`;
+      backToTopRef.current?.classList.toggle("is-visible", window.scrollY > 500);
+      ticking = false;
+    }
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [page]);
 
   useEffect(() => {
     document.body.classList.toggle("language-open", languageOpen);
@@ -54,6 +86,21 @@ export function PublicShell({ locale, page, children, routeExtra }: PublicShellP
     document.body.classList.toggle("menu-open", mobileOpen);
     return () => document.body.classList.remove("menu-open");
   }, [mobileOpen]);
+
+  useEffect(() => {
+    document.body.classList.toggle("contact-open", contactOpen);
+    if (!contactOpen) return;
+    const fab = contactFabRef.current;
+    function onKeyDown(event: globalThis.KeyboardEvent) {
+      if (event.key === "Escape") setContactOpen(false);
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.classList.remove("contact-open");
+      document.removeEventListener("keydown", onKeyDown);
+      fab?.focus();
+    };
+  }, [contactOpen]);
 
   useEffect(() => {
     const motionClass = page === "home" ? "home-main--motion" : page === "about" ? "about-main--motion" : page === "program" ? "program-main--motion" : page === "exhibitors" ? "exhibitors-main--motion" : page === "exhibitor-detail" ? "exhibitor-detail-main--motion" : page === "tickets" ? "tickets-main--motion" : page === "floor-plan" ? "floor-plan-main--motion" : page === "visit" ? "visit-main--motion" : page === "fair-match" ? "fair-match-main--motion" : page === "participate" ? "participate-main--motion" : page === "media" ? "media-main--motion" : page === "contact" ? "contact-main--motion" : page === "paris" ? "paris-main--motion" : page === "participant-info" ? "participant-info-main--motion" : page === "legal" ? "legal-main--motion" : undefined;
@@ -148,6 +195,7 @@ export function PublicShell({ locale, page, children, routeExtra }: PublicShellP
   return (
     <div className="public-site" lang={locale} dir={meta.dir} data-locale={locale}>
       <FlagSprite />
+      <div className="scroll-progress" ref={scrollProgressRef} aria-hidden="true" />
       <a className="skip-link" href="#main">
         {copy.skipToContent}
       </a>
@@ -259,7 +307,7 @@ export function PublicShell({ locale, page, children, routeExtra }: PublicShellP
               id="mobile-menu"
               aria-label={copy.mobileNav}
             >
-              {primaryPages.map(([target, key]) => (
+              {primaryPages.slice(0, 3).map(([target, key]) => (
                 <Link href={pageHref(locale, target)} key={target} onClick={() => setMobileOpen(false)}>
                   {nav[key]}
                 </Link>
@@ -268,6 +316,11 @@ export function PublicShell({ locale, page, children, routeExtra }: PublicShellP
               <Link href={pageHref(locale, "visit")} onClick={() => setMobileOpen(false)}>{nav.planVisit}</Link>
               <Link href={pageHref(locale, "floor-plan")} onClick={() => setMobileOpen(false)}>{nav.plan}</Link>
               <Link href={pageHref(locale, "fair-match")} onClick={() => setMobileOpen(false)}>{nav.fairMatch}</Link>
+              {primaryPages.slice(3).map(([target, key]) => (
+                <Link href={pageHref(locale, target)} key={target} onClick={() => setMobileOpen(false)}>
+                  {nav[key]}
+                </Link>
+              ))}
             </nav>
           </div>
         </div>
@@ -302,10 +355,10 @@ export function PublicShell({ locale, page, children, routeExtra }: PublicShellP
           </div>
           <div className="footer-links">
             <b>{nav.documents}</b>
-            <a href="/downloads/participant-manual-2026-en.pdf" target="_blank">
+            <a className="footer-links__manual" href="/downloads/participant-manual-2026-en.pdf" target="_blank">
               {copy.footer.exhibitorManualEn}
             </a>
-            <a href="/downloads/participant-manual-2026.pdf" target="_blank">
+            <a className="footer-links__manual" href="/downloads/participant-manual-2026.pdf" target="_blank">
               {copy.footer.participantManualNl}
             </a>
             <a href="/downloads/exhibitor-agreement-nl.pdf" target="_blank">
@@ -342,6 +395,60 @@ export function PublicShell({ locale, page, children, routeExtra }: PublicShellP
           </div>
         </div>
       </footer>
+      <button
+        className="back-to-top"
+        ref={backToTopRef}
+        type="button"
+        aria-label={copy.backToTop}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        <MaterialIcon name="arrow_upward" />
+      </button>
+      {page === "contact" ? null : (
+        <button
+          className="contact-fab"
+          ref={contactFabRef}
+          type="button"
+          aria-haspopup="dialog"
+          aria-expanded={contactOpen}
+          aria-label={contactCopy.title}
+          onClick={() => setContactOpen(true)}
+        >
+          <MaterialIcon name="chat" />
+        </button>
+      )}
+      {contactOpen && page !== "contact" ? (
+        <div className="contact-modal-backdrop" onClick={() => setContactOpen(false)}>
+          <div
+            aria-labelledby="contact-modal-title"
+            aria-modal="true"
+            className="contact-modal"
+            onClick={(event) => event.stopPropagation()}
+            role="dialog"
+          >
+            <div className="contact-modal__head">
+              <h2 id="contact-modal-title">{contactCopy.title}</h2>
+              <button
+                aria-label={copy.closeNav}
+                className="contact-modal__close"
+                onClick={() => setContactOpen(false)}
+                type="button"
+              >
+                <MaterialIcon name="close" />
+              </button>
+            </div>
+            <p className="contact-modal__intro">{contactCopy.form.intro}</p>
+            <StaticForm buttonLabel={contactCopy.form.button} locale={locale} requestType="contact" title={contactCopy.form.formTitle}>
+              <div className="form-row">
+                <Field name="name" label={contactCopy.form.fields.name} placeholder={contactCopy.form.fields.namePlaceholder} />
+                <Field label={contactCopy.form.fields.email} type="email" placeholder={contactCopy.form.fields.emailPlaceholder} />
+              </div>
+              <Field name="subject" label={contactCopy.form.fields.subject} options={contactCopy.form.fields.subjectOptions} locale={locale} />
+              <Field name="message" label={contactCopy.form.fields.message} type="textarea" placeholder={contactCopy.form.fields.messagePlaceholder} />
+            </StaticForm>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

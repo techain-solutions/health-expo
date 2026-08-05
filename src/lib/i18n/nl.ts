@@ -8,6 +8,7 @@ export const nl: Dictionary = {
     mobileNav: "Mobiele navigatie",
     openNav: "Navigatie openen",
     closeNav: "Navigatie sluiten",
+    backToTop: "Terug naar boven",
     selectLanguage: "Taal kiezen",
     currentLanguage: "huidige taal",
     nav: {
@@ -17,7 +18,7 @@ export const nl: Dictionary = {
       visit: "Bezoeken",
       tickets: "Tickets",
       plan: "Plattegrond",
-      fairMatch: "Fair Match",
+      fairMatch: "Perfecte Match",
       exhibit: "Deelnemen",
       media: "Media",
       contact: "Contact",
@@ -103,7 +104,7 @@ export const nl: Dictionary = {
       cards: [
         {
           kicker: "LIVE BELEVING",
-          title: "Innovatie in actie",
+          title: "Innovatie in actie op de vloer",
           text: "Zie behandelingen, technologieën en introducties gepresenteerd door specialisten.",
         },
         {
@@ -134,7 +135,7 @@ export const nl: Dictionary = {
           link: "Bekijk pakketten",
         },
         {
-          title: "Gebruik Fair Match",
+          title: "Gebruik Perfecte Match",
           text: "Vertel ons wat je zoekt en vraag een introductie aan.",
           link: "Aanvraag doen",
         },
@@ -169,10 +170,10 @@ export const nl: Dictionary = {
       link: "Ontdek ons verhaal",
     },
     fairMatch: {
-      kicker: "FAIR MATCH",
+      kicker: "PERFECTE MATCH",
       title: "Ontmoet de juiste kliniek, geregeld door ons team.",
       text: "Vertel ons wat je zoekt en ons team regelt een persoonlijke introductie op de beurs.",
-      link: "Zo werkt Fair Match",
+      link: "Zo werkt Perfecte Match",
       steps: [
         { title: "Stuur je aanvraag", text: "Beschrijf de zorg, het product of de samenwerking die je zoekt." },
         { title: "Wij bekijken hem", text: "Ons team koppelt je aanvraag aan deelnemende exposanten." },
@@ -261,7 +262,7 @@ export const nl: Dictionary = {
       kicker: "OP DE BEURS",
       title: "Vraag een introductie aan.",
       text: "Ons team kan tijdens de beurs een persoonlijke introductie met deze exposant regelen.",
-      link: "Naar Fair Match",
+      link: "Naar Perfecte Match",
     },
   },
 
@@ -303,7 +304,7 @@ export const nl: Dictionary = {
     descriptionFallback: "Health & Beauty Expo Rijswijk 2026",
     metaTitle: "Tickets",
     openTickets: "Koop je ticket",
-    ticketsPending: "De ticketverkoop start binnenkort. Neem contact op om bericht te krijgen zodra hij live is.",
+    ticketsPending: "De ticketverkoop start binnenkort.\nNeem contact op om bericht te krijgen zodra hij live is.",
     details: {
       kicker: "EVENEMENTDETAILS",
       title: "Twee dagen internationale ontdekking.",
@@ -319,7 +320,7 @@ export const nl: Dictionary = {
       cards: [
         { title: "Voorbereiden", text: "Bekijk exposanten, sectoren en de plattegrond voor je komt." },
         { title: "Ontdekken", text: "Verken gezondheid, beauty, wellness en medisch toerisme." },
-        { title: "Verbinden", text: "Vraag via Fair Match een persoonlijke introductie aan." },
+        { title: "Verbinden", text: "Vraag via Perfecte Match een persoonlijke introductie aan." },
       ],
     },
     cta: {
@@ -355,7 +356,7 @@ export const nl: Dictionary = {
         { title: "Koop je ticket", text: "Koop vooraf en sla de wachtrij bij de ingang over." },
         { title: "Bekijk exposanten", text: "Maak een lijst van de klinieken en merken die je wilt ontmoeten." },
         { title: "Bekijk de plattegrond", text: "Vind de podia, stands en cateringzones." },
-        { title: "Fair Match", text: "Laat ons vooraf een persoonlijke introductie regelen." },
+        { title: "Perfecte Match", text: "Laat ons vooraf een persoonlijke introductie regelen." },
       ],
     },
     cta: {
@@ -388,11 +389,11 @@ export const nl: Dictionary = {
   },
 
   fairMatch: {
-    title: "Fair Match",
+    title: "Perfecte Match",
     subtitle: "Vraag een introductie aan.",
     description:
       "Vertel wat je zoekt; ons team regelt een persoonlijke introductie met een deelnemende exposant die goed aansluit bij je vraag.",
-    metaTitle: "Fair Match",
+    metaTitle: "Perfecte Match",
     heroCta: "Naar het aanvraagformulier",
     how: {
       kicker: "ZO WERKT HET",
@@ -407,7 +408,7 @@ export const nl: Dictionary = {
     participants: {
       kicker: "DEELNEMENDE EXPOSANTEN",
       title: "Aan wie we je kunnen introduceren.",
-      text: "Elke actieve exposant kan bij een Fair Match-introductie worden betrokken.",
+      text: "Elke actieve exposant kan bij een Perfecte Match-introductie worden betrokken.",
       empty: "Deelnemende exposanten worden hier vermeld zodra zij bevestigen.",
     },
     form: {
@@ -444,6 +445,7 @@ export const nl: Dictionary = {
       title: "Een professioneel podium voor je organisatie.",
       text: "De prijzen komen uit de standprijslijst 2026 en zijn exclusief btw.",
       popular: "POPULAIR",
+      standLabel: "Stand",
       includes: [
         "Professionele standruimte",
         "230V elektriciteit",
@@ -655,7 +657,7 @@ export const nl: Dictionary = {
           "Bezoekersinformatie",
           "Deelnemen en sponsoring",
           "Media-accreditatie",
-          "Fair Match",
+          "Perfecte Match",
           "Anders",
         ],
         message: "Bericht",
@@ -677,7 +679,7 @@ export const nl: Dictionary = {
         { title: "Bezoeker", text: "Tickets, locatie en praktische informatie." },
         { title: "Exposant", text: "Stand, sponsoring en deelnamemogelijkheden." },
         { title: "Media", text: "Accreditatie voor pers, journalisten en influencers." },
-        { title: "Fair Match", text: "Vraag een persoonlijke introductie aan." },
+        { title: "Perfecte Match", text: "Vraag een persoonlijke introductie aan." },
       ],
     },
   },

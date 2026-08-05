@@ -24,7 +24,7 @@ const localizedCopy: Record<string, ExhibitorCopy> = {
   },
   "lumen-skin-science": {
     nl: { category: "Huidverzorging", text: "Professionele huidverzorging en diagnostische innovatie, onderbouwd door onderzoek." },
-    tr: { category: "Cilt bakımı", text: "Kanıta dayalı profesyonel cilt bakımı ve tanısal yenilikler." },
+    tr: { category: "Cilt bakımı", text: "Kanıta dayalı profesyonel cilt bakımı ürünleri ve ileri düzey tanısal yenilikler sunuyoruz." },
     ru: { category: "Уход за кожей", text: "Профессиональный уход за кожей и диагностические инновации, основанные на исследованиях." },
     ar: { category: "العناية بالبشرة", text: "عناية احترافية بالبشرة وابتكار تشخيصي يستندان إلى الأدلة العلمية." },
   },

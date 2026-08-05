@@ -8,6 +8,7 @@ export const tr: Dictionary = {
     mobileNav: "Mobil gezinme",
     openNav: "Menüyü aç",
     closeNav: "Menüyü kapat",
+    backToTop: "Başa dön",
     selectLanguage: "Dil seçin",
     currentLanguage: "geçerli dil",
     nav: {
@@ -17,7 +18,7 @@ export const tr: Dictionary = {
       visit: "Ziyaret",
       tickets: "Biletler",
       plan: "Fuar planı",
-      fairMatch: "Fair Match",
+      fairMatch: "Doğru Eşleşme",
       exhibit: "Katıl",
       media: "Medya",
       contact: "İletişim",
@@ -134,7 +135,7 @@ export const tr: Dictionary = {
           link: "Paketleri gör",
         },
         {
-          title: "Fair Match'i kullanın",
+          title: "Doğru Eşleşme'yi kullanın",
           text: "Ne aradığınızı ekibimize anlatın ve tanıştırma talep edin.",
           link: "Talep oluştur",
         },
@@ -169,10 +170,10 @@ export const tr: Dictionary = {
       link: "Hikayemizi keşfedin",
     },
     fairMatch: {
-      kicker: "FAIR MATCH",
+      kicker: "DOĞRU EŞLEŞME",
       title: "Doğru klinikle tanışın, ekibimiz ayarlasın.",
       text: "Ne aradığınızı bize anlatın; ekibimiz fuarda kişisel bir tanıştırma ayarlar.",
-      link: "Fair Match nasıl çalışır",
+      link: "Doğru Eşleşme nasıl çalışır",
       steps: [
         { title: "Talebinizi gönderin", text: "Aradığınız bakımı, ürünü veya iş birliğini tanımlayın." },
         { title: "Biz inceleriz", text: "Ekibimiz talebinizi katılımcı firmalarla eşleştirir." },
@@ -260,7 +261,7 @@ export const tr: Dictionary = {
       kicker: "FUARDA",
       title: "Tanıştırma talep edin.",
       text: "Ekibimiz fuar boyunca bu katılımcıyla kişisel bir tanıştırma ayarlayabilir.",
-      link: "Fair Match'e git",
+      link: "Doğru Eşleşme'ye git",
     },
   },
 
@@ -318,7 +319,7 @@ export const tr: Dictionary = {
       cards: [
         { title: "Hazırlanın", text: "Gelmeden önce katılımcıları, sektörleri ve fuar planını inceleyin." },
         { title: "Keşfedin", text: "Sağlık, güzellik, iyi yaşam ve sağlık turizmini keşfedin." },
-        { title: "Bağlantı kurun", text: "Fair Match ile kişisel tanıştırma talep edin." },
+        { title: "Bağlantı kurun", text: "Doğru Eşleşme ile kişisel tanıştırma talep edin." },
       ],
     },
     cta: {
@@ -354,7 +355,7 @@ export const tr: Dictionary = {
         { title: "Biletinizi alın", text: "Önceden alın, girişte sıra beklemeyin." },
         { title: "Katılımcılara bakın", text: "Görüşmek istediğiniz klinik ve markaları belirleyin." },
         { title: "Planı inceleyin", text: "Sahneleri, stantları ve ikram alanlarını bulun." },
-        { title: "Fair Match", text: "Kişisel tanıştırmayı önceden ayarlamamızı isteyin." },
+        { title: "Doğru Eşleşme", text: "Kişisel tanıştırmayı önceden ayarlamamızı isteyin." },
       ],
     },
     cta: {
@@ -382,11 +383,11 @@ export const tr: Dictionary = {
   },
 
   fairMatch: {
-    title: "Fair Match",
+    title: "Doğru Eşleşme",
     subtitle: "Tanıştırma talep edin.",
     description:
       "Ne aradığınızı anlatın; ekibimiz önceliklerinize en uygun uzmanlığa sahip katılımcıyla kişisel bir tanıştırma ayarlasın.",
-    metaTitle: "Fair Match",
+    metaTitle: "Doğru Eşleşme",
     heroCta: "Talep formuna git",
     how: {
       kicker: "NASIL ÇALIŞIR",
@@ -401,7 +402,7 @@ export const tr: Dictionary = {
     participants: {
       kicker: "KATILIMCI FİRMALAR",
       title: "Kiminle tanıştırılabilirsiniz.",
-      text: "Aktif her katılımcı bir Fair Match tanıştırmasına dahil edilebilir.",
+      text: "Aktif her katılımcı bir Doğru Eşleşme tanıştırmasına dahil edilebilir.",
       empty: "Katılımcı firmalar onayladıkça burada listelenecek.",
     },
     form: {
@@ -438,6 +439,7 @@ export const tr: Dictionary = {
       title: "Kurumunuz için profesyonel bir platform.",
       text: "Fiyatlar 2026 stant fiyat listesinden alınmıştır ve KDV hariçtir.",
       popular: "POPÜLER",
+      standLabel: "Stant",
       includes: [
         "Profesyonel stant alanı",
         "230V elektrik",
@@ -649,7 +651,7 @@ export const tr: Dictionary = {
           "Ziyaretçi bilgileri",
           "Katılım ve sponsorluk",
           "Medya akreditasyonu",
-          "Fair Match",
+          "Doğru Eşleşme",
           "Diğer",
         ],
         message: "Mesaj",
@@ -671,7 +673,7 @@ export const tr: Dictionary = {
         { title: "Ziyaretçi", text: "Bilet, mekan ve pratik bilgiler." },
         { title: "Katılımcı", text: "Stant, sponsorluk ve katılım seçenekleri." },
         { title: "Medya", text: "Basın, gazeteci ve influencer akreditasyonu." },
-        { title: "Fair Match", text: "Kişisel tanıştırma talep edin." },
+        { title: "Doğru Eşleşme", text: "Kişisel tanıştırma talep edin." },
       ],
     },
   },

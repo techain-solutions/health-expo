@@ -11,6 +11,7 @@ export const en = {
     mobileNav: "Mobile navigation",
     openNav: "Open navigation",
     closeNav: "Close navigation",
+    backToTop: "Back to top",
     selectLanguage: "Select language",
     currentLanguage: "current language",
     nav: {
@@ -447,6 +448,7 @@ export const en = {
       title: "A professional platform for your organisation.",
       text: "Prices are taken from the 2026 stand price list and exclude VAT.",
       popular: "POPULAR",
+      standLabel: "Stand",
       includes: [
         "Professional stand area",
         "230V electricity",

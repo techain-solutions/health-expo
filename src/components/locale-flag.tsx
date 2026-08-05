@@ -63,6 +63,10 @@ export function FlagSprite() {
 }
 
 export function LocaleFlag({ locale }: { locale: Locale }) {
+  if (locale === "ar") {
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img className="flag" src="/assets/flag-sa.svg" alt="" aria-hidden="true" />;
+  }
   return (
     <svg className="flag" viewBox="0 0 60 40" aria-hidden="true" focusable="false">
       <use href={`#${flagSymbols[locale]}`} />
