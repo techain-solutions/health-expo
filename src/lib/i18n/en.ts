@@ -245,6 +245,18 @@ export const en = {
     empty: "Exhibitors will be announced soon.",
     noMatches: "No exhibitors match your search.",
     resultCount: "exhibitor(s) shown",
+    suggestedCategories: [
+      "Aesthetic medicine",
+      "Skincare",
+      "Haircare",
+      "Wellness",
+      "Preventive health",
+      "Medical tourism",
+      "Nutrition",
+      "Fitness & movement",
+      "Dermatology",
+      "Medical devices",
+    ],
     cta: {
       title: "Interested in exhibiting?",
       text: "Compare stand packages and sponsorship options for Rijswijk 2026.",

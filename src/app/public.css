@@ -210,12 +210,16 @@ html[dir="rtl"] .page-hero--image .shell { transform: scaleX(-1); }
 .stat:last-child { border: 0; }
 .stat b { display: block; color: var(--teal); font: 800 36px var(--display); }
 .stat span { color: var(--muted); font-size: 12px; }
-.tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
-.tag { padding: 8px 13px; color: var(--navy); background: var(--mist); border: 1px solid var(--line); border-radius: 999px; font-size: 11px; font-weight: 700; }
+.tag-row { display: flex; flex: 1 1 0%; flex-wrap: nowrap; overflow-x: auto; gap: 8px; min-width: 0; padding-bottom: 8px; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.tag-row::-webkit-scrollbar { height: 4px; }
+.tag-row::-webkit-scrollbar-track { background: transparent; }
+.tag-row::-webkit-scrollbar-thumb { background: var(--line); border: 0; border-radius: 999px; }
+.tag-row::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+.tag { flex: 0 0 auto; padding: 8px 13px; color: var(--navy); background: var(--mist); border: 1px solid var(--line); border-radius: 999px; font-size: 11px; font-weight: 700; white-space: nowrap; }
 .tag.is-active { color: var(--white); background: var(--teal); border-color: var(--teal); }
 
 .exhibitor-toolbar { display: flex; gap: 12px; justify-content: space-between; align-items: center; margin-bottom: 28px; }
-.search-field { flex: 1; max-width: 380px; position: relative; }
+.search-field { flex: 0 0 320px; max-width: 320px; position: relative; }
 .search-field input { width: 100%; height: 46px; padding: 0 42px 0 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); }
 .search-field span { position: absolute; right: 16px; top: 10px; color: var(--muted); }
 .exhibitor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -927,7 +931,7 @@ body[dir="rtl"] .download-card a, body[dir="rtl"] .download-card button { text-a
   .button--small { min-height: 44px; }
   .language-trigger { min-height: 44px; }
   .exhibitor-toolbar { align-items: stretch; flex-direction: column; }
-  .search-field { max-width: none; }
+  .search-field { flex: 0 0 auto; max-width: none; }
   .tag-row { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 5px; }
   .tag { flex: 0 0 auto; }
   .form-row { grid-template-columns: 1fr; gap: 0; }

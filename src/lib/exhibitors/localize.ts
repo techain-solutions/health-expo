@@ -46,6 +46,60 @@ const localizedCopy: Record<string, ExhibitorCopy> = {
     ru: { category: "Уход за волосами", text: "Передовые решения для здоровья и восстановления волос, а также профессиональные продукты." },
     ar: { category: "العناية بالشعر", text: "حلول متقدمة لصحة الشعر واستعادته ومنتجات احترافية." },
   },
+  "derma-vita-clinics": {
+    nl: { category: "Dermatologie", text: "Gespecialiseerde dermatologische zorg die diagnostiek combineert met geavanceerde huidbehandelingen." },
+    tr: { category: "Dermatoloji", text: "Tanı ile ileri düzey cilt tedavilerini birleştiren uzman dermatoloji bakımı." },
+    ru: { category: "Дерматология", text: "Специализированная дерматологическая помощь, сочетающая диагностику с передовыми методами лечения кожи." },
+    ar: { category: "الأمراض الجلدية", text: "رعاية جلدية متخصصة تجمع بين التشخيص وأحدث علاجات البشرة." },
+  },
+  "pulse-fitness-collective": {
+    nl: { category: "Fitness & beweging", text: "Bewegingscoaching en hersteltrajecten voor een actieve, gezonde levensstijl." },
+    tr: { category: "Fitness ve hareket", text: "Aktif ve sağlıklı yaşam tarzları için hareket koçluğu ve iyileşme programları." },
+    ru: { category: "Фитнес и движение", text: "Программы двигательного коучинга и восстановления для активного и здорового образа жизни." },
+    ar: { category: "اللياقة والحركة", text: "برامج تدريب حركي وتعافٍ لأسلوب حياة نشط وصحي." },
+  },
+  "medtech-solutions-group": {
+    nl: { category: "Medische apparatuur", text: "Innovatieve medische apparatuur en diagnostische uitrusting voor moderne klinieken." },
+    tr: { category: "Tıbbi cihazlar", text: "Modern klinikler için yenilikçi tıbbi cihazlar ve tanı ekipmanları." },
+    ru: { category: "Медицинское оборудование", text: "Инновационное медицинское оборудование и диагностическая техника для современных клиник." },
+    ar: { category: "الأجهزة الطبية", text: "أجهزة طبية ومعدات تشخيص مبتكرة للعيادات الحديثة." },
+  },
+  "nourish-nutrition-lab": {
+    nl: { category: "Voeding", text: "Persoonlijke voedingsprogramma's ondersteund door klinisch onderzoek en coaching." },
+    tr: { category: "Beslenme", text: "Klinik araştırma ve koçlukla desteklenen kişiselleştirilmiş beslenme programları." },
+    ru: { category: "Питание", text: "Персонализированные программы питания, подкреплённые клиническими исследованиями и коучингом." },
+    ar: { category: "التغذية", text: "برامج تغذية شخصية مدعومة بالأبحاث السريرية والتوجيه." },
+  },
+  "bella-cosmetic-group": {
+    nl: { category: "Esthetische geneeskunde", text: "Premium niet-chirurgische esthetische behandelingen door gecertificeerde specialisten." },
+    tr: { category: "Estetik tıp", text: "Sertifikalı uzmanlar tarafından uygulanan premium cerrahi olmayan estetik tedaviler." },
+    ru: { category: "Эстетическая медицина", text: "Премиальные неинвазивные эстетические процедуры от сертифицированных специалистов." },
+    ar: { category: "الطب التجميلي", text: "علاجات تجميلية فاخرة غير جراحية يقدمها متخصصون معتمدون." },
+  },
+  "global-health-journeys": {
+    nl: { category: "Medisch toerisme", text: "Volledige begeleiding bij medische reizen, met toegang tot erkende ziekenhuizen in het buitenland." },
+    tr: { category: "Sağlık turizmi", text: "Hastaları yurt dışındaki akredite hastanelerle buluşturan uçtan uca sağlık seyahati planlaması." },
+    ru: { category: "Медицинский туризм", text: "Полное сопровождение медицинских поездок с доступом к аккредитованным клиникам за рубежом." },
+    ar: { category: "السياحة العلاجية", text: "تخطيط شامل للسفر العلاجي يربط المرضى بمستشفيات معتمدة في الخارج." },
+  },
+  "zenith-wellness-retreats": {
+    nl: { category: "Wellness", text: "Meeslepende wellnessretraites die mindfulness, beweging en holistische therapieën combineren." },
+    tr: { category: "Wellness", text: "Farkındalık, hareket ve bütünsel terapileri bir araya getiren sürükleyici wellness kaçamakları." },
+    ru: { category: "Велнес", text: "Комплексные велнес-ретриты, сочетающие осознанность, движение и холистические практики." },
+    ar: { category: "العافية", text: "برامج عافية غامرة تجمع بين اليقظة الذهنية والحركة والعلاجات الشاملة." },
+  },
+  "radiance-skin-studio": {
+    nl: { category: "Huidverzorging", text: "Boetiek voor huidverzorging met persoonlijke gezichtsbehandelingen en dermocosmetische producten." },
+    tr: { category: "Cilt bakımı", text: "Kişiye özel cilt bakımı ve dermokozmetik ürünler sunan butik cilt stüdyosu." },
+    ru: { category: "Уход за кожей", text: "Бутик-студия по уходу за кожей с индивидуальными процедурами и дермокосметикой." },
+    ar: { category: "العناية بالبشرة", text: "استوديو عناية بالبشرة يقدم جلسات مخصصة ومنتجات تجميلية جلدية." },
+  },
+  "momentum-physio-movement": {
+    nl: { category: "Fitness & beweging", text: "Fysiotherapie-gestuurde bewegingsprogramma's voor blessurepreventie en sportprestaties." },
+    tr: { category: "Fitness ve hareket", text: "Yaralanma önleme ve sportif performans için fizyoterapi destekli hareket programları." },
+    ru: { category: "Фитнес и движение", text: "Программы движения под руководством физиотерапевтов для профилактики травм и спортивных результатов." },
+    ar: { category: "اللياقة والحركة", text: "برامج حركية بإشراف علاج طبيعي للوقاية من الإصابات وتحسين الأداء الرياضي." },
+  },
 };
 
 export function localizeExhibitor<T extends LocalizableExhibitor>(exhibitor: T, locale: Locale): T {

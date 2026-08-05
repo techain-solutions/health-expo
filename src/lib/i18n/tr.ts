@@ -241,6 +241,18 @@ export const tr: Dictionary = {
     empty: "Katılımcılar kısa süre içinde duyurulacak.",
     noMatches: "Aramanıza uyan katılımcı bulunamadı.",
     resultCount: "katılımcı gösteriliyor",
+    suggestedCategories: [
+      "Estetik tıp",
+      "Cilt bakımı",
+      "Saç bakımı",
+      "Wellness",
+      "Koruyucu sağlık",
+      "Sağlık turizmi",
+      "Beslenme",
+      "Fitness ve hareket",
+      "Dermatoloji",
+      "Tıbbi cihazlar",
+    ],
     cta: {
       title: "Katılımcı olmak ister misiniz?",
       text: "Rijswijk 2026 için stant paketlerini ve sponsorluk seçeneklerini karşılaştırın.",

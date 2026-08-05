@@ -242,6 +242,18 @@ export const nl: Dictionary = {
     empty: "De exposanten worden binnenkort aangekondigd.",
     noMatches: "Geen exposanten gevonden voor je zoekopdracht.",
     resultCount: "exposant(en) weergegeven",
+    suggestedCategories: [
+      "Esthetische geneeskunde",
+      "Huidverzorging",
+      "Haarverzorging",
+      "Wellness",
+      "Preventieve zorg",
+      "Medisch toerisme",
+      "Voeding",
+      "Fitness & beweging",
+      "Dermatologie",
+      "Medische apparatuur",
+    ],
     cta: {
       title: "Interesse om deel te nemen?",
       text: "Vergelijk de standpakketten en sponsormogelijkheden voor Rijswijk 2026.",

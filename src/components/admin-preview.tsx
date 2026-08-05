@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { signOutAction } from "@/app/admin/auth-actions";
 import {
@@ -61,9 +61,9 @@ function PageHead({
 
 function Dashboard({ allowed, status }: { allowed: AdminPage[]; status: DashboardStatus }) {
   const cards: Array<[AdminPage, string, string, string]> = [
+    ["event", "event", "Event information", "Dates, location and ticket details."],
     ["exhibitors", "storefront", "Exhibitors", "Add, update, reorder or remove participating exhibitors."],
     ["floor-plan", "map", "Floor plan", "Replace the public floor plan."],
-    ["event", "event", "Event information", "Dates, location, opening hours, ticket link and visitor information."],
     ["requests", "inbox", "Form requests", "Read and follow up website submissions."],
     ["team", "group", "Team access", "Create staff accounts and manage roles."],
   ];
@@ -75,7 +75,7 @@ function Dashboard({ allowed, status }: { allowed: AdminPage[]; status: Dashboar
           Open website <MaterialIcon name="open_in_new" />
         </Link>
       </PageHead>
-      <div className="metric-grid">
+      <div className="quick-links">
         {cards
           .filter(([page]) => allowed.includes(page))
           .map(([page, icon, title, text]) => (
@@ -160,6 +160,7 @@ const teamNotices = {
 
 function TeamPage({ accounts, notice }: { accounts: ManagedStaffAccount[]; notice?: string }) {
   const message = notice && notice in teamNotices ? teamNotices[notice as keyof typeof teamNotices] : null;
+  const rolesInUse = new Set(accounts.map((account) => account.role)).size;
 
   return (
     <div className="admin-page">
@@ -220,8 +221,10 @@ function TeamPage({ accounts, notice }: { accounts: ManagedStaffAccount[]; notic
                 <b className="status status--draft">Script only</b>
               </div>
               <div className="status-item">
-                <span>Roles available here</span>
-                <b className="status status--success">2 roles</b>
+                <span>Roles in use</span>
+                <b className="status status--success">
+                  {rolesInUse} role{rolesInUse === 1 ? "" : "s"}
+                </b>
               </div>
               <div className="status-item">
                 <span>Public registration</span>
@@ -340,6 +343,16 @@ export function AdminPreview({
   content?: React.ReactNode;
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    if (!sidebarOpen) return;
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") setSidebarOpen(false);
+    }
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [sidebarOpen]);
+
   const allowed = [...allowedAdminPages(staff.role)];
   const initials = staff.displayName
     .split(/\s+/)
@@ -349,10 +362,21 @@ export function AdminPreview({
 
   return (
     <div className="admin-app" data-authenticated-admin="true">
+      {sidebarOpen ? (
+        <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />
+      ) : null}
       <aside className={`sidebar${sidebarOpen ? " is-open" : ""}`} id="admin-sidebar">
         <div className="admin-logo">
           <Image src="/assets/health-beauty-expo-logo.png" alt="Health and Beauty Expo" width={200} height={104} />
           <span>STAFF ADMIN</span>
+          <button
+            aria-label="Close administration navigation"
+            className="sidebar-close"
+            onClick={() => setSidebarOpen(false)}
+            type="button"
+          >
+            <MaterialIcon name="close" />
+          </button>
         </div>
         <nav className="side-nav" aria-label="Staff administration">
           <p>Panel</p>
@@ -389,7 +413,7 @@ export function AdminPreview({
             onClick={() => setSidebarOpen((open) => !open)}
             type="button"
           >
-            <MaterialIcon name="menu" />
+            <MaterialIcon name={sidebarOpen ? "close" : "menu"} />
           </button>
           <div className="topbar-context">
             <span>Health &amp; Beauty Expo</span>

@@ -97,33 +97,39 @@ export function RequestManager({
       ) : null}
       <div className="table-panel">
         <div className="table-tools">
-          <div className="filters">
-            <Link className={`filter${type ? "" : " is-active"}`} href={filterHref(undefined, status)}>
-              All types
-            </Link>
-            {requestTypes.map((value) => (
-              <Link
-                className={`filter${type === value ? " is-active" : ""}`}
-                href={filterHref(value, status)}
-                key={value}
-              >
-                {typeLabels[value]}
+          <div className="filters-group">
+            <span className="filters-label">Type</span>
+            <div className="filters">
+              <Link className={`filter${type ? "" : " is-active"}`} href={filterHref(undefined, status)}>
+                All types
               </Link>
-            ))}
+              {requestTypes.map((value) => (
+                <Link
+                  className={`filter${type === value ? " is-active" : ""}`}
+                  href={filterHref(value, status)}
+                  key={value}
+                >
+                  {typeLabels[value]}
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="filters">
-            <Link className={`filter${status ? "" : " is-active"}`} href={filterHref(type, undefined)}>
-              All states
-            </Link>
-            {requestStatuses.map((value) => (
-              <Link
-                className={`filter${status === value ? " is-active" : ""}`}
-                href={filterHref(type, value)}
-                key={value}
-              >
-                {value === "new" ? "New" : "Reviewed"}
+          <div className="filters-group">
+            <span className="filters-label">Status</span>
+            <div className="filters">
+              <Link className={`filter${status ? "" : " is-active"}`} href={filterHref(type, undefined)}>
+                All states
               </Link>
-            ))}
+              {requestStatuses.map((value) => (
+                <Link
+                  className={`filter${status === value ? " is-active" : ""}`}
+                  href={filterHref(type, value)}
+                  key={value}
+                >
+                  {value === "new" ? "New" : "Reviewed"}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
         {items.length ? (

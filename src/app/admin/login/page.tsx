@@ -92,7 +92,9 @@ export default async function LoginPage({
             </button>
           </form>
           <p className="auth-support">
-            Public registration is disabled. Contact the project administrator if you need an account.
+            Public registration is disabled.
+            <br />
+            Contact the project administrator if you need an account.
           </p>
         </div>
       </section>

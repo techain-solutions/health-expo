@@ -16,9 +16,9 @@ function isSectorFilter(value: string | undefined): value is SectorFilter {
 function matchesSector(category: string, sector: SectorFilter) {
   const value = category.toLocaleLowerCase();
   if (sector === "medical-tourism") return value.includes("medical tourism");
-  if (sector === "wellness") return value.includes("wellness");
-  if (sector === "beauty") return /aesthetic|beauty|cosmetic|skincare|haircare/.test(value);
-  return /health|care|medical/.test(value) && !value.includes("medical tourism");
+  if (sector === "wellness") return /wellness|nutrition|fitness|preventive/.test(value);
+  if (sector === "beauty") return /aesthetic|beauty|cosmetic|skincare|haircare|dermatolog/.test(value);
+  return /health|medical|device/.test(value) && !value.includes("medical tourism");
 }
 
 export function ExhibitorDirectory({
@@ -27,6 +27,8 @@ export function ExhibitorDirectory({
   labels,
   initialSector,
   initialSectorLabel,
+  sectorLabels,
+  suggestedCategories,
 }: {
   exhibitors: PublicExhibitor[];
   locale: Locale;
@@ -40,11 +42,15 @@ export function ExhibitorDirectory({
   };
   initialSector?: string;
   initialSectorLabel?: string;
+  sectorLabels?: string[];
+  suggestedCategories?: string[];
 }) {
-  const categories = useMemo(
-    () => Array.from(new Set(exhibitors.map((item) => item.category))).sort((a, b) => a.localeCompare(b)),
-    [exhibitors],
-  );
+  const categories = useMemo(() => {
+    const excluded = new Set((sectorLabels ?? []).map((label) => label.toLocaleLowerCase()));
+    return Array.from(new Set([...(suggestedCategories ?? []), ...exhibitors.map((item) => item.category)]))
+      .filter((value) => !excluded.has(value.toLocaleLowerCase()))
+      .sort((a, b) => a.localeCompare(b));
+  }, [exhibitors, sectorLabels, suggestedCategories]);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
   const [selectedSector, setSelectedSector] = useState<SectorFilter | "">(
@@ -85,25 +91,25 @@ export function ExhibitorDirectory({
           <MaterialIcon name="search" />
         </div>
         <div className="tag-row" aria-label={labels.search}>
-          {selectedSector ? (
+          <button
+            aria-pressed={!selectedSector && !category}
+            className={`tag${!selectedSector && !category ? " is-active" : ""}`}
+            onClick={() => { setSelectedSector(""); setCategory(""); }}
+            type="button"
+          >
+            {labels.all}
+          </button>
+          {sectorFilters.map((sector, index) => (
             <button
-              aria-pressed="true"
-              className="tag is-active"
-              onClick={() => setSelectedSector("")}
+              aria-pressed={selectedSector === sector}
+              className={`tag${selectedSector === sector ? " is-active" : ""}`}
+              key={sector}
+              onClick={() => { setSelectedSector(sector); setCategory(""); }}
               type="button"
             >
-              {initialSectorLabel}
+              {sectorLabels?.[index] ?? initialSectorLabel ?? sector}
             </button>
-          ) : (
-            <button
-              aria-pressed={!category}
-              className={`tag${category ? "" : " is-active"}`}
-              onClick={() => { setSelectedSector(""); setCategory(""); }}
-              type="button"
-            >
-              {labels.all}
-            </button>
-          )}
+          ))}
           {categories.map((value) => (
             <button
               aria-pressed={!selectedSector && category === value}

@@ -4,6 +4,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 
 import { deleteExhibitorAction, saveExhibitorAction } from "@/app/admin/exhibitor-actions";
+import { FileField } from "@/components/file-field";
 import { MaterialIcon } from "@/components/material-icon";
 
 export type ExhibitorRow = {
@@ -87,6 +88,7 @@ export function ExhibitorManager({
         </p>
       ) : null}
       <div>
+        <p className="helper" style={{ marginBottom: 12 }}>{items.length} exhibitor{items.length === 1 ? "" : "s"}</p>
         <section className="table-panel">
           <table>
             <thead>
@@ -167,7 +169,7 @@ export function ExhibitorManager({
             </label>
             <label className="admin-field">
               Exhibitor image
-              <input accept="image/jpeg,image/png,image/webp" name="image" required={!selected} type="file" />
+              <FileField accept="image/jpeg,image/png,image/webp" name="image" required={!selected} />
               <span className="helper">JPG, PNG or WebP, maximum 5 MB.{selected?.image_url ? " Leave empty to keep the current image." : ""}</span>
             </label>
             {selected?.image_url ? <img className="exhibitor-form-preview" src={selected.image_url} alt={`Current image for ${selected.name}`} /> : null}
